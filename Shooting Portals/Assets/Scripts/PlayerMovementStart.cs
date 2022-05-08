@@ -95,11 +95,26 @@ public class PlayerMovementStart : MonoBehaviour
         playerAnim.SetInteger("state", (int) state);
     }
 
+    //Checks if player is in contact with ground.
     private bool IsGrounded()
     {
         //BoxCast is the method that creates the imaginary box around the player.
         //Checks for overlap with jumpableGround. Returns true if there is overlap.
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+    }
+
+    //Prevents player from moving left/right during player entrance animation.
+    private void freezePositionX()
+    {
+        Debug.Log("hello");
+        playerRb.constraints = RigidbodyConstraints2D.FreezePositionX;
+    }
+
+    //Allows player to move left/right again after play entrance animation.
+    private void unfreezePositions()
+    {
+        Debug.Log("hello there");
+        playerRb.constraints = RigidbodyConstraints2D.None;
     }
 
 }
