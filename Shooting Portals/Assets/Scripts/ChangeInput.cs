@@ -43,7 +43,6 @@ public class ChangeInput : MonoBehaviour
 
         else if (Input.GetKeyDown("return"))
         {
-            Debug.Log("hello");
             submitButton.onClick.Invoke();
         }  
         
