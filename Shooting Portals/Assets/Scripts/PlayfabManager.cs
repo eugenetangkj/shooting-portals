@@ -8,25 +8,15 @@ using TMPro;
 
 public class PlayfabManager : MonoBehaviour
 {
-    //To associate the corresponding buttons and fields
+    //To obtain the content from the buttons and fields
     [SerializeField] private GameObject messageText;
-
     [SerializeField] private GameObject emailInput;
     [SerializeField] private GameObject passwordInput;
 
-    //Variables containing the content of the buttons and fields
-    private string message;
-    private string email;
-    private string password;
-
-    public void Start() {
-        message = messageText.GetComponent<TextMeshProUGUI>().text;
-        email = emailInput.GetComponent<TMP_InputField>().text;
-        password = passwordInput.GetComponent<TMP_InputField>().text;
-    }
-
+    //Functionality for Register Button
     public void RegisterButton()
     {
+        //Invalid password lengths
         if (passwordInput.GetComponent<TMP_InputField>().text.Length < 6)
         {
             messageText.GetComponent<TextMeshProUGUI>().text = "Minimum 6 characters for password";
@@ -38,6 +28,7 @@ public class PlayfabManager : MonoBehaviour
             return;
         }
 
+        //Send API request to register user
         var request = new RegisterPlayFabUserRequest {
             Email = emailInput.GetComponent<TMP_InputField>().text,
             Password = passwordInput.GetComponent<TMP_InputField>().text,
@@ -46,14 +37,17 @@ public class PlayfabManager : MonoBehaviour
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
     } 
 
+    //Action after successful registration
+    //Note that when a user registers, Playfab automatically logs in so we can directly call another API request after registration
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        //When a user registers, Playfab automatically logs in so we can directly call another API request
         messageText.GetComponent<TextMeshProUGUI>().text = "Registered and logged in";
     }
 
+    //Functionality for Login Button
     public void LoginButton()
     {
+        //Invalid password lengths, hence confirm incorrect password
         if (passwordInput.GetComponent<TMP_InputField>().text.Length < 6 ||
             passwordInput.GetComponent<TMP_InputField>().text.Length > 100)
         {
@@ -61,6 +55,7 @@ public class PlayfabManager : MonoBehaviour
             return;
         }
 
+        //Send API request to login
         var request = new LoginWithEmailAddressRequest {
             Email = emailInput.GetComponent<TMP_InputField>().text,
             Password = passwordInput.GetComponent<TMP_InputField>().text
@@ -68,14 +63,17 @@ public class PlayfabManager : MonoBehaviour
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
     }
 
+    //Action after successful login
     private void OnLoginSuccess(LoginResult result)
     {
         messageText.GetComponent<TextMeshProUGUI>().text = "Logged in";
-        Debug.Log("Successful login/account created");
+        //Debug.Log("Successful login/account created");
     }
 
+    //Functionality for Reset Password Button
     public void ResetPasswordButton()
     {
+        //Send API request to reset password
         var request = new SendAccountRecoveryEmailRequest {
             Email = emailInput.GetComponent<TMP_InputField>().text,
             TitleId = "FE2BA"
@@ -83,14 +81,16 @@ public class PlayfabManager : MonoBehaviour
         PlayFabClientAPI.SendAccountRecoveryEmail(request, OnPasswordReset, OnError);
     }
 
+    //Action after requesting for password change
     private void OnPasswordReset(SendAccountRecoveryEmailResult result) {
         messageText.GetComponent<TextMeshProUGUI>().text = "Check email to reset password";
     }
-
+    
+    //Action to carry out if there is an error
     private void OnError(PlayFabError error)
     {
         messageText.GetComponent<TextMeshProUGUI>().text = error.ErrorMessage;
-        Debug.Log("Error while logging in/creating account");
-        Debug.Log(error.GenerateErrorReport());
+        //Debug.Log("Error while logging in/creating account");
+        //Debug.Log(error.GenerateErrorReport());
     }
 }
