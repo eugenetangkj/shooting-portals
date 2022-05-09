@@ -7,8 +7,9 @@ using UnityEngine.EventSystems;
 //This class is used to allow user easily navigate between fields/buttons of the Login Menu.
 public class ChangeInput : MonoBehaviour
 {
-    EventSystem system;
+    private EventSystem system;
     [SerializeField] private Selectable firstInput; //Prevents error if one presses tab when no field/button is selected
+    [SerializeField] private Button submitButton; //Allows user to log in by pressing enter
     
     void Start()
     {
@@ -39,6 +40,12 @@ public class ChangeInput : MonoBehaviour
                 next.Select();
             }
         }
+
+        else if (Input.GetKeyDown("return"))
+        {
+            Debug.Log("hello");
+            submitButton.onClick.Invoke();
+        }  
         
     }
 }
