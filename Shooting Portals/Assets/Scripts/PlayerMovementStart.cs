@@ -106,14 +106,12 @@ public class PlayerMovementStart : MonoBehaviour
     //Prevents player from moving left/right during player entrance animation.
     private void freezePositionX()
     {
-        Debug.Log("hello");
         playerRb.constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 
     //Allows player to move left/right again after play entrance animation.
-    private void unfreezePositions()
+    private void unfreezePositionsX()
     {
-        Debug.Log("hello there");
         playerRb.constraints = RigidbodyConstraints2D.None;
     }
 

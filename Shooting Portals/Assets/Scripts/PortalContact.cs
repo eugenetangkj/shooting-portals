@@ -28,7 +28,6 @@ public class PortalContact : MonoBehaviour
     // If so, stop playing the up arrow key animation.
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Portal")) {
-            Debug.Log("hello");
             upArrowKey.GetComponent<Animator>().SetBool("play", false);
         }
     }
