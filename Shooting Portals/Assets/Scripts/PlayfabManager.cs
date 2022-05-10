@@ -23,11 +23,6 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField] private GameObject canvas;
 
 
-
-
-
-
-
     //Functionality for Register Button
     public void RegisterButton()
     {
@@ -84,6 +79,7 @@ public class PlayfabManager : MonoBehaviour
     {
         messageText.GetComponent<TextMeshProUGUI>().text = "Logged in";
         //Debug.Log("Successful login/account created");
+        //Trigger fade out
         dog.GetComponent<Animator>().SetTrigger("disappear");
         rock.GetComponent<Animator>().SetTrigger("disappear");
         starOne.GetComponent<Animator>().SetTrigger("disappear");
@@ -116,6 +112,7 @@ public class PlayfabManager : MonoBehaviour
         //Debug.Log(error.GenerateErrorReport());
     }
 
+    //Transit to next level
     private void nextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
