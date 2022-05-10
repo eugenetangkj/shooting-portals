@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 120
+  controlID: 40
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 454
     height: 939
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 347
     height: 557
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 48
+  controlID: 30
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 49
+  controlID: 31
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -279,7 +279,7 @@ MonoBehaviour:
   - {fileID: 21}
   - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 3
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -373,7 +373,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 36006
+  m_LastSelectedObjectID: 34524
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -530,22 +530,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\drago\Eugene Tang\shooting-portals\Shooting Portals
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d2600000
-    m_LastClickedID: 24786
-    m_ExpandedIDs: 00000000d2600000d4600000d6600000d8600000da600000dc600000de600000e0600000e260000000ca9a3b
+    scrollPos: {x: 0, y: 63}
+    m_SelectedIDs: b4650000
+    m_LastClickedID: 26036
+    m_ExpandedIDs: 00000000506500005265000054650000586500005a6500005c6500005e6500006065000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -573,7 +573,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d2600000d4600000d6600000d8600000da600000dc600000de600000e0600000e2600000
+    m_ExpandedIDs: 0000000050650000526500005465000056650000586500005a6500005c6500005e65000060650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000725e0000ca5e0000ccdcffffa0600000d2600000d6600000a4600000a8600000ac600000145f000036600000386000003a600000266900007a7c000022720000be7700001e760000786300006c650000b86e0000b2710000666b00001c700000a8730000ca6a00003e790000208c0000248c00001c8c0000288c00009c6600000c61000000000000bc800000245f000088760000d0620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -701,9 +701,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 40ab0000
-      m_LastClickedID: 43840
-      m_ExpandedIDs: 3061ffff9064fffffad0ffff12d3ffff7ad3ffff62d5ffffb6d5ffff2efbffffbc5e0000e85e0000f65e0000365f0000608c0000b08c0000
+      m_SelectedIDs: c2650000
+      m_LastClickedID: 0
+      m_ExpandedIDs: cee4ffffa8eaffff46ebffff36f3ffff88f3ffff10f4ffffdaf5ffff2cf6ffff12f7ffff74f8ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -974,9 +974,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.1281506, y: 0.31848454, z: 242.47852}
+    m_Target: {x: 0.3580386, y: 0.07671791, z: 256.44382}
     speed: 2
-    m_Value: {x: 1.1281506, y: 0.31848454, z: 242.47852}
+    m_Value: {x: 0.3580386, y: 0.07671791, z: 256.44382}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1027,9 +1027,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 5.9272246
+    m_Target: 6.2757215
     speed: 2
-    m_Value: 5.9272246
+    m_Value: 6.2757215
   m_Ortho:
     m_Target: 1
     speed: 2

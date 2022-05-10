@@ -5,6 +5,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class PlayfabManager : MonoBehaviour
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
         messageText.GetComponent<TextMeshProUGUI>().text = "Registered and logged in";
+        Invoke("nextLevel", 2f);
     }
 
     //Functionality for Login Button
@@ -68,6 +70,7 @@ public class PlayfabManager : MonoBehaviour
     {
         messageText.GetComponent<TextMeshProUGUI>().text = "Logged in";
         //Debug.Log("Successful login/account created");
+        Invoke("nextLevel", 2f);
     }
 
     //Functionality for Reset Password Button
@@ -92,5 +95,10 @@ public class PlayfabManager : MonoBehaviour
         messageText.GetComponent<TextMeshProUGUI>().text = error.ErrorMessage;
         //Debug.Log("Error while logging in/creating account");
         //Debug.Log(error.GenerateErrorReport());
+    }
+
+    private void nextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
