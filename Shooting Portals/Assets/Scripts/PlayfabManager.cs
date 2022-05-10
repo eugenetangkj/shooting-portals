@@ -14,6 +14,20 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField] private GameObject emailInput;
     [SerializeField] private GameObject passwordInput;
 
+
+    //To trigger animations
+    [SerializeField] private GameObject dog;
+    [SerializeField] private GameObject rock;
+    [SerializeField] private GameObject starOne;
+    [SerializeField] private GameObject starTwo;
+    [SerializeField] private GameObject canvas;
+
+
+
+
+
+
+
     //Functionality for Register Button
     public void RegisterButton()
     {
@@ -70,6 +84,11 @@ public class PlayfabManager : MonoBehaviour
     {
         messageText.GetComponent<TextMeshProUGUI>().text = "Logged in";
         //Debug.Log("Successful login/account created");
+        dog.GetComponent<Animator>().SetTrigger("disappear");
+        rock.GetComponent<Animator>().SetTrigger("disappear");
+        starOne.GetComponent<Animator>().SetTrigger("disappear");
+        starTwo.GetComponent<Animator>().SetTrigger("disappear");
+        canvas.GetComponent<Animator>().SetTrigger("disappear");
         Invoke("nextLevel", 2f);
     }
 
