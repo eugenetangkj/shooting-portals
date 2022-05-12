@@ -54,6 +54,7 @@ public class PlayerfabLoad : MonoBehaviour
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest() {
             Data = new Dictionary<string, string>(){{"PlayerLevel", levelToUse}}
             }, setDataSuccess, onError);
+        PlayerfabLoad.playerLevel = int.Parse(levelToUse);
     }
 
     //Runs when player's level data is updated successfully

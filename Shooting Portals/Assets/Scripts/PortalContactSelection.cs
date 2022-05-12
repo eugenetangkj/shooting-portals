@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PortalContact : MonoBehaviour
+public class PortalContactSelection : MonoBehaviour
 {
     //Player's components
     private Rigidbody2D playerRb;
     private Animator playerAnim;
 
-    [SerializeField] GameObject background;
-    [SerializeField] GameObject canvas;
+    // [SerializeField] GameObject background;
+    // [SerializeField] GameObject canvas;
 
-    private bool inContact = false;
+    private static bool inContact = false;
 
-    //Up Arrow Key instance
+    //Instructions to appear
     [SerializeField] GameObject key;
 
     private void Start() {
@@ -21,21 +21,13 @@ public class PortalContact : MonoBehaviour
         playerAnim = GetComponent<Animator>();
     }
 
-    private void Update() {
-        if (inContact && Input.GetKeyDown(KeyCode.UpArrow)) {
-            playerAnim.SetTrigger("disappear");
-            background.GetComponent<Animator>().SetTrigger("appear");
-            canvas.GetComponent<Animator>().SetTrigger("appear");
-            Invoke("nextLevel", 4f);
-        }
-    }
-
+  
     //Checks if player comes in contact with a portal.
     //If so, play the up arrow key animation.
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Portal")) {
             key.GetComponent<Animator>().SetBool("play", true);
-            inContact = true;
+            PortalContactSelection.inContact = true;
 
         }
     }
@@ -45,13 +37,12 @@ public class PortalContact : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Portal")) {
             key.GetComponent<Animator>().SetBool("play", false);
-            inContact = false;
+            PortalContactSelection.inContact = false;
         }
     }
 
-    private void nextLevel()
+    public static bool checkContact()
     {
-        Debug.Log("reached");
-        SceneManager.LoadScene("Loading Screen Portal");
+        return PortalContactSelection.inContact;
     }
 }
