@@ -103,16 +103,31 @@ public class PlayerMovementStart : MonoBehaviour
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
     }
 
-    //Prevents player from moving left/right during player entrance animation.
+
+    //Prevents player from moving left and right during player entrance animation.
     private void freezePositionX()
     {
         playerRb.constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 
-    //Allows player to move left/right again after play entrance animation.
+    //Allows player to move left and right again after play entrance animation.
     private void unfreezePositionsX()
     {
         playerRb.constraints = RigidbodyConstraints2D.None;
+        playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    //Prevents player from moving during player entrance animation.
+    private void freezePosition()
+    {
+        playerRb.constraints = RigidbodyConstraints2D.FreezePosition;
+    }
+
+    //Allows player to move again after play entrance animation.
+    private void unfreezePositions()
+    {
+        playerRb.constraints = RigidbodyConstraints2D.None;
+        playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
 }
