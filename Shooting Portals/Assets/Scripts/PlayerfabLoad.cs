@@ -4,47 +4,70 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 
+//This class handles API requests to get and/or update player's level
+//as the player progresses through the game.
 public class PlayerfabLoad : MonoBehaviour
 {
-    
-    private void Start()
-    {
-        getPlayerData();
-    }
 
-    private void getPlayerData()
+    //Player's level
+    private static int playerLevel;
+    
+    //Gets the player's current level when user first logs in
+    public static int getPlayerLevelBefore()
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest(){
             Keys = null
-        }, userDataSuccess, onError);
+            }, userDataSuccess, onError);
+        return PlayerfabLoad.playerLevel;
     }
 
-    private void userDataSuccess(GetUserDataResult results)
+    //Set player's level to 0 if player's data does not exist,
+    //otherwise updates playerLevel to the correct value.
+    public static void userDataSuccess(GetUserDataResult results)
     {
         if (results.Data == null || ! results.Data.ContainsKey("PlayerLevel"))
         {
-            //No save info
+            //No level data, so we set level to be 0
             PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest() {
                 Data = new Dictionary<string, string>(){{"PlayerLevel", "0"}}
-                }, setDataSuccess, onError);     
+                }, setDataSuccess, onError); 
+            PlayerfabLoad.playerLevel = 0;  
         }
-        
+
         else
         {
-            //Save info, load level
-            Debug.Log(int.Parse(results.Data["PlayerLevel"].Value) + 1);
+            //Level data exists, so we get the player's level data.
+            int currentLevel = int.Parse(results.Data["PlayerLevel"].Value);
+            PlayerfabLoad.playerLevel = currentLevel;
         }
     }
 
-    private void setDataSuccess(UpdateUserDataResult result)
+    public static int getPlayerLevelAfter()
     {
-        Debug.Log("Saved current");
+        return PlayerfabLoad.playerLevel;
     }
 
-    private void onError(PlayFabError error)
+
+    //Updates the player's level
+    public static void updatePlayerLevel(string levelToUse)
+    {
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest() {
+            Data = new Dictionary<string, string>(){{"PlayerLevel", levelToUse}}
+            }, setDataSuccess, onError);
+    }
+
+    //Runs when player's level data is updated successfully
+    private static void setDataSuccess(UpdateUserDataResult result)
+    {
+        Debug.Log("Player's level updated successfully.");
+    }
+
+    //Outputs error message if any API request is unsuccessful
+    private static void onError(PlayFabError error)
     {
         Debug.Log(error);
     }
 }
-      
+
     
+
