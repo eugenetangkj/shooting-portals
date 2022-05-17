@@ -2,17 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : MonoBehaviour
+//This class is the parent class of all the different player states. Since it will not be attached
+//to any GameObject, it will not extend MonoBehaviour.
+public class PlayerState
 {
-    // Start is called before the first frame update
-    void Start()
+    protected Player player;
+    protected PlayerStateMachine stateMachine;
+    protected PlayerData playerData;
+
+    //Start time gets initialized everytime we enter a player state, hence we can track how long we enter that state
+    protected float startTime;
+    //The animation to run for this state
+    private string animBoolName;
+
+    //Constructor
+    public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName)
     {
-        
+        this.player = player;
+        this.stateMachine = stateMachine;
+        this.playerData = playerData;
+        this.animBoolName = animBoolName;
     }
 
-    // Update is called once per frame
-    void Update()
+    //Virtual means this method can be overriden by inheriting classes
+
+    //Gets called when we enter a state
+    public virtual void Enter()
     {
-        
+        DoChecks();
+        player.Anim.SetBool(animBoolName, true);
+        startTime = Time.time;
+
     }
+
+    //Gets called when we exit a state
+    public virtual void Exit()
+    {
+        player.Anim.SetBool(animBoolName, false);
+
+    }
+
+    //Gets called every frame, dealing with logic
+    public virtual void LogicUpdate()
+    {
+
+    }
+
+    //Gets called every fixed frame, dealing with physics
+    public virtual void PhysicsUpdate()
+    {
+        DoChecks();
+
+    }
+
+    //Gets called in Enter and PhysicsUpdate, doing ground
+    //and wall checks etc.
+    public virtual void DoChecks()
+    {
+
+    }
+
+
 }
