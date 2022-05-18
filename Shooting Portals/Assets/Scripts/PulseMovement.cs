@@ -7,6 +7,7 @@ public class PulseMovement : MonoBehaviour
     private BoxCollider2D playerCollider;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float moveForce = 7f;
     Rigidbody2D playerRb;
     private enum MovementState {idle, run, jump};
     private Animator playerAnim;
@@ -21,8 +22,11 @@ public class PulseMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Jump logic
+        float dirX = Input.GetAxisRaw("Horizontal");
+
+        playerRb.velocity = new Vector2(dirX * moveForce, playerRb.velocity.y);
         
+        //Jump logic
         if (Input.GetButtonDown("Jump") && isGrounded()) 
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
@@ -35,6 +39,12 @@ public class PulseMovement : MonoBehaviour
         MovementState state = MovementState.idle;
         if (playerRb.velocity.y > 0.1f) {
             state = MovementState.jump;
+        }
+        if (playerRb.velocity.x > 0) {
+            state = MovementState.run;
+        }
+        if (playerRb.velocity.x < 0) {
+            state = MovementState.run;
         }
 
         playerAnim.SetInteger("state", (int) state);
