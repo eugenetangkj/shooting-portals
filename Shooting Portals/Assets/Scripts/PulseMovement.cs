@@ -7,17 +7,20 @@ public class PulseMovement : MonoBehaviour
     private BoxCollider2D playerCollider;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float jumpForce = 7f;
-    [SerializeField] private float moveForce = 7f;
+    [SerializeField] private float moveSpeed = 4.5f;
     Rigidbody2D playerRb;
     private enum MovementState {idle, run, jump};
     private Animator playerAnim;
     private float dirX;
+    private SpriteRenderer playerSprite;
+    private MovementState state = MovementState.idle;
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         playerAnim = GetComponent<Animator>();
+        playerSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class PulseMovement : MonoBehaviour
     {
         dirX = Input.GetAxisRaw("Horizontal");
 
-        playerRb.velocity = new Vector2(dirX * moveForce, playerRb.velocity.y);
+        playerRb.velocity = new Vector2(dirX * moveSpeed, playerRb.velocity.y);
         
         //Jump logic
         if (Input.GetButtonDown("Jump") && isGrounded()) 
@@ -37,14 +40,16 @@ public class PulseMovement : MonoBehaviour
 
     private void UpdateAnimationState () 
     {
-        MovementState state = MovementState.idle;
+        
         if (playerRb.velocity.y > 0.1f) {
             state = MovementState.jump;
         }
-        if (playerRb.velocity.x > 0) {
+        else if (playerRb.velocity.x > 0) {
+            playerSprite.flipX = false;
             state = MovementState.run;
         }
-        if (playerRb.velocity.x < 0) {
+        else if (playerRb.velocity.x < 0) {
+            playerSprite.flipX = true;
             state = MovementState.run;
         }
 
