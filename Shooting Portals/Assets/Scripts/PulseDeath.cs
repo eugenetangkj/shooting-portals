@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PulseDeath : MonoBehaviour
 {
@@ -24,6 +25,13 @@ public class PulseDeath : MonoBehaviour
     private void Die () 
     {
         //switch to death animation
+        //use animator to delay restarting of level
         playerRb.bodyType = RigidbodyType2D.Static;
+        playerAnim.SetTrigger("death");
+    }
+
+    private void RestartLevel() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
