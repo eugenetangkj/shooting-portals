@@ -11,6 +11,7 @@ public class PulseMovement : MonoBehaviour
     Rigidbody2D playerRb;
     private enum MovementState {idle, run, jump};
     private Animator playerAnim;
+    private float dirX;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class PulseMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dirX = Input.GetAxisRaw("Horizontal");
+        dirX = Input.GetAxisRaw("Horizontal");
 
         playerRb.velocity = new Vector2(dirX * moveForce, playerRb.velocity.y);
         
