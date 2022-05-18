@@ -13,7 +13,6 @@ public class PulseMovement : MonoBehaviour
     private Animator playerAnim;
     private float dirX;
     private SpriteRenderer playerSprite;
-    private MovementState state = MovementState.idle;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,19 +39,24 @@ public class PulseMovement : MonoBehaviour
 
     private void UpdateAnimationState () 
     {
+        MovementState state;
         
+        if (dirX > 0f) {
+            state = MovementState.run;
+            playerSprite.flipX = false;
+        }
+        else if (dirX < 0f) {
+            state = MovementState.run;
+            playerSprite.flipX = true;
+        }
+        else 
+        {
+            state = MovementState.idle;
+        }
+
         if (playerRb.velocity.y > 0.1f) {
             state = MovementState.jump;
         }
-        else if (playerRb.velocity.x > 0) {
-            playerSprite.flipX = false;
-            state = MovementState.run;
-        }
-        else if (playerRb.velocity.x < 0) {
-            playerSprite.flipX = true;
-            state = MovementState.run;
-        }
-
         playerAnim.SetInteger("state", (int) state);
     }
 
