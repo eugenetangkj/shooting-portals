@@ -2,24 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGroundedState : PlayerState
+public class PlayerTouchingWallState : PlayerState
 {
+    protected bool isGrounded;
+    protected bool isTouchingWall;
+    protected bool grabInput;
     protected int xInput;
+    protected int yInput;
 
-    private bool jumpInput;
-
-    private bool isGrounded;
-
-    private bool isTouchingWall;
-
-    private bool grabInput;
-
-
-    public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerTouchingWallState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
-    
     public override void DoChecks()
     {
         base.DoChecks();
@@ -37,22 +31,19 @@ public class PlayerGroundedState : PlayerState
         base.Exit();
     }
 
-
     public override void LogicUpdate()
     {
         base.LogicUpdate();
         xInput = player.InputHandler.NormInputX;
-        jumpInput = player.InputHandler.JumpInput;
+        yInput = player.InputHandler.NormInputY;
         grabInput = player.InputHandler.GrabInput;
 
-        if (jumpInput)
+        if (isGrounded && !grabInput)
         {
-            player.InputHandler.UseJumpInput();
-            stateMachine.ChangeState(player.JumpState);
-        }
-        else if (isTouchingWall && grabInput)
+            stateMachine.ChangeState(player.IdleState);
+        } else if (!isTouchingWall || (xInput != player.FacingDirection && ! grabInput))
         {
-            stateMachine.ChangeState(player.WallGrabState);
+            stateMachine.ChangeState(player.InAirState);
         }
     }
 

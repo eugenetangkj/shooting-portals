@@ -10,6 +10,8 @@ public class PlayerState
     protected PlayerStateMachine stateMachine;
     protected PlayerData playerData;
 
+    //protected bool isAnimationFinished;
+
     //Start time gets initialized everytime we enter a player state, hence we can track how long we enter that state
     protected float startTime;
     //The animation to run for this state
@@ -32,6 +34,7 @@ public class PlayerState
         DoChecks();
         player.Anim.SetBool(animBoolName, true);
         startTime = Time.time;
+        //isAnimationFinished = false;
 
     }
 
@@ -61,6 +64,12 @@ public class PlayerState
     {
 
     }
+
+    // public virtual void AnimationTrigger() {
+
+    // }
+
+    // public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
 
 
 }

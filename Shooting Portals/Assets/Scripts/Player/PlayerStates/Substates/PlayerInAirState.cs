@@ -2,27 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGroundedState : PlayerState
+public class PlayerInAirState : PlayerState
 {
-    protected int xInput;
-
-    private bool jumpInput;
-
     private bool isGrounded;
+    private int xInput;
 
     private bool isTouchingWall;
 
     private bool grabInput;
 
-
-    public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
-    
     public override void DoChecks()
     {
         base.DoChecks();
+
         isGrounded = player.CheckIfGrounded();
         isTouchingWall = player.CheckIfTouchingWall();
     }
@@ -32,27 +28,35 @@ public class PlayerGroundedState : PlayerState
         base.Enter();
     }
 
+    
+
     public override void Exit()
     {
         base.Exit();
     }
 
+    
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
         xInput = player.InputHandler.NormInputX;
-        jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
 
-        if (jumpInput)
+        if (isGrounded && player.CurrentVelocity.y < 0.01f)
         {
-            player.InputHandler.UseJumpInput();
-            stateMachine.ChangeState(player.JumpState);
-        }
-        else if (isTouchingWall && grabInput)
+            stateMachine.ChangeState(player.IdleState);
+        } else if (isTouchingWall && grabInput)
         {
             stateMachine.ChangeState(player.WallGrabState);
+        } else if (isTouchingWall && xInput == player.FacingDirection)
+        {
+            stateMachine.ChangeState(player.WallSlideState);
+        } 
+         else
+        {
+            player.CheckIfShouldFlip(xInput);
+            player.setVelocityX(playerData.movementVelocity * xInput); 
         }
     }
 
@@ -61,4 +65,5 @@ public class PlayerGroundedState : PlayerState
         base.PhysicsUpdate();
     }
 
+    
 }
