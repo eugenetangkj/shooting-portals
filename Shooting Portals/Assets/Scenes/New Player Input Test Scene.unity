@@ -247,6 +247,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 94e25467-d5be-43ae-85c8-36a3a39804f2
     m_ActionName: Gameplay/Attack Shot[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 69207021}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnPortalShootInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 73eb265a-6ce3-46da-b023-c9b6f11eefdf
+    m_ActionName: Gameplay/Portal Shot[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Gameplay
@@ -260,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69207020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.09, y: -2.18, z: 0}
+  m_LocalPosition: {x: -19.84, y: -2.15, z: 0}
   m_LocalScale: {x: 2.25, y: 2.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -289,6 +305,7 @@ MonoBehaviour:
   ledgeCheck: {fileID: 1193090904}
   firePoint: {fileID: 553876611}
   attackShot: {fileID: 3563938751191170053, guid: 1d58d1a53b30e04439bb567ecc5ce0b3, type: 3}
+  portalShot: {fileID: 6449136433584872398, guid: 92095ef27002c8f40877e4b27e8209a8, type: 3}
 --- !u!212 &69207025
 SpriteRenderer:
   m_ObjectHideFlags: 0

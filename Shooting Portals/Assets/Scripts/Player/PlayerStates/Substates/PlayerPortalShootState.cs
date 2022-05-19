@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackShootState : PlayerAbilityState
+public class PlayerPortalShootState : PlayerAbilityState
 {
-
-    public PlayerAttackShootState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerPortalShootState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -27,19 +26,19 @@ public class PlayerAttackShootState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
-        player.InputHandler.UseAttackShootInput();
-        player.ShootAttack();
+        player.InputHandler.UsePortalAttackShootInput();
+        player.PortalAttack();
         isAbilityDone = true;
     }
 
-
     
+
     public override void Exit()
     {
         base.Exit();
     }
 
-   
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -49,4 +48,11 @@ public class PlayerAttackShootState : PlayerAbilityState
     {
         base.PhysicsUpdate();
     }
+
+    private void shootPortal()
+    {
+        player.PortalAttack();
+    }
+
+    
 }
