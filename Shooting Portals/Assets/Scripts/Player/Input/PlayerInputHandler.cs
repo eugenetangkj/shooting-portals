@@ -10,22 +10,27 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormInputY { get; private set; }
     public bool JumpInput { get; private set; }
     public bool GrabInput { get; private set; }
-    public bool AttackShootInput { get; private set;}
+    public bool AttackShootInput { get; private set; }
     public bool CanShoot { get; private set;}
+    public bool PortalShootInput { get; private set; }
+    public bool CanPortalShoot { get; private set; }
 
 
     private float inputHoldTime = 0.1f;
     private float jumpInputStartTime;
     private float attackShootInputStartTime;
+    private float portalShootInputStartTime;
 
     private void Start()
     {
         CanShoot = true;
+        CanPortalShoot = true;
     }
     private void Update()
     {
         CheckJumpInputHoldTime();
         CheckAttackShootInputHoldTime();
+        CheckPortalShootInputHoldTime();
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -63,7 +68,19 @@ public class PlayerInputHandler : MonoBehaviour
             AttackShootInput = true;
             CanShoot = false;
             attackShootInputStartTime = Time.time;
-            Invoke("changeCanShoot", 1f); //Can only shoot again 1s later
+            Invoke("changeCanShoot", 1.5f); //Can only shoot again 1.5s later
+        }
+    }
+
+
+    public void OnPortalShootInput(InputAction.CallbackContext context)
+    {
+        if (context.started && CanPortalShoot) //press 2 button
+        {
+            PortalShootInput = true;
+            CanPortalShoot = false;
+            portalShootInputStartTime = Time.time;
+            Invoke("changeCanPortalShoot", 2.5f); //Can only shoot again 2.5s later
         }
     }
 
@@ -80,6 +97,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void UseAttackShootInput() => AttackShootInput = false;
 
+    public void UsePortalShootInput() => PortalShootInput = false;
+
+
     private void CheckAttackShootInputHoldTime()
     {
         if (Time.time >= attackShootInputStartTime + inputHoldTime)
@@ -89,8 +109,22 @@ public class PlayerInputHandler : MonoBehaviour
         
     }
 
+    private void CheckPortalShootInputHoldTime()
+    {
+        if (Time.time >= portalShootInputStartTime + inputHoldTime)
+        {
+            PortalShootInput = false;
+        }
+        
+    }
+
     private void changeCanShoot()
     {
         CanShoot = true;
+    }
+
+    private void changeCanPortalShoot()
+    {
+        CanPortalShoot = true;
     }
 }

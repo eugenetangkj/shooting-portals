@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBullet : MonoBehaviour
+public class PortalBullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed = 20f;
     private Rigidbody2D rb;
@@ -27,7 +27,7 @@ public class AttackBullet : MonoBehaviour
     {
         anim.SetBool("hit", true);
         rb.velocity = Vector2.zero;
-        Invoke("DestroyBullet", 0.4f); //Destroys the bullet on contact
+        Invoke("DestroyBullet", 0.5f); //Destroys the bullet on contact
     }
 
     void DestroyBullet()
@@ -41,7 +41,7 @@ public class AttackBullet : MonoBehaviour
         {
             anim.SetBool("hit", true);
             rb.velocity = Vector2.zero;
-            Invoke("DestroyBullet", 0.4f); //Destroys the bullet on contact
+            Invoke("DestroyBullet", 0.5f); //Destroys the bullet on contact
         }
     }
     

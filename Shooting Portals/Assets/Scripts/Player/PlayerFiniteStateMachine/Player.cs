@@ -27,6 +27,14 @@ public class Player : MonoBehaviour
     public PlayerLedgeClimbState LedgeClimbState { get; private set; }
 
     public PlayerAttackShootState AttackShootState { get; private set; }
+
+    public PlayerAttackJumpState AttackJumpState { get; private set; }
+
+    public PlayerPortalShootState PortalShootState { get; private set; }
+
+    public PlayerPortalShootJumpState PortalShootJumpState { get; private set; }
+
+    
     [SerializeField] private PlayerData playerData;
     #endregion
 
@@ -38,7 +46,9 @@ public class Player : MonoBehaviour
     [SerializeField] Transform ledgeCheck;
     
     [SerializeField] Transform firePoint;
+    [SerializeField] Transform firePointJump;
     [SerializeField] GameObject attackShot;
+    [SerializeField] GameObject portalShot;
     public Rigidbody2D RB { get; private set; }
     #endregion
     
@@ -67,6 +77,10 @@ public class Player : MonoBehaviour
         WallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "inAir");
         LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "ledgeClimbState");
         AttackShootState = new PlayerAttackShootState(this, StateMachine, playerData, "attackShot");
+        AttackJumpState = new PlayerAttackJumpState(this, StateMachine, playerData, "attackJumpShot");
+        PortalShootState = new PlayerPortalShootState(this, StateMachine, playerData, "portalShot");
+        PortalShootJumpState = new PlayerPortalShootJumpState(this, StateMachine, playerData, "portalJumpShot");
+
     }
 
     private void Start()
@@ -178,7 +192,56 @@ public class Player : MonoBehaviour
 
     public void ShootAttack()
     {
+        Invoke("createAttackShot", 0.2f);
+    }
+
+    public void PortalShootAttack()
+    {
+        Invoke("createPortalShot", 0.3f);
+    }
+
+    private void createAttackShot()
+    {
         Instantiate(attackShot, firePoint.position, firePoint.rotation);
     }
+    private void createPortalShot()
+    {
+        Instantiate(portalShot, firePoint.position, firePoint.rotation);
+    }
+
+    //Jump
+    public void ShootJumpAttack()
+    {
+        Invoke("createAttackJumpShot", 0.2f);
+    }
+
+    public void PortalShootJumpAttack()
+    {
+        Invoke("createPortalJumpShot", 0.3f);
+    }
+
+    private void createAttackJumpShot()
+    {
+        Instantiate(attackShot, firePointJump.position, firePointJump.rotation);
+    }
+    private void createPortalJumpShot()
+    {
+        Instantiate(portalShot, firePointJump.position, firePointJump.rotation);
+    }
+
+    //Prevents player from moving
+    private void freezePosition()
+    {
+        RB.constraints = RigidbodyConstraints2D.FreezePosition;
+    }
+
+    //Allows player to move again
+    private void unfreezePositions()
+    {
+        RB.constraints = RigidbodyConstraints2D.None;
+        RB.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    
     #endregion
 }
