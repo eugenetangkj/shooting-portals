@@ -19,8 +19,11 @@ MonoBehaviour:
   wallJumpVelocity: 20
   wallJumpTime: 0.1
   wallJumpAngle: {x: 1, y: 2}
+  startOffset: {x: 0.5, y: 0.4}
+  stopOffset: {x: 0.5, y: 0.5}
   groundCheckRadius: 0.3
   wallCheckDistance: 0.6
+  latchCheckDistance: 0.6
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
