@@ -47,7 +47,6 @@ public class PlayerGroundedState : PlayerState
 
         if (jumpInput)
         {
-            player.InputHandler.UseJumpInput();
             stateMachine.ChangeState(player.JumpState);
         }
         else if (isTouchingWall && grabInput)

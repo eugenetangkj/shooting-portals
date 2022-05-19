@@ -33,10 +33,11 @@ public class PlayerWallGrabState : PlayerTouchingWallState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        HoldPosition();
+        
 
         if (!isExitingState)
         {
+            HoldPosition();
             if (yInput > 0 && grabInput)
             {
                 stateMachine.ChangeState(player.WallClimbState);

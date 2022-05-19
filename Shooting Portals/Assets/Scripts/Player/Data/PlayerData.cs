@@ -19,6 +19,11 @@ public class PlayerData : ScriptableObject
     [Header("Wall Climb State")]
     public float wallClimbVelocity = 3f;
 
+    [Header("Wall Jump State")]
+    public float wallJumpVelocity = 20f;
+    public float wallJumpTime = 0.4f; //make us stay in wall jump state for a period of time, preventing us from immediately jumping back to the same wall
+    public Vector2 wallJumpAngle = new Vector2(1, 2);
+    
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;
     public float wallCheckDistance = 0.5f;

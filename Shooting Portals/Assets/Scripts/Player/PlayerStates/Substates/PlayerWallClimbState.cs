@@ -8,14 +8,16 @@ public class PlayerWallClimbState : PlayerTouchingWallState
     {
     }
 
-     public override void LogicUpdate()
+    public override void LogicUpdate()
     {
         base.LogicUpdate();
-        player.setVelocityY(playerData.wallClimbVelocity);
-
-        if (yInput != 1 && !isExitingState)
+        if (!isExitingState)
         {
-            stateMachine.ChangeState(player.WallGrabState);
+            player.setVelocityY(playerData.wallClimbVelocity);
+            if (yInput != 1)
+            {
+                stateMachine.ChangeState(player.WallGrabState);
+            }
         }
     }
 }
