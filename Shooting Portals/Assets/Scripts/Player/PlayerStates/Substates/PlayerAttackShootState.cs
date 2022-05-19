@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerAttackShootState : PlayerAbilityState
 {
-
     public PlayerAttackShootState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -49,4 +48,6 @@ public class PlayerAttackShootState : PlayerAbilityState
     {
         base.PhysicsUpdate();
     }
+
+   
 }

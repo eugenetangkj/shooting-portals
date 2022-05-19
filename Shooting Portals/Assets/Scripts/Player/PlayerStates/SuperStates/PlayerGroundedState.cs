@@ -16,8 +16,6 @@ public class PlayerGroundedState : PlayerState
 
     private bool attackShootInput;
 
-    private bool portalShootInput;
-
 
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -50,7 +48,6 @@ public class PlayerGroundedState : PlayerState
         jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
         attackShootInput = player.InputHandler.AttackShootInput;
-        portalShootInput = player.InputHandler.PortalShootInput;
 
         if (jumpInput)
         {
@@ -62,9 +59,6 @@ public class PlayerGroundedState : PlayerState
         } else if (attackShootInput)
         {
             stateMachine.ChangeState(player.AttackShootState);
-        } else if (portalShootInput)
-        {
-            stateMachine.ChangeState(player.PortalShootState);
         }
     }
 

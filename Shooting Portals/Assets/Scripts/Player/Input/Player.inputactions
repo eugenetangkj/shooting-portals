@@ -40,15 +40,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Portal Shot",
-                    "type": "Button",
-                    "id": "73eb265a-6ce3-46da-b023-c9b6f11eefdf",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -137,17 +128,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Attack Shot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e5b6ba54-d762-473d-af61-ba22349fbd91",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Portal Shot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
