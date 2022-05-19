@@ -9,6 +9,7 @@ public class PlayerState
     protected Player player;
     protected PlayerStateMachine stateMachine;
     protected PlayerData playerData;
+    protected bool isExitingState;
 
     //protected bool isAnimationFinished;
 
@@ -34,7 +35,7 @@ public class PlayerState
         DoChecks();
         player.Anim.SetBool(animBoolName, true);
         startTime = Time.time;
-        //isAnimationFinished = false;
+        isExitingState = false;
 
     }
 
@@ -42,6 +43,7 @@ public class PlayerState
     public virtual void Exit()
     {
         player.Anim.SetBool(animBoolName, false);
+        isExitingState = true;
 
     }
 

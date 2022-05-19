@@ -52,8 +52,8 @@ public class Player : MonoBehaviour
         JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
         InAirState = new PlayerInAirState(this, StateMachine, playerData, "inAir");
         WallGrabState = new PlayerWallGrabState(this, StateMachine, playerData, "wallGrab");
-        WallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "wallAction");
-        WallSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "wallAction");
+        WallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "wallClimb");
+        WallSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "wallSlide");
     }
 
     private void Start()

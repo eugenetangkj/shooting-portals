@@ -27,7 +27,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (xInput != 0) //There is movement left/right
+        if (xInput != 0 && !isExitingState) //There is movement left/right
         {
             stateMachine.ChangeState(player.MoveState);
         }
