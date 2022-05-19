@@ -17,6 +17,8 @@ public class PlayerInAirState : PlayerState
 
     private bool isTouchingLedge;
 
+    private bool attackShootInput;
+
     public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -55,27 +57,43 @@ public class PlayerInAirState : PlayerState
         xInput = player.InputHandler.NormInputX;
         jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
-
+        attackShootInput = player.InputHandler.AttackShootInput;
+        
+        //Player touches ground, goes to idle state
         if (isGrounded && player.CurrentVelocity.y < 0.01f)
         {
             stateMachine.ChangeState(player.IdleState);
-        } else if (isTouchingWall && !isTouchingLedge && grabInput)
+        }
+        //Player is in the air, not touching a wall and wants to shoot
+        else if (attackShootInput)
+        {
+            stateMachine.ChangeState(player.AttackShootState);
+        }
+        //Player is at a ledge and wants to hold onto the ledge, goes to ledgeclimb state    
+        else if (isTouchingWall && !isTouchingLedge && grabInput)
         {
             stateMachine.ChangeState(player.LedgeClimbState);
         }
+        //Player is touching a wall and wants to wall jump, goes to walljump state
         else if (jumpInput && (isTouchingWall || isTouchingWallBack))
         {
             isTouchingWall = player.CheckIfTouchingWall();
             player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
             stateMachine.ChangeState(player.WallJumpState);
-        } else if (isTouchingWall && grabInput)
+        
+        }
+        //Player is touching a wall and wants to wall grab, goes to wallgrab state    
+        else if (isTouchingWall && grabInput)
         {
             stateMachine.ChangeState(player.WallGrabState);
-        } else if (isTouchingWall && xInput == player.FacingDirection)
+        }
+        //Player is touching a wall and does not wall grab, goes to wallslide state
+        else if (isTouchingWall && xInput == player.FacingDirection)
         {
             stateMachine.ChangeState(player.WallSlideState);
         } 
-         else
+        //Player wants to move in the air
+        else
         {
             player.CheckIfShouldFlip(xInput);
             player.setVelocityX(playerData.movementVelocity * xInput); 

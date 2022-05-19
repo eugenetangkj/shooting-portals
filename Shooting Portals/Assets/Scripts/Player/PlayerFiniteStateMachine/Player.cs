@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     public PlayerWallJumpState WallJumpState { get; private set; }
 
     public PlayerLedgeClimbState LedgeClimbState { get; private set; }
+
+    public PlayerAttackShootState AttackShootState { get; private set; }
     [SerializeField] private PlayerData playerData;
     #endregion
 
@@ -34,6 +36,9 @@ public class Player : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] Transform wallCheck;
     [SerializeField] Transform ledgeCheck;
+    
+    [SerializeField] Transform firePoint;
+    [SerializeField] GameObject attackShot;
     public Rigidbody2D RB { get; private set; }
     #endregion
     
@@ -61,6 +66,7 @@ public class Player : MonoBehaviour
         WallSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "wallSlide");
         WallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "inAir");
         LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "ledgeClimbState");
+        AttackShootState = new PlayerAttackShootState(this, StateMachine, playerData, "attackShot");
     }
 
     private void Start()
@@ -168,6 +174,11 @@ public class Player : MonoBehaviour
         
         workspace.Set(wallCheck.position.x + (xDist * FacingDirection), ledgeCheck.position.y - yDist);
         return workspace;
+    }
+
+    public void ShootAttack()
+    {
+        Instantiate(attackShot, firePoint.position, firePoint.rotation);
     }
     #endregion
 }

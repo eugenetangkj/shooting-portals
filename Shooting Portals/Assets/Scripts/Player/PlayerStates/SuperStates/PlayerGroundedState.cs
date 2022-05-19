@@ -14,6 +14,9 @@ public class PlayerGroundedState : PlayerState
 
     private bool grabInput;
 
+    private bool attackShootInput;
+
+
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -44,6 +47,7 @@ public class PlayerGroundedState : PlayerState
         xInput = player.InputHandler.NormInputX;
         jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
+        attackShootInput = player.InputHandler.AttackShootInput;
 
         if (jumpInput)
         {
@@ -52,6 +56,9 @@ public class PlayerGroundedState : PlayerState
         else if (isTouchingWall && grabInput)
         {
             stateMachine.ChangeState(player.WallGrabState);
+        } else if (attackShootInput)
+        {
+            stateMachine.ChangeState(player.AttackShootState);
         }
     }
 

@@ -10,14 +10,22 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormInputY { get; private set; }
     public bool JumpInput { get; private set; }
     public bool GrabInput { get; private set; }
+    public bool AttackShootInput { get; private set;}
+    public bool CanShoot { get; private set;}
 
 
     private float inputHoldTime = 0.1f;
     private float jumpInputStartTime;
+    private float attackShootInputStartTime;
 
+    private void Start()
+    {
+        CanShoot = true;
+    }
     private void Update()
     {
         CheckJumpInputHoldTime();
+        CheckAttackShootInputHoldTime();
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -48,6 +56,18 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void OnAttackShootInput(InputAction.CallbackContext context)
+    {
+        if (context.started && CanShoot) //press 1 button
+        {
+            AttackShootInput = true;
+            CanShoot = false;
+            attackShootInputStartTime = Time.time;
+            Invoke("changeCanShoot", 1f); //Can only shoot again 1s later
+        }
+    }
+
+
     public void UseJumpInput() => JumpInput = false;
 
     private void CheckJumpInputHoldTime()
@@ -56,5 +76,21 @@ public class PlayerInputHandler : MonoBehaviour
         {
             JumpInput = false;
         }
+    }
+
+    public void UseAttackShootInput() => AttackShootInput = false;
+
+    private void CheckAttackShootInputHoldTime()
+    {
+        if (Time.time >= attackShootInputStartTime + inputHoldTime)
+        {
+            AttackShootInput = false;
+        }
+        
+    }
+
+    private void changeCanShoot()
+    {
+        CanShoot = true;
     }
 }

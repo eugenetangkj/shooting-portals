@@ -36,7 +36,6 @@ public class PlayerAbilityState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
         if (isAbilityDone)
         {
             if (isGrounded && player.CurrentVelocity.y < 0.01f)
