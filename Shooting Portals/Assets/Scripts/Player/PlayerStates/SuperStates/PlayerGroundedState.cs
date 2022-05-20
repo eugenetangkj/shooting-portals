@@ -18,6 +18,8 @@ public class PlayerGroundedState : PlayerState
 
     private bool portalShootInput;
 
+    private bool teleportInput;
+
 
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -51,6 +53,7 @@ public class PlayerGroundedState : PlayerState
         grabInput = player.InputHandler.GrabInput;
         attackShootInput = player.InputHandler.AttackShootInput;
         portalShootInput = player.InputHandler.PortalShootInput;
+        teleportInput = player.InputHandler.TeleportInput;
 
         if (jumpInput)
         {
@@ -65,6 +68,9 @@ public class PlayerGroundedState : PlayerState
         } else if (portalShootInput)
         {
             stateMachine.ChangeState(player.PortalShootState);
+        } else if (teleportInput)
+        {
+            stateMachine.ChangeState(player.TeleportState);
         }
     }
 

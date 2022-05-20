@@ -14,6 +14,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool CanShoot { get; private set;}
     public bool PortalShootInput { get; private set; }
     public bool CanPortalShoot { get; private set; }
+    public bool TeleportInput { get; private set; }
+    public bool CanTeleport { get; private set; }
 
 
     private float inputHoldTime = 0.1f;
@@ -31,6 +33,7 @@ public class PlayerInputHandler : MonoBehaviour
         CheckJumpInputHoldTime();
         CheckAttackShootInputHoldTime();
         CheckPortalShootInputHoldTime();
+        CanTeleport = Portal.inContactWithPlayer;
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -84,6 +87,33 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void OnTeleportInput(InputAction.CallbackContext context)
+    {
+        if (context.started && CanTeleport && (Portal.portalCount == 2)) //press up button
+        {
+            TeleportInput = true;
+        }
+        if (context.canceled) // release up button
+        {
+            TeleportInput = false;
+        }
+    }
+
+    public void OnDestroyAllPortalsInput(InputAction.CallbackContext context)
+    {
+        if (context.started) //press d
+        {
+            Portal.destroyAllPortals();
+        }
+    }
+
+
+
+
+
+
+
+
 
     public void UseJumpInput() => JumpInput = false;
 
@@ -98,6 +128,8 @@ public class PlayerInputHandler : MonoBehaviour
     public void UseAttackShootInput() => AttackShootInput = false;
 
     public void UsePortalShootInput() => PortalShootInput = false;
+
+    public void UseTeleportInput() => TeleportInput = false;
 
 
     private void CheckAttackShootInputHoldTime()

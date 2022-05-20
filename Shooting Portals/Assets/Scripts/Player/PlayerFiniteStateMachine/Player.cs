@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
 
     public PlayerPortalShootJumpState PortalShootJumpState { get; private set; }
 
+    public PlayerTeleportState TeleportState { get; private set; }
+
     
     [SerializeField] private PlayerData playerData;
     #endregion
@@ -57,6 +59,9 @@ public class Player : MonoBehaviour
 
     //Left = -1, Right = 1;
     public int FacingDirection { get; private set; }
+
+    public float[] ShootDirection = new float[2] {1, 1};
+
     private Vector2 workspace;
     #endregion
 
@@ -80,6 +85,7 @@ public class Player : MonoBehaviour
         AttackJumpState = new PlayerAttackJumpState(this, StateMachine, playerData, "attackJumpShot");
         PortalShootState = new PlayerPortalShootState(this, StateMachine, playerData, "portalShot");
         PortalShootJumpState = new PlayerPortalShootJumpState(this, StateMachine, playerData, "portalJumpShot");
+        TeleportState = new PlayerTeleportState(this, StateMachine, playerData, "teleport");
 
     }
 
@@ -198,6 +204,16 @@ public class Player : MonoBehaviour
     public void PortalShootAttack()
     {
         Invoke("createPortalShot", 0.3f);
+        if (ShootDirection[0] == 1 && ShootDirection[1] == 1)
+        {
+            ShootDirection[0] = this.transform.rotation.y;
+        } else if (ShootDirection[1] == 1)
+        {
+            ShootDirection[1] = this.transform.rotation.y;
+        } else {
+            ShootDirection[0] = ShootDirection[1];
+            ShootDirection[1] = this.transform.rotation.y;
+        }
     }
 
     private void createAttackShot()
@@ -218,6 +234,16 @@ public class Player : MonoBehaviour
     public void PortalShootJumpAttack()
     {
         Invoke("createPortalJumpShot", 0.3f);
+        if (ShootDirection[0] == 1 && ShootDirection[1] == 1)
+        {
+            ShootDirection[0] = this.transform.rotation.y;
+        } else if (ShootDirection[1] == 1)
+        {
+            ShootDirection[1] = this.transform.rotation.y;
+        } else {
+            ShootDirection[0] = ShootDirection[1];
+            ShootDirection[1] = this.transform.rotation.y;
+        }
     }
 
     private void createAttackJumpShot()
@@ -232,7 +258,7 @@ public class Player : MonoBehaviour
     //Prevents player from moving
     private void freezePosition()
     {
-        RB.constraints = RigidbodyConstraints2D.FreezePosition;
+        RB.constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 
     //Allows player to move again

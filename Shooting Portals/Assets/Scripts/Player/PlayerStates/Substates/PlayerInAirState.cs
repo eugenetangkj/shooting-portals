@@ -21,6 +21,8 @@ public class PlayerInAirState : PlayerState
 
     private bool portalShootInput;
 
+    private bool teleportInput;
+
     public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -61,6 +63,7 @@ public class PlayerInAirState : PlayerState
         grabInput = player.InputHandler.GrabInput;
         attackShootInput = player.InputHandler.AttackShootInput;
         portalShootInput = player.InputHandler.PortalShootInput;
+        teleportInput = player.InputHandler.TeleportInput;
         
         //Player touches ground, goes to idle state
         if (isGrounded && player.CurrentVelocity.y < 0.01f)
@@ -76,6 +79,11 @@ public class PlayerInAirState : PlayerState
         else if (portalShootInput)
         {
             stateMachine.ChangeState(player.PortalShootJumpState);
+        }
+        //Player is in the air, and wants to teleport
+        else if (teleportInput && Portal.inContactWithPlayer)
+        {
+            stateMachine.ChangeState(player.TeleportState);
         }
         //Player is at a ledge and wants to hold onto the ledge, goes to ledgeclimb state    
         else if (isTouchingWall && !isTouchingLedge && grabInput)
