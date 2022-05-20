@@ -15,7 +15,7 @@ public class PulseGrabObject : MonoBehaviour
 
         if (grabCheck.collider != null && grabCheck.collider.tag == "Moveable Object") 
         {
-            if (Input.GetKey(KeyCode.R)) 
+            if (Input.GetKey(KeyCode.R))
             {
                 grabCheck.collider.gameObject.transform.parent = grabPoint;
                 grabCheck.collider.gameObject.transform.position = grabPoint.position;
