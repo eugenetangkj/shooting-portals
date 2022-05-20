@@ -27,7 +27,6 @@ public class PulseGrabObject : MonoBehaviour
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             }
         }
-
     }
 
 }
