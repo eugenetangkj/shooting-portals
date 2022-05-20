@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     //Left = -1, Right = 1;
     public int FacingDirection { get; private set; }
 
-    public float[] ShootDirection = new float[2] {1, 1};
+    public static float[] ShootDirection = new float[2] {0, 0};
 
     private Vector2 workspace;
     #endregion
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
     private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
     
     private void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
-    private void flip()
+    public void flip()
     {
         FacingDirection  = FacingDirection * -1;
         transform.Rotate(0.0f, 180.0f, 0.0f);
@@ -203,16 +203,22 @@ public class Player : MonoBehaviour
 
     public void PortalShootAttack()
     {
+
         Invoke("createPortalShot", 0.3f);
-        if (ShootDirection[0] == 1 && ShootDirection[1] == 1)
+        if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
-            ShootDirection[0] = this.transform.rotation.y;
-        } else if (ShootDirection[1] == 1)
+            ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+            Debug.Log(ShootDirection[0]);
+        } else if (ShootDirection[1] == 0)
         {
-            ShootDirection[1] = this.transform.rotation.y;
+            ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+            Debug.Log(ShootDirection[1]);
         } else {
             ShootDirection[0] = ShootDirection[1];
-            ShootDirection[1] = this.transform.rotation.y;
+            Debug.Log(this.transform.rotation.y);
+            ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+            Debug.Log(ShootDirection[0]);
+            Debug.Log(ShootDirection[1]);
         }
     }
 
@@ -234,15 +240,15 @@ public class Player : MonoBehaviour
     public void PortalShootJumpAttack()
     {
         Invoke("createPortalJumpShot", 0.3f);
-        if (ShootDirection[0] == 1 && ShootDirection[1] == 1)
+        if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
-            ShootDirection[0] = this.transform.rotation.y;
-        } else if (ShootDirection[1] == 1)
+            ShootDirection[0] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+        } else if (ShootDirection[1] == 0)
         {
-            ShootDirection[1] = this.transform.rotation.y;
+            ShootDirection[1] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
         } else {
             ShootDirection[0] = ShootDirection[1];
-            ShootDirection[1] = this.transform.rotation.y;
+            ShootDirection[1] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
         }
     }
 
