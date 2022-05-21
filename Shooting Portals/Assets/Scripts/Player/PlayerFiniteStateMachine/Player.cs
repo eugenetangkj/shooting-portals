@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform ledgeCheck;
     [SerializeField] Transform movableCheck;
     [SerializeField] Transform movableWallCheck;
-    [SerializeField] Transform groundLedgeCheck;
+    [SerializeField] public Transform groundLedgeCheck;
     
     [SerializeField] Transform firePoint;
     [SerializeField] Transform firePointJump;
@@ -235,7 +235,6 @@ public class Player : MonoBehaviour
         } else if (ShootDirection[1] == 0)
         {
             ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
-            Debug.Log(ShootDirection[1]);
         } else {
             ShootDirection[0] = ShootDirection[1];
             ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
@@ -259,7 +258,7 @@ public class Player : MonoBehaviour
 
     public void PortalShootJumpAttack()
     {
-        Invoke("createPortalJumpShot", 0.3f);
+        Invoke("createPortalJumpShot", 0.25f);
         if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
             ShootDirection[0] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;

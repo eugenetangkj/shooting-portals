@@ -26,6 +26,7 @@ public class PlayerTeleportState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
+        //player.InputHandler.PushInput = false;
         player.transform.position = Portal.getPositionToTeleport();
         if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2") //Go from portal 2 to portal 1
         {
