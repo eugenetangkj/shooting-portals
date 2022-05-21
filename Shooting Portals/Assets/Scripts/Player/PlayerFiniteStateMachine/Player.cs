@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform ledgeCheck;
     [SerializeField] Transform movableCheck;
     [SerializeField] Transform movableWallCheck;
+    [SerializeField] Transform groundLedgeCheck;
     
     [SerializeField] Transform firePoint;
     [SerializeField] Transform firePointJump;
@@ -179,6 +180,13 @@ public class Player : MonoBehaviour
         return Physics2D.Raycast(movableWallCheck.position, Vector2.right * FacingDirection, playerData.movableCheckWallDistance, playerData.whatIsGround);
     }
 
+    public bool CheckIfGroundLedge()
+    {
+        return Physics2D.Raycast(groundLedgeCheck.position, Vector2.down, playerData.groundLedgeCheckDistance, playerData.whatIsGround);
+    }
+
+
+
 
 
     public void CheckIfShouldFlip(int xInput)
@@ -224,17 +232,13 @@ public class Player : MonoBehaviour
         if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
             ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
-            Debug.Log(ShootDirection[0]);
         } else if (ShootDirection[1] == 0)
         {
             ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
             Debug.Log(ShootDirection[1]);
         } else {
             ShootDirection[0] = ShootDirection[1];
-            Debug.Log(this.transform.rotation.y);
             ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
-            Debug.Log(ShootDirection[0]);
-            Debug.Log(ShootDirection[1]);
         }
     }
 

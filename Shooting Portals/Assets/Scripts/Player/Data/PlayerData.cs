@@ -36,6 +36,7 @@ public class PlayerData : ScriptableObject
     public float latchCheckDistance = 0.8f;
     public float movableCheckDistance = 0.5f;
     public float movableCheckWallDistance = 1.0f;
+    public float groundLedgeCheckDistance = 0.5f;
     public LayerMask whatIsGround;
     public LayerMask whatIsMovable;
 

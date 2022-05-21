@@ -24,8 +24,9 @@ MonoBehaviour:
   groundCheckRadius: 0.3
   wallCheckDistance: 0.6
   latchCheckDistance: 0.6
-  movableCheckDistance: 1
+  movableCheckDistance: 0.9
   movableCheckWallDistance: 0.6
+  groundLedgeCheckDistance: 0.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64

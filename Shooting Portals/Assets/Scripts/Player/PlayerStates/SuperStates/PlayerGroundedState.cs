@@ -14,6 +14,8 @@ public class PlayerGroundedState : PlayerState
 
     private bool isTouchingMovable;
 
+    private bool isTouchingGroundLedge;
+
     private bool grabInput;
 
     private bool attackShootInput;
@@ -37,6 +39,7 @@ public class PlayerGroundedState : PlayerState
         isGrounded = player.CheckIfGrounded();
         isTouchingWall = player.CheckIfTouchingWall();
         isTouchingMovable = player.CheckIfTouchingMovable();
+        isTouchingGroundLedge = player.CheckIfGroundLedge();
     }
 
     public override void Enter()
@@ -73,13 +76,19 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.TeleportState);
         }
-        else if (isTouchingMovable && ! pushInput)
+        else if (isGrounded && ! isTouchingGroundLedge)
         {
             stateMachine.ChangeState(player.IdleState);
+            player.InputHandler.PushInput = false;
         }
+        
         else if (isTouchingMovable && pushInput)
         {
             stateMachine.ChangeState(player.PushState);
+        }
+        else if (isTouchingMovable && ! pushInput)
+        {
+            stateMachine.ChangeState(player.IdleState);
         }
         else if (attackShootInput && ! pushInput)
         {   stateMachine.ChangeState(player.AttackShootState);
