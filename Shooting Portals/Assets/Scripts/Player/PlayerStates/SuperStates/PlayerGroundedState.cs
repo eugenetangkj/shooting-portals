@@ -12,6 +12,8 @@ public class PlayerGroundedState : PlayerState
 
     private bool isTouchingWall;
 
+    private bool isTouchingMovable;
+
     private bool grabInput;
 
     private bool attackShootInput;
@@ -19,6 +21,8 @@ public class PlayerGroundedState : PlayerState
     private bool portalShootInput;
 
     private bool teleportInput;
+    
+    private bool pushInput;
 
 
 
@@ -32,6 +36,7 @@ public class PlayerGroundedState : PlayerState
         base.DoChecks();
         isGrounded = player.CheckIfGrounded();
         isTouchingWall = player.CheckIfTouchingWall();
+        isTouchingMovable = player.CheckIfTouchingMovable();
     }
 
     public override void Enter()
@@ -54,23 +59,34 @@ public class PlayerGroundedState : PlayerState
         attackShootInput = player.InputHandler.AttackShootInput;
         portalShootInput = player.InputHandler.PortalShootInput;
         teleportInput = player.InputHandler.TeleportInput;
+        pushInput = player.InputHandler.PushInput;
 
-        if (jumpInput)
+        if (jumpInput && ! pushInput)
         {
             stateMachine.ChangeState(player.JumpState);
         }
         else if (isTouchingWall && grabInput)
         {
             stateMachine.ChangeState(player.WallGrabState);
-        } else if (attackShootInput)
-        {
-            stateMachine.ChangeState(player.AttackShootState);
-        } else if (portalShootInput)
-        {
-            stateMachine.ChangeState(player.PortalShootState);
-        } else if (teleportInput)
+        }
+        else if (teleportInput)
         {
             stateMachine.ChangeState(player.TeleportState);
+        }
+        else if (isTouchingMovable && ! pushInput)
+        {
+            stateMachine.ChangeState(player.IdleState);
+        }
+        else if (isTouchingMovable && pushInput)
+        {
+            stateMachine.ChangeState(player.PushState);
+        }
+        else if (attackShootInput && ! pushInput)
+        {   stateMachine.ChangeState(player.AttackShootState);
+        }  
+        else if (portalShootInput && !pushInput)
+        {
+            stateMachine.ChangeState(player.PortalShootState);
         }
     }
 

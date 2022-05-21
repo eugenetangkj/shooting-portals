@@ -33,9 +33,11 @@ public class PlayerData : ScriptableObject
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;
     public float wallCheckDistance = 0.5f;
-
     public float latchCheckDistance = 0.8f;
+    public float movableCheckDistance = 0.5f;
+    public float movableCheckWallDistance = 1.0f;
     public LayerMask whatIsGround;
+    public LayerMask whatIsMovable;
 
 
 

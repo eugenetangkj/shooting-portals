@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] Transform wallCheck;
     [SerializeField] Transform ledgeCheck;
+    [SerializeField] Transform movableCheck;
+    [SerializeField] Transform movableWallCheck;
     
     [SerializeField] Transform firePoint;
     [SerializeField] Transform firePointJump;
@@ -147,7 +149,9 @@ public class Player : MonoBehaviour
     #region Check Functions
     public bool CheckIfGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, playerData.groundCheckRadius, playerData.whatIsGround);       
+        return Physics2D.OverlapCircle(groundCheck.position, playerData.groundCheckRadius, playerData.whatIsGround) ||
+               Physics2D.OverlapCircle(groundCheck.position, playerData.groundCheckRadius, playerData.whatIsMovable);
+
     }
 
     public bool CheckIfTouchingWall()
@@ -163,6 +167,16 @@ public class Player : MonoBehaviour
     public bool CheckIfTouchingLedge()
     {
         return Physics2D.Raycast(ledgeCheck.position, Vector2.right * FacingDirection, playerData.latchCheckDistance, playerData.whatIsGround);
+    }
+
+    public bool CheckIfTouchingMovable()
+    {
+        return Physics2D.Raycast(movableCheck.position, Vector2.right * FacingDirection, playerData.movableCheckDistance, playerData.whatIsMovable);
+    }
+
+    public bool CheckIfBlockWillTouch()
+    {
+        return Physics2D.Raycast(movableWallCheck.position, Vector2.right * FacingDirection, playerData.movableCheckWallDistance, playerData.whatIsGround);
     }
 
 
@@ -275,7 +289,5 @@ public class Player : MonoBehaviour
         RB.constraints = RigidbodyConstraints2D.None;
         RB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
-
-    
     #endregion
 }
