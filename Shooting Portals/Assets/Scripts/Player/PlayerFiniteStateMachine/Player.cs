@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
 
     public PlayerTeleportState TeleportState { get; private set; }
 
+    public PlayerPushState PushState { get; private set; }
+
     
     [SerializeField] private PlayerData playerData;
     #endregion
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
         PortalShootState = new PlayerPortalShootState(this, StateMachine, playerData, "portalShot");
         PortalShootJumpState = new PlayerPortalShootJumpState(this, StateMachine, playerData, "portalJumpShot");
         TeleportState = new PlayerTeleportState(this, StateMachine, playerData, "teleport");
-
+        PushState = new PlayerPushState(this, StateMachine, playerData, "push");
     }
 
     private void Start()
@@ -188,8 +190,8 @@ public class Player : MonoBehaviour
     {
         RaycastHit2D xHit = Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
         float xDist = xHit.distance; //detect x distance between raycast origin to the detected object/ledge
-        workspace.Set(xDist * FacingDirection, 0);
-        RaycastHit2D yHit = Physics2D.Raycast(ledgeCheck.position + (Vector3) (workspace), Vector2.down, ledgeCheck.position.y - wallCheck.position.y, playerData.whatIsGround);
+        workspace.Set((xDist + 0.015f) * FacingDirection, 0);
+        RaycastHit2D yHit = Physics2D.Raycast(ledgeCheck.position + (Vector3) (workspace), Vector2.down, ledgeCheck.position.y - wallCheck.position.y + 0.015f, playerData.whatIsGround);
         float yDist = yHit.distance;
         
         workspace.Set(wallCheck.position.x + (xDist * FacingDirection), ledgeCheck.position.y - yDist);

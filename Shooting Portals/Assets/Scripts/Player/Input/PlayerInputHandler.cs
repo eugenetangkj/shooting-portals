@@ -9,7 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormInputX { get; private set; }
     public int NormInputY { get; private set; }
     public bool JumpInput { get; private set; }
-    public bool GrabInput { get; private set; }
+    public bool GrabInput { get; set; }
     public bool AttackShootInput { get; private set; }
     public bool CanShoot { get; private set;}
     public bool PortalShootInput { get; private set; }
@@ -27,6 +27,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         CanShoot = true;
         CanPortalShoot = true;
+        GrabInput = false;
     }
     private void Update()
     {
@@ -47,6 +48,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started) //press jump button
         {
+            GrabInput = false;
             JumpInput = true;
             jumpInputStartTime = Time.time;
         }
@@ -56,12 +58,12 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started) //press x button
         {
-            GrabInput = true;
+            GrabInput = (GrabInput == true) ? false : true;
         }
-        if (context.canceled) //release x button
-        {
-            GrabInput = false;
-        }
+        // if (context.canceled) //release x button
+        // {
+        //     GrabInput = false;
+        // }
     }
 
     public void OnAttackShootInput(InputAction.CallbackContext context)

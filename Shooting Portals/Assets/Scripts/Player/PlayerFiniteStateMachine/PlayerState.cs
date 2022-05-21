@@ -13,7 +13,6 @@ public class PlayerState
 
     protected bool isAnimationFinished;
 
-    //protected bool isAnimationFinished;
 
     //Start time gets initialized everytime we enter a player state, hence we can track how long we enter that state
     protected float startTime;

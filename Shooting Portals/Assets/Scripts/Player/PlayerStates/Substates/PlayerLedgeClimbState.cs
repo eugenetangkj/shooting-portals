@@ -76,10 +76,12 @@ public class PlayerLedgeClimbState : PlayerState
                 player.Anim.SetBool("climbLedge", true);   
             } else if (yInput == -1 && isHanging && !isClimbing)
             {
+                player.InputHandler.GrabInput = false;
                 stateMachine.ChangeState(player.InAirState);
             }
              else if (xInput == -player.FacingDirection && isHanging && !isClimbing)
             {
+                player.InputHandler.GrabInput = false;
                 stateMachine.ChangeState(player.InAirState);
             }
         }
@@ -88,4 +90,3 @@ public class PlayerLedgeClimbState : PlayerState
     public void SetDetectedPosition(Vector2 pos) => detectedPos = pos;
 
 }
-    
