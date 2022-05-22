@@ -11,7 +11,8 @@ public class PlayerDeathState : PlayerState
 
     public override void Enter()
     {
-        restartAtCheckPoint();
+        base.Enter();
+        player.Invoke("restartLevel", 4f);
     }
 
     public override void Exit()
@@ -19,10 +20,6 @@ public class PlayerDeathState : PlayerState
         base.Exit();
     }
 
-    private void restartAtCheckPoint()
-    {
-
-    }
     
 
     

@@ -125,8 +125,7 @@ public class LevelSelection : MonoBehaviour
             SceneManager.LoadScene("Intro Cut Scene");
         } else if (levelSelected == 1)
         {
-            SceneManager.LoadScene("Ending");
+            SceneManager.LoadScene("Level 1");
         }
-        SceneManager.LoadScene("Level" + levelSelected);
     }
 }

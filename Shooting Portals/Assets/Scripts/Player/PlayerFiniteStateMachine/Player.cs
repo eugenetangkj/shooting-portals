@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //This class represents the behaviour of the Player
 public class Player : MonoBehaviour
@@ -70,6 +71,11 @@ public class Player : MonoBehaviour
     public static float[] ShootDirection = new float[2] {0, 0};
 
     private Vector2 workspace;
+
+    public int playerCheckPoint { get; private set; }
+
+
+
     #endregion
 
     #region Unity Callback Functions
@@ -95,6 +101,11 @@ public class Player : MonoBehaviour
         TeleportState = new PlayerTeleportState(this, StateMachine, playerData, "teleport");
         PushState = new PlayerPushState(this, StateMachine, playerData, "push");
         DeathState = new PlayerDeathState(this, StateMachine, playerData, "death");
+
+
+
+        playerCheckPoint = PlayerfabLoad.getPlayerCheckPoint();
+        goToCheckPoint();
     }
 
     private void Start()
@@ -292,5 +303,17 @@ public class Player : MonoBehaviour
         RB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+
+    private void restartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void goToCheckPoint()
+    {
+        float[,] spawnPositions = LevelOne.getSpawnPositions();
+        this.transform.position = new Vector2(spawnPositions[this.playerCheckPoint, 0], spawnPositions[this.playerCheckPoint, 1]);
+    }
+    
     #endregion
 }
