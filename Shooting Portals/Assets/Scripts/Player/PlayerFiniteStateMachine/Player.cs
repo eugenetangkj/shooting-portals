@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     public PlayerPushState PushState { get; private set; }
 
+    public PlayerDeathState DeathState { get; private set; }
+
     
     [SerializeField] private PlayerData playerData;
     #endregion
@@ -92,6 +94,7 @@ public class Player : MonoBehaviour
         PortalShootJumpState = new PlayerPortalShootJumpState(this, StateMachine, playerData, "portalJumpShot");
         TeleportState = new PlayerTeleportState(this, StateMachine, playerData, "teleport");
         PushState = new PlayerPushState(this, StateMachine, playerData, "push");
+        DeathState = new PlayerDeathState(this, StateMachine, playerData, "death");
     }
 
     private void Start()
@@ -184,10 +187,6 @@ public class Player : MonoBehaviour
     {
         return Physics2D.Raycast(groundLedgeCheck.position, Vector2.down, playerData.groundLedgeCheckDistance, playerData.whatIsGround);
     }
-
-
-
-
 
     public void CheckIfShouldFlip(int xInput)
     {
@@ -292,5 +291,6 @@ public class Player : MonoBehaviour
         RB.constraints = RigidbodyConstraints2D.None;
         RB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+
     #endregion
 }
