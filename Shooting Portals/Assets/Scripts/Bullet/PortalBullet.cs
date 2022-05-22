@@ -13,7 +13,7 @@ public class PortalBullet : MonoBehaviour
     private float count = 0;
 
     private Vector2 portalPos;
-    private float portalYoffset = 0.7f;
+    private float portalYoffset = 0.6f;
     
     void Start()
     {

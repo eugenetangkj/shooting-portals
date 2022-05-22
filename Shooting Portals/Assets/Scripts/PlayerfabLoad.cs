@@ -46,9 +46,9 @@ public class PlayerfabLoad : MonoBehaviour
         {
             //Level data exists, so we get the player's level data and checkpoint
             int currentLevel = int.Parse(results.Data["PlayerLevel"].Value);
-            int currentCheckpoint = int.Parse(results.Data["PlayerCheckpoint"].Value);
             PlayerfabLoad.playerLevel = currentLevel;
-            PlayerfabLoad.playerCheckpoint = currentCheckpoint;
+            PlayerfabLoad.playerCheckpoint = 0; //Reset checkpoint to 0 whenever the user logs in again
+            updatePlayerCheckpoint("0");
         }
     }
 
