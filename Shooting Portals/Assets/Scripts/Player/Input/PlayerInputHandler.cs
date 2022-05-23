@@ -123,6 +123,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (player.CheckIfTouchingMovable())
             {
+                
                 PushInput = (PushInput == true) ? false : true;
             }
         }
