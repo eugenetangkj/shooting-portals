@@ -62,6 +62,14 @@ public class Player : MonoBehaviour
     public Rigidbody2D RB { get; private set; }
     #endregion
     
+    #region Audio
+    [SerializeField] public AudioSource jumpSound;
+    [SerializeField] public AudioSource pushSound; //also for wallclimb and wallslide states
+    [SerializeField] public AudioSource defeatedSound;
+    [SerializeField] public AudioSource levelCompletedSound;
+
+    #endregion
+
     #region Other Variables
     public Vector2 CurrentVelocity { get; private set; }
 

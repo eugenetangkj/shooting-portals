@@ -11,8 +11,10 @@ public class PlayerDeathState : PlayerState
 
     public override void Enter()
     {
+        player.pushSound.Stop();
+        player.defeatedSound.Play();
         base.Enter();
-        player.Invoke("restartLevel", 4f);
+        player.Invoke("restartLevel", 3.5f);
     }
 
     public override void Exit()

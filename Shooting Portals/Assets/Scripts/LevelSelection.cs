@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class LevelSelection : MonoBehaviour
 {
     private int currLevel;
-    private int levelSelected = 0;
+    private int levelSelected = PlayerfabLoad.playerLevelSelected;
 
     private static float[,] levelRGBA = new float[,]
     {
@@ -122,10 +122,12 @@ public class LevelSelection : MonoBehaviour
     {
         if (levelSelected == 0)
         {
+            PlayerfabLoad.playerLevelSelected = 0;
             SceneManager.LoadScene("Intro Cut Scene");
         } else if (levelSelected == 1)
         {
-            SceneManager.LoadScene("Level 1");
+            PlayerfabLoad.playerLevelSelected = 1;
+            SceneManager.LoadScene("Loading Screen Industrial");
         }
     }
 }

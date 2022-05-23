@@ -14,7 +14,10 @@ public class PlayerfabLoad : MonoBehaviour
 
     //Player's checkpoint
     private static int playerCheckpoint;
-    
+
+    //Player's level selection
+    public static int playerLevelSelected = 0; //Resets to 0 whenever we log in again
+ 
     #endregion
 
     #region Level
@@ -36,10 +39,12 @@ public class PlayerfabLoad : MonoBehaviour
             //No level data, so we set level to be 0
             PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest() {
                 Data = new Dictionary<string, string>(){{"PlayerLevel", "0"},
-                                                        {"PlayerCheckpoint", "0"}}
+                                                        {"PlayerCheckpoint", "0"}
+                                                       }
                 }, setDataSuccess, onError); 
             PlayerfabLoad.playerLevel = 0;  
             PlayerfabLoad.playerCheckpoint = 0;
+            PlayerfabLoad.playerLevelSelected = 0;
         }
 
         else
@@ -47,6 +52,7 @@ public class PlayerfabLoad : MonoBehaviour
             //Level data exists, so we get the player's level data and checkpoint
             int currentLevel = int.Parse(results.Data["PlayerLevel"].Value);
             PlayerfabLoad.playerLevel = currentLevel;
+
             PlayerfabLoad.playerCheckpoint = 0; //Reset checkpoint to 0 whenever the user logs in again
             updatePlayerCheckpoint("0");
         }

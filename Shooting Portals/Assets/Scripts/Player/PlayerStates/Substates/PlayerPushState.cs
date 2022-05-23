@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerPushState : PlayerGroundedState
 {
+
+    private AudioSource pushingSound;
+
+    private bool shouldPlayAudio;
     public PlayerPushState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -26,11 +30,16 @@ public class PlayerPushState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+        pushingSound = player.pushSound;
     }
 
 
     public override void Exit()
     {
+        // if (pushingSound.isPlaying)
+        // {
+        //     pushingSound.Stop();
+        // }
         base.Exit();
     }
 
@@ -48,11 +57,17 @@ public class PlayerPushState : PlayerGroundedState
         if (player.InputHandler.NormInputX != 0)
         {
             player.Anim.SetInteger("pushMove", 1);
-        } else
+            if (! pushingSound.isPlaying)
+            {
+                pushingSound.Play();
+            }
+        }
+        else
         {
             player.Anim.SetInteger("pushMove", 0);
+            pushingSound.Stop();
         }
-        player.setVelocityX(playerData.movementVelocity * xInput * 0.5f);
+        player.setVelocityX(playerData.movementVelocity * xInput * 0.3f);
     }
 
 }
