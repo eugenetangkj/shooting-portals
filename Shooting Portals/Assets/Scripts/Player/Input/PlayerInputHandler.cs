@@ -121,7 +121,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started) //press z
         {
-            if (player.CheckIfTouchingMovable())
+            if (player.CheckIfTouchingMovable() && player.CheckIfGrounded())
             {
                 
                 PushInput = (PushInput == true) ? false : true;

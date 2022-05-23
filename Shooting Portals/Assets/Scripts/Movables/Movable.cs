@@ -36,6 +36,10 @@ public class Movable : MonoBehaviour
         {
             preventFalling.GetComponent<BoxCollider2D>().enabled = true;
         }
+        else if (player.CheckIfBlockWillTouch() && ! player.InputHandler.PushInput)
+        {
+            this.gameObject.transform.SetParent(null);
+        }
         else if (player.CheckIfBlockWillTouch())
         {
             this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
