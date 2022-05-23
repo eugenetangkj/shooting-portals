@@ -76,7 +76,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnAttackShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanShoot) //press 1 button
+        if (context.started && CanShoot && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press 1 button
         {
             AttackShootInput = true;
             CanShoot = false;
@@ -88,7 +88,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanPortalShoot) //press 2 button
+        if (context.started && CanPortalShoot && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press 2 button
         {
             PortalShootInput = true;
             CanPortalShoot = false;
@@ -99,7 +99,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanTeleport && (Portal.portalCount == 2)) //press up button
+        if (context.started && CanTeleport && (Portal.portalCount == 2) && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press up button
         {
             TeleportInput = true;
         }
@@ -111,7 +111,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnDestroyAllPortalsInput(InputAction.CallbackContext context)
     {
-        if (context.started) //press d
+        if (context.started && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press d
         {
             Portal.destroyAllPortals();
         }
