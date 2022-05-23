@@ -21,10 +21,10 @@ MonoBehaviour:
   wallJumpAngle: {x: 1, y: 2}
   startOffset: {x: 0.5, y: 0.1}
   stopOffset: {x: 0.5, y: 0.5}
-  groundCheckRadius: 0.3
+  groundCheckRadius: 0.1
   wallCheckDistance: 0.6
   latchCheckDistance: 0.6
-  movableCheckDistance: 0.9
+  movableCheckDistance: 0.6
   movableCheckWallDistance: 0.2
   groundLedgeCheckDistance: 0.5
   whatIsGround:

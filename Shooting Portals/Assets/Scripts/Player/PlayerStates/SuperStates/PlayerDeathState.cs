@@ -12,7 +12,7 @@ public class PlayerDeathState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.Invoke("restartLevel", 3.5f);
+        player.Invoke("restartLevel", 4f);
     }
 
     public override void Exit()
