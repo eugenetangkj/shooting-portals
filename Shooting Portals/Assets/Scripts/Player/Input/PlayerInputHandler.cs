@@ -61,14 +61,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnGrabInput(InputAction.CallbackContext context)
     {
-        if (context.started) //press x button
+        if (context.started) //press z button
         {
             if (player.CheckIfTouchingWall())
             {
             GrabInput = (GrabInput == true) ? false : true;
             }
         }
-        // if (context.canceled) //release x button
+        // if (context.canceled) //release z button
         // {
         //     GrabInput = false;
         // }
@@ -119,9 +119,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPushInput(InputAction.CallbackContext context)
     {
-        if (context.started) //press z
+        if (context.started) //press x
         {
-            if (player.CheckIfTouchingMovable())
+            if (player.CheckIfTouchingMovable() && player.CheckIfGrounded())
             {
                 
                 PushInput = (PushInput == true) ? false : true;

@@ -191,7 +191,13 @@ public class Player : MonoBehaviour
 
     public bool CheckIfBlockWillTouch()
     {
+        //Debug.DrawRay(movableWallCheck.position, Vector2.right * FacingDirection * playerData.movableCheckWallDistance, Color.green);
         return Physics2D.Raycast(movableWallCheck.position, Vector2.right * FacingDirection, playerData.movableCheckWallDistance, playerData.whatIsGround);
+    }
+
+    public RaycastHit2D CheckWhichBlockWillTouch()
+    {
+        return Physics2D.Raycast(movableCheck.position, Vector2.right * FacingDirection, playerData.movableCheckDistance, playerData.whatIsMovable);
     }
 
     public bool CheckIfGroundLedge()
