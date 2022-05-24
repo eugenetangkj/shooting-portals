@@ -12,8 +12,9 @@ public class LevelComplete : MonoBehaviour
     public void completeLevel()
     {
         PlayerfabLoad.playerLevelSelected = level;
+        PlayerfabLoad.updatePlayerCheckpoint("0");
         int playerLevel = PlayerfabLoad.getPlayerLevelAfter();
-        if (playerLevel <= level) 
+        if (playerLevel == level) 
         {
             PlayerfabLoad.updatePlayerLevel((level + 1).ToString());
         }

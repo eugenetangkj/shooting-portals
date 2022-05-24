@@ -26,7 +26,7 @@ public class PortalContact : MonoBehaviour
             playerAnim.SetTrigger("disappear");
             background.GetComponent<Animator>().SetTrigger("appear");
             canvas.GetComponent<Animator>().SetTrigger("appear");
-            Invoke("nextLevel", 4f);
+            Invoke("nextLevel", 3.9f);
         }
     }
 
@@ -51,7 +51,6 @@ public class PortalContact : MonoBehaviour
 
     private void nextLevel()
     {
-        Debug.Log("reached");
         SceneManager.LoadScene("Loading Screen Portal");
     }
 }

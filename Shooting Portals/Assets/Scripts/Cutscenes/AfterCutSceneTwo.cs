@@ -8,17 +8,20 @@ public class AfterCutSceneTwo : MonoBehaviour
     
     void Start()
     {
-        int playLevel = PlayerfabLoad.getPlayerLevelAfter();
-        if (playLevel == 1)
-        {
-            PlayerfabLoad.updatePlayerLevel("2");
-        }
         Invoke("nextLevel", 48.5f);
+    }
+
+     private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            nextLevel();
+        }
     }
 
     private void nextLevel() {
         PlayerfabLoad.playerLevelSelected = -1;
-        SceneManager.LoadScene("Loading Scene Industrial");
+        SceneManager.LoadScene("Loading Screen Industrial");
     }
 }
 

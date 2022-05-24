@@ -12,6 +12,7 @@ public class SceneLoadingIndustrial : SceneLoading
     
     public override void Start()
     {
+        Debug.Log(PlayerfabLoad.playerLevelSelected);
         base.Start();
     }
 
@@ -21,7 +22,7 @@ public class SceneLoadingIndustrial : SceneLoading
         AsyncOperation asyncLoad;
         if (PlayerfabLoad.playerLevelSelected == 1)
         {
-            asyncLoad = SceneManager.LoadSceneAsync("Intro Cut Scene");    
+            asyncLoad = SceneManager.LoadSceneAsync("Level 1 Intro Cutscene");    
         } else {
             asyncLoad = SceneManager.LoadSceneAsync("Level 1");
         }

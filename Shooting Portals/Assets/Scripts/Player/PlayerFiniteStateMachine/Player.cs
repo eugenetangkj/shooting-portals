@@ -307,7 +307,7 @@ public class Player : MonoBehaviour
     //Prevents player from moving
     private void freezePosition()
     {
-        RB.constraints = RigidbodyConstraints2D.FreezePositionX;
+        RB.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     //Allows player to move again

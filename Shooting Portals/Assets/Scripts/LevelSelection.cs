@@ -10,6 +10,8 @@ public class LevelSelection : MonoBehaviour
     private int currLevel;
     private int levelSelected = PlayerfabLoad.playerLevelSelected;
 
+    [SerializeField] GameObject player;
+
     private static float[,] levelRGBA = new float[,]
     {
         {12f, 37f, 53f, 1f}, //intro
@@ -42,11 +44,16 @@ public class LevelSelection : MonoBehaviour
 
     private void Start()
     {
+        
         currLevel = PlayerfabLoad.getPlayerLevelAfter();
         cameraComponent = cameraObject.GetComponent<Camera>();
         backgroundSpriteRenderer = background.GetComponent<SpriteRenderer>();
         levelDisplay = level.GetComponent<TextMeshProUGUI>();
         unlockableAnimator = unlockable.GetComponent<Animator>();
+
+        changeBackgroundColor(levelSelected);
+        changeLevelDisplay(levelSelected);
+        
     }
 
     
@@ -63,6 +70,7 @@ public class LevelSelection : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.UpArrow) && PortalContactSelection.checkContact())
         {
             transition.GetComponent<Animator>().SetTrigger("play");
+            player.GetComponent<Animator>().SetTrigger("disappear");
             Invoke("nextLevel", 4f);
         }
     }
@@ -96,6 +104,7 @@ public class LevelSelection : MonoBehaviour
 
     private void changeBackgroundColor(int levelSelected)
     {
+        //Debug.Log("reached change color");
         Color newColor = new Color(levelRGBA[levelSelected, 0] / 255f, levelRGBA[levelSelected, 1] / 255f,
                                    levelRGBA[levelSelected, 2] / 255f, levelRGBA[levelSelected, 3] / 255f);
         Debug.Log(levelRGBA[levelSelected, 0] / 255);
@@ -106,9 +115,12 @@ public class LevelSelection : MonoBehaviour
 
     private void changeLevelDisplay(int levelSelected)
     {
+        Debug.Log("reached change level");
+        Debug.Log(levelSelected);
         if (levelSelected == 0)
         {
             levelDisplay.text = "Intro";
+            Debug.Log(levelDisplay.text);
         } else if (levelSelected == 11)
         {
             levelDisplay.text = "Ending";

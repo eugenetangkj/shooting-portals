@@ -8,6 +8,7 @@ using PlayFab.ClientModels;
 //as the player progresses through the game.
 public class PlayerfabLoad : MonoBehaviour
 {
+
     #region Variables
     //Player's level
     private static int playerLevel;
