@@ -12,6 +12,10 @@ public class Movable : MonoBehaviour
     [SerializeField] Transform checkerTwo;
     [SerializeField] GameObject preventFalling;
 
+    //Fixes
+    [SerializeField] GameObject preventPushingOne;
+    [SerializeField] GameObject preventPushingTwo;
+
     bool isTouchingWall;
 
     void Start()
@@ -36,37 +40,56 @@ public class Movable : MonoBehaviour
 
     void Update()
     {
+        
         if (player.CheckWhichBlockWillTouch().transform == this.gameObject.transform)
         {
+            
             isTouchingWall = player.CheckIfBlockWillTouch();
-            if (! CheckIfGroundLedge(checkerOne) || ! (CheckIfGroundLedge(checkerTwo)))
+
+            if (! player.isInPushState && ! player.InputHandler.PushInput)
+            {
+                this.gameObject.transform.SetParent(null);
+            }
+            else if (! CheckIfGroundLedge(checkerOne) || ! (CheckIfGroundLedge(checkerTwo)))
             {
                 preventFalling.GetComponent<BoxCollider2D>().enabled = true;
-                //Debug.Log("reached1");
+                if (player.FacingDirection == 1)
+                {
+                    preventPushingOne.GetComponent<BoxCollider2D>().enabled = true;
+                } else {
+                    preventPushingTwo.GetComponent<BoxCollider2D>().enabled = true;
+                }
             }
             else if (isTouchingWall && ! player.InputHandler.PushInput)
             {
-            this.gameObject.transform.SetParent(null); 
-            //Debug.Log("reached2");
+                this.gameObject.transform.SetParent(null); 
+
             }
+            
             else if (isTouchingWall)
             {
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                Debug.Log(player.FacingDirection);
+                if (player.FacingDirection == 1)
+                {
+                    preventPushingOne.GetComponent<BoxCollider2D>().enabled = true;
+                } else {
+                    preventPushingTwo.GetComponent<BoxCollider2D>().enabled = true;
+                }
                 preventFalling.GetComponent<BoxCollider2D>().enabled = false;
-                //Debug.Log("reached3");
             }
             else if (player.CheckIfTouchingMovable() && player.InputHandler.PushInput)
             {
                 this.gameObject.transform.SetParent(player.gameObject.transform);
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                preventPushingTwo.GetComponent<BoxCollider2D>().enabled = false;
+                preventPushingOne.GetComponent<BoxCollider2D>().enabled = false;
                 preventFalling.GetComponent<BoxCollider2D>().enabled = false;
-                //Debug.Log("reached4");
             } else if (player.CheckIfTouchingMovable() || ! player.InputHandler.PushInput)
             {
                 this.gameObject.transform.SetParent(null);
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
                 preventFalling.GetComponent<BoxCollider2D>().enabled = false;
-                //Debug.Log("reached5");
             }
         }
     }

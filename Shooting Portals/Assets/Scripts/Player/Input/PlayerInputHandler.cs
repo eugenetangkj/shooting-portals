@@ -121,9 +121,11 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started) //press x
         {
-            if (player.CheckIfTouchingMovable() && player.CheckIfGrounded())
+            // Debug.Log("Push State: " + player.isInPushState);
+            // Debug.Log("Grounded: " + player.CheckIfGrounded());
+            if ((player.isInPushState || player.CheckIfTouchingMovable()) && player.CheckIfGrounded())
             {
-                
+                // Debug.Log("reached");
                 PushInput = (PushInput == true) ? false : true;
             }
         }

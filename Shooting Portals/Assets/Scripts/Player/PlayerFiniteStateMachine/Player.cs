@@ -82,6 +82,8 @@ public class Player : MonoBehaviour
 
     public int playerCheckPoint { get; private set; }
 
+    public bool isInPushState { get; private set; }
+
 
 
     #endregion
@@ -122,6 +124,7 @@ public class Player : MonoBehaviour
         InputHandler = GetComponent<PlayerInputHandler>();
         RB = GetComponent<Rigidbody2D>();
         FacingDirection = 1;
+        isInPushState = false;
         StateMachine.Initialize(IdleState);
     }
 
@@ -199,13 +202,14 @@ public class Player : MonoBehaviour
 
     public bool CheckIfBlockWillTouch()
     {
-        //Debug.DrawRay(movableWallCheck.position, Vector2.right * FacingDirection * playerData.movableCheckWallDistance, Color.green);
+        Debug.DrawRay(movableWallCheck.position, Vector2.right * FacingDirection * playerData.movableCheckWallDistance, Color.green);
         return Physics2D.Raycast(movableWallCheck.position, Vector2.right * FacingDirection, playerData.movableCheckWallDistance, playerData.whatIsGround);
     }
 
     public RaycastHit2D CheckWhichBlockWillTouch()
     {
-        return Physics2D.Raycast(movableCheck.position, Vector2.right * FacingDirection, playerData.movableCheckDistance, playerData.whatIsMovable);
+        //Debug.DrawRay(movableCheck.position, Vector2.right * FacingDirection * (playerData.movableCheckDistance + 2f), Color.green);
+        return Physics2D.Raycast(movableCheck.position, Vector2.right * FacingDirection, playerData.movableCheckDistance + 2f, playerData.whatIsMovable);
     }
 
     public bool CheckIfGroundLedge()
@@ -327,6 +331,11 @@ public class Player : MonoBehaviour
     {
         float[,] spawnPositions = LevelOne.getSpawnPositions();
         this.transform.position = new Vector2(spawnPositions[this.playerCheckPoint, 0], spawnPositions[this.playerCheckPoint, 1]);
+    }
+
+    public void togglePlayerInPushState()
+    {
+        isInPushState = (isInPushState == true) ? false : true;
     }
     
     #endregion

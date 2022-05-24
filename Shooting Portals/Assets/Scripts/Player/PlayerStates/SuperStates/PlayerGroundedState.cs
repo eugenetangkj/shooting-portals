@@ -64,6 +64,7 @@ public class PlayerGroundedState : PlayerState
         teleportInput = player.InputHandler.TeleportInput;
         pushInput = player.InputHandler.PushInput;
 
+
         if (jumpInput && ! pushInput)
         {
             stateMachine.ChangeState(player.JumpState);
@@ -77,6 +78,9 @@ public class PlayerGroundedState : PlayerState
             stateMachine.ChangeState(player.TeleportState);
         }
         else if (isTouchingMovable && ! pushInput)
+        {
+            stateMachine.ChangeState(player.IdleState);
+        } else if (player.isInPushState && ! pushInput)
         {
             stateMachine.ChangeState(player.IdleState);
         }

@@ -31,6 +31,7 @@ public class PlayerPushState : PlayerGroundedState
     {
         base.Enter();
         pushingSound = player.pushSound;
+        player.togglePlayerInPushState();
     }
 
 
@@ -40,6 +41,7 @@ public class PlayerPushState : PlayerGroundedState
         // {
         //     pushingSound.Stop();
         // }
+        player.togglePlayerInPushState();
         base.Exit();
     }
 
