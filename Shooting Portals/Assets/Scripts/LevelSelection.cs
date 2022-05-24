@@ -140,6 +140,10 @@ public class LevelSelection : MonoBehaviour
         {
             PlayerfabLoad.playerLevelSelected = 1;
             SceneManager.LoadScene("Loading Screen Industrial");
+        } else if (levelSelected == 2)
+        {
+            PlayerfabLoad.playerLevelSelected = 2;
+            SceneManager.LoadScene("Level Selection");
         }
     }
 }
