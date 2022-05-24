@@ -7,12 +7,14 @@ public class TrapActivatedWaypointFollower : MonoBehaviour
     [SerializeField] private GameObject[] waypoints;
     private int currentWaypointIndex = 0;
     [SerializeField] private float speed = 2f;
-    [SerializeField] private Collider2D trap;
-    [SerializeField] private Collider2D moveableObject;
+
+
+    private bool shouldMove = false;
+
     // Update is called once per frame
     private void Update()
     {
-        if (trap.IsTouching(moveableObject)) 
+        if (shouldMove) 
         {
             MovePlatform();
         }
@@ -29,5 +31,10 @@ public class TrapActivatedWaypointFollower : MonoBehaviour
            }
         }
         transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
+    }
+
+    public void toggleShouldMove()
+    {
+        shouldMove = (shouldMove == true) ? false : true;
     }
 }

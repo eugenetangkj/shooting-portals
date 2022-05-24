@@ -17,6 +17,7 @@ public class PortalContactSelection : MonoBehaviour
     [SerializeField] GameObject key;
 
     private void Start() {
+        inContact = false;
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
     }
