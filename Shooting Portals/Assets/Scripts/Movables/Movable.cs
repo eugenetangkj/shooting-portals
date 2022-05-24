@@ -69,7 +69,6 @@ public class Movable : MonoBehaviour
             else if (isTouchingWall)
             {
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
-                Debug.Log(player.FacingDirection);
                 if (player.FacingDirection == 1)
                 {
                     preventPushingOne.GetComponent<BoxCollider2D>().enabled = true;

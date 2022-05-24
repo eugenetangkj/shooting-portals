@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour
 {
+    [SerializeField] private Player player;
     [SerializeField] int level; //Stage level
 
 
