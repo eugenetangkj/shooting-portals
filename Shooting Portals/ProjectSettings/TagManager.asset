@@ -5,25 +5,31 @@ TagManager:
   serializedVersion: 2
   tags:
   - Portal
+  - Attack Bullet
+  - Portal Bullet
+  - Portal 1
+  - Portal 2
+  - Movables
   - OutOfMap
   - Moveable Object
   - Spikes
   - Pressure Switch
+  - Sensor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - JumpableGround
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ClimbableTerrain
+  - Portal
+  - Bullet
+  - Movable
+  - Room
+  - Prompts
+  - Pressure Sensor
   - 
   - 
   - 
@@ -45,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 99704311
     locked: 0
