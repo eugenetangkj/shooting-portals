@@ -21,11 +21,11 @@ public class WaypointFollowerEnemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
         if (currentWaypointIndex == 0) 
         {
-            transform.localScale = new Vector2(-1, 1);
+            transform.localScale = new Vector2(-0.75f, 0.75f);
         }
         else 
         {
-            transform.localScale = new Vector2(1, 1);
+            transform.localScale = new Vector2(0.75f, 0.75f);
         }
     }
 }
