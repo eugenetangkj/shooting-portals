@@ -59,6 +59,11 @@ public class Player : MonoBehaviour
     [SerializeField] Transform firePointJump;
     [SerializeField] GameObject attackShot;
     [SerializeField] GameObject portalShot;
+
+
+    [SerializeField] LevelData levelData;
+
+
     public Rigidbody2D RB { get; private set; }
     #endregion
     
@@ -81,6 +86,8 @@ public class Player : MonoBehaviour
     private Vector2 workspace;
 
     public int playerCheckPoint { get; private set; }
+
+    public int playerCurrentLevel { get; private set; }
 
     public bool isInPushState { get; private set; }
 
@@ -329,7 +336,7 @@ public class Player : MonoBehaviour
 
     private void goToCheckPoint()
     {
-        float[,] spawnPositions = LevelOne.getSpawnPositions();
+        float[,] spawnPositions = levelData.getSpawnPositions();
         this.transform.position = new Vector2(spawnPositions[this.playerCheckPoint, 0], spawnPositions[this.playerCheckPoint, 1]);
     }
 
