@@ -18,6 +18,7 @@ public class PlayerJumpState : PlayerAbilityState
         base.Enter();
         player.jumpSound.Play();
         player.InputHandler.UseJumpInput();
+        player.InputHandler.GrabInput = false;
         player.setVelocityY(playerData.jumpVelocity);
         isAbilityDone = true;
     }

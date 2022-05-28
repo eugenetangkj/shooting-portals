@@ -72,8 +72,9 @@ public class PlayerLedgeClimbState : PlayerState
 
             if (xInput == player.FacingDirection && isHanging && !isClimbing)
             {
-                isClimbing = true;
-                player.Anim.SetBool("climbLedge", true);   
+                //Include if want to ledge climb
+                // isClimbing = true;
+                // player.Anim.SetBool("climbLedge", true);   
             } else if (yInput == -1 && isHanging && !isClimbing)
             {
                 player.InputHandler.GrabInput = false;
