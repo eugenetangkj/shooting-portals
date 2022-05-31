@@ -13,6 +13,7 @@ public class PlayerDeathState : PlayerState
     {
         player.pushSound.Stop();
         player.defeatedSound.Play();
+        player.setVelocityZero();
         base.Enter();
         player.Invoke("restartLevel", 3.5f);
     }

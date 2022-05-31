@@ -288,7 +288,7 @@ public class Player : MonoBehaviour
     //Jump
     public void ShootJumpAttack()
     {
-        Invoke("createAttackJumpShot", 0.2f);
+        Invoke("createAttackJumpShot", 0.1f);
     }
 
     public void PortalShootJumpAttack()
