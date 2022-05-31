@@ -76,7 +76,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnAttackShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanShoot) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && CanShoot && ! player.CheckIfTouchingWall()) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             AttackShootInput = true;
             CanShoot = false;
@@ -88,7 +88,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanPortalShoot) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && CanPortalShoot && ! player.CheckIfTouchingWall()) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             PortalShootInput = true;
             CanPortalShoot = false;

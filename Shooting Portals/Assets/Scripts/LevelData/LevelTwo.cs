@@ -6,9 +6,10 @@ public class LevelTwo : LevelData
 {
     private float[,] spawnPositions = new float[,]
         {
-            {-7.68f, 0.55f}, //Checkpoint 1 {-29.92f, 0.57f} {-7.68f, 0.55f} 
-            {16.52484f, 4.135397f}, //Checkpoint 2
-            {42.001f, 0.578f} //Checkpoint 3
+            {-29.92f, 0.57f}, //Checkpoint 1 {-29.92f, 0.57f}
+            {-7.68f, 0.55f}, //Checkpoint 2
+            {15.35f, 0.5729118f}, //Checkpoint 3
+            {30.295f, -5.43f} //Checkpoint 4
         };
 
     public override float[,] getSpawnPositions()
