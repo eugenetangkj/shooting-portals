@@ -224,6 +224,11 @@ public class Player : MonoBehaviour
         return Physics2D.Raycast(groundLedgeCheck.position, Vector2.down, playerData.groundLedgeCheckDistance, playerData.whatIsGround);
     }
 
+    public bool CheckIfCanPortalShoot()
+    {
+        return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.portalShootOffset * playerData.wallCheckDistance, playerData.whatIsGround);  
+    }
+
     public void CheckIfShouldFlip(int xInput)
     {
         if (xInput != 0 && xInput != FacingDirection)
@@ -263,7 +268,7 @@ public class Player : MonoBehaviour
     public void PortalShootAttack()
     {
 
-        Invoke("createPortalShot", 0.3f);
+        Invoke("createPortalShot", 0.2f);
         if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
             ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
@@ -293,7 +298,7 @@ public class Player : MonoBehaviour
 
     public void PortalShootJumpAttack()
     {
-        Invoke("createPortalJumpShot", 0.25f);
+        Invoke("createPortalJumpShot", 0.1f);
         if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
             ShootDirection[0] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;

@@ -22,7 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
 
 
 
-    private float inputHoldTime = 0.1f;
+    private float inputHoldTime = 0.05f;
     private float jumpInputStartTime;
     private float attackShootInputStartTime;
     private float portalShootInputStartTime;
@@ -76,7 +76,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnAttackShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanShoot && ! player.CheckIfTouchingWall()) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && CanShoot && CanPortalShoot && ! player.CheckIfTouchingWall()) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             AttackShootInput = true;
             CanShoot = false;
@@ -88,7 +88,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanPortalShoot && ! player.CheckIfTouchingWall()) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && CanShoot && CanPortalShoot && ! player.CheckIfCanPortalShoot()) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             PortalShootInput = true;
             CanPortalShoot = false;

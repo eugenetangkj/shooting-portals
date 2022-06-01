@@ -28,6 +28,9 @@ public class PlayerData : ScriptableObject
     public Vector2 startOffset;
     public Vector2 stopOffset;
 
+    [Header("Portal Shoot")]
+    public float portalShootOffset = 2.3f;
+
 
 
     [Header("Check Variables")]
