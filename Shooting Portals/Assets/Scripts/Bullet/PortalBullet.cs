@@ -30,7 +30,13 @@ public class PortalBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D objectHit)
     {
-        if (objectHit.tag != "Portal")
+        if (objectHit.tag == "Portal Breaker")
+        {
+            anim.SetBool("hit", true);
+            rb.velocity = Vector2.zero;
+            Invoke("DestroyBullet", 0.5f);
+        }
+        else if (objectHit.tag != "Portal")
         {
         if (count == 0)
         {

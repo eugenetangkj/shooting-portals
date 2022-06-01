@@ -113,6 +113,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started) //press d, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
+            player.destroyPortalSound.Play();
             Portal.destroyAllPortals();
         }
     }

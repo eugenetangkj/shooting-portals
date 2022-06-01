@@ -26,6 +26,7 @@ public class PlayerAttackJumpState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
+        player.attackSound.Play();
         player.InputHandler.UseAttackShootInput();
         player.ShootJumpAttack();
         isAbilityDone = true;

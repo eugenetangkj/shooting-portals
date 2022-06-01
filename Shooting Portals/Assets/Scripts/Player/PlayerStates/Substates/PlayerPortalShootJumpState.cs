@@ -26,6 +26,7 @@ public class PlayerPortalShootJumpState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
+        player.portalShootSound.Play();
         player.InputHandler.UsePortalShootInput();
         player.PortalShootJumpAttack();
         isAbilityDone = true;

@@ -70,8 +70,13 @@ public class Player : MonoBehaviour
     #region Audio
     [SerializeField] public AudioSource jumpSound;
     [SerializeField] public AudioSource pushSound; //also for wallclimb and wallslide states
+    [SerializeField] public AudioSource attackSound;
+    [SerializeField] public AudioSource portalShootSound;
+    [SerializeField] public AudioSource teleportSound;
+    [SerializeField] public AudioSource destroyPortalSound;
     [SerializeField] public AudioSource defeatedSound;
     [SerializeField] public AudioSource levelCompletedSound;
+
 
     #endregion
 
@@ -118,8 +123,6 @@ public class Player : MonoBehaviour
         TeleportState = new PlayerTeleportState(this, StateMachine, playerData, "teleport");
         PushState = new PlayerPushState(this, StateMachine, playerData, "push");
         DeathState = new PlayerDeathState(this, StateMachine, playerData, "death");
-
-
 
         playerCheckPoint = PlayerfabLoad.getPlayerCheckPoint();
         goToCheckPoint();

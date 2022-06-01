@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 //This class represents a portal from the portal gun
@@ -61,7 +62,7 @@ public class Portal : MonoBehaviour
             portalArray[0] = portalToCreate;
             portalArray[0].tag = "Portal 1";
             portalCount = portalCount + 1;
-            
+            PortalUI.makePortalOneAppear();
         }
         else if (portalArray[1] == null)
         {
@@ -69,6 +70,7 @@ public class Portal : MonoBehaviour
             portalArray[1] = portalToCreate;
             portalArray[1].tag = "Portal 2";
             portalCount = portalCount + 1;
+            PortalUI.makePortalTwoAppear();
         } else {
             //There are 2 portals
             destroyOnePortal(portalArray[0]);
@@ -94,6 +96,7 @@ public class Portal : MonoBehaviour
             portalArray[1].GetComponent<Animator>().SetBool("destroy", true);
             holder.Invoke("destroyPortals", 1f);
         }
+        PortalUI.makePortalsDisappear();
         portalCount = 0;
     }
 
