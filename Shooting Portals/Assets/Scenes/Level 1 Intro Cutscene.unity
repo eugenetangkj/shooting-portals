@@ -201,7 +201,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3fad55d312f88164fab9bafae985f216, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.98032415}
   m_FlipX: 0
@@ -1968,9 +1968,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 591671720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3257f08f2bcdd242b90d6511575bd48, type: 3}
+  m_Script: {fileID: 11500000, guid: a1b9fb24919c27b46933393fd0b7c974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelToUpdate: 1
+  timelineDuration: 48.1
+  playerLevelSelected: 1.2
+  sceneToLoad: Loading Screen Industrial
 --- !u!1 &917083467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,7 +2158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1a74f8858a7f5054db8cc9650e86d927, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -2259,7 +2263,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e69c57b78d94a34409edd667549986d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.98032415}
   m_FlipX: 0
@@ -2364,7 +2368,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 02b6b5cfae69e714391cde2c0be0e6c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -2574,7 +2578,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0eddb1d8bbea0ec42b12e08513701ac7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0

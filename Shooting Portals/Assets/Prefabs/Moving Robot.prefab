@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7850789450052051779}
   - component: {fileID: 7850789450052051838}
   - component: {fileID: 6562873026305228558}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Moving Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6e0f953c84c654df598106bc1cfa2275, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

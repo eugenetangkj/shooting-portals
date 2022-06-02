@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class LevelSelection : MonoBehaviour
 {
     private int currLevel;
-    private int levelSelected = PlayerfabLoad.playerLevelSelected;
+    private float levelSelected = PlayerfabLoad.playerLevelSelected;
 
     [SerializeField] GameObject player;
 
@@ -51,8 +51,8 @@ public class LevelSelection : MonoBehaviour
         levelDisplay = level.GetComponent<TextMeshProUGUI>();
         unlockableAnimator = unlockable.GetComponent<Animator>();
 
-        changeBackgroundColor(levelSelected);
-        changeLevelDisplay(levelSelected);
+        changeBackgroundColor((int) levelSelected);
+        changeLevelDisplay((int) levelSelected);
         
     }
 
@@ -82,8 +82,8 @@ public class LevelSelection : MonoBehaviour
             //do nothing
         } else {
             levelSelected = levelSelected - 1;
-            changeBackgroundColor(levelSelected);
-            changeLevelDisplay(levelSelected);
+            changeBackgroundColor((int) levelSelected);
+            changeLevelDisplay((int) levelSelected);
 
         }
     }
@@ -97,8 +97,8 @@ public class LevelSelection : MonoBehaviour
             unlockableAnimator.SetInteger("set", 1);
         } else {
             levelSelected = levelSelected + 1;
-            changeBackgroundColor(levelSelected);
-            changeLevelDisplay(levelSelected);
+            changeBackgroundColor((int) levelSelected);
+            changeLevelDisplay((int) levelSelected);
         }
     }
 
@@ -115,12 +115,9 @@ public class LevelSelection : MonoBehaviour
 
     private void changeLevelDisplay(int levelSelected)
     {
-        Debug.Log("reached change level");
-        Debug.Log(levelSelected);
         if (levelSelected == 0)
         {
             levelDisplay.text = "Intro";
-            Debug.Log(levelDisplay.text);
         } else if (levelSelected == 11)
         {
             levelDisplay.text = "Ending";
@@ -134,15 +131,18 @@ public class LevelSelection : MonoBehaviour
     {
         if (levelSelected == 0)
         {
-            PlayerfabLoad.playerLevelSelected = 0;
+            PlayerfabLoad.playerLevelSelected = 0.1f;
             SceneManager.LoadScene("Intro Cut Scene");
         } else if (levelSelected == 1)
         {
-            PlayerfabLoad.playerLevelSelected = 1;
+            PlayerfabLoad.playerLevelSelected = 1.1f;
             SceneManager.LoadScene("Loading Screen Industrial");
         } else if (levelSelected == 2)
         {
-            PlayerfabLoad.playerLevelSelected = 2;
+            PlayerfabLoad.playerLevelSelected = 2.1f;
+            SceneManager.LoadScene("Loading Screen Industrial");
+        } else if (levelSelected == 3)
+        {
             SceneManager.LoadScene("Level Selection");
         }
     }
