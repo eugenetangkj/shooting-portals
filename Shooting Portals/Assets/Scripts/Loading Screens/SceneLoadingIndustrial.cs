@@ -12,22 +12,36 @@ public class SceneLoadingIndustrial : SceneLoading
     
     public override void Start()
     {
-        Debug.Log(PlayerfabLoad.playerLevelSelected);
         base.Start();
     }
 
     protected override IEnumerator LoadAsyncScene()
     {
-        Debug.Log(PlayerfabLoad.playerLevelSelected);
         AsyncOperation asyncLoad;
-        if (PlayerfabLoad.playerLevelSelected == 1)
+        if (PlayerfabLoad.playerLevelSelected == 1f)
+        {
+            asyncLoad = SceneManager.LoadSceneAsync("Level Selection");
+        }
+        else if (PlayerfabLoad.playerLevelSelected == 1.1f)
         {
             asyncLoad = SceneManager.LoadSceneAsync("Level 1 Intro Cutscene");    
-        } else {
+        }
+        else if (PlayerfabLoad.playerLevelSelected == 1.2f) {
             asyncLoad = SceneManager.LoadSceneAsync("Level 1");
         }
-        //TODO: Insert else-if for level 2 transitions
-        
+        else if (PlayerfabLoad.playerLevelSelected == 2f) {
+            asyncLoad = SceneManager.LoadSceneAsync("Level Selection");
+        }
+        else if (PlayerfabLoad.playerLevelSelected == 2.1f)
+        {
+            asyncLoad = SceneManager.LoadSceneAsync("Level 2");
+        } else if (PlayerfabLoad.playerLevelSelected == 2.2f) {
+            asyncLoad = SceneManager.LoadSceneAsync("Level 2 Cutscene");
+        } else
+        {
+            asyncLoad = SceneManager.LoadSceneAsync("Login Menu"); //To be updated again next time
+        }
+    
         //While loading
         while (asyncLoad.progress < 1)
         {

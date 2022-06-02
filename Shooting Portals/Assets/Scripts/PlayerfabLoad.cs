@@ -17,7 +17,7 @@ public class PlayerfabLoad : MonoBehaviour
     private static int playerCheckpoint;
 
     //Player's level selection
-    public static int playerLevelSelected = 0; //Resets to 0 whenever we log in again
+    public static float playerLevelSelected = 0; //Resets to 0 whenever we log in again
  
     #endregion
 

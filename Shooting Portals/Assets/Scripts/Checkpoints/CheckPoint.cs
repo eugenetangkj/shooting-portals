@@ -13,10 +13,6 @@ public class CheckPoint : MonoBehaviour
         if ((collision.tag == "Player") && (player.playerCheckPoint < checkPointToSet))
         {
             PlayerfabLoad.updatePlayerCheckpoint(checkPointToSet.ToString());
-            Portal.destroyAllPortals();
-        } else if ((collision.tag == "Player"))
-        {
-            Portal.destroyAllPortals();
         }
     }
 }

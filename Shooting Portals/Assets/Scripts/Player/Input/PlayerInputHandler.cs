@@ -22,7 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
 
 
 
-    private float inputHoldTime = 0.1f;
+    private float inputHoldTime = 0.05f;
     private float jumpInputStartTime;
     private float attackShootInputStartTime;
     private float portalShootInputStartTime;
@@ -44,14 +44,20 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
+        if (! PauseMenu.isGamePaused)
+        {
         RawMovementInput = context.ReadValue<Vector2>();
         NormInputX = (int) (RawMovementInput * Vector2.right).normalized.x; //if vector's x component is 0, normalize returns zero vector, otherwise returns an unit vector
         NormInputY = (int) (RawMovementInput * Vector2.up).normalized.y;
+        } else {
+            NormInputX = 0;
+            NormInputY = 0;
+        }
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.started) //press jump button
+        if (context.started && ! PauseMenu.isGamePaused) //press jump button
         {
             GrabInput = false;
             JumpInput = true;
@@ -61,7 +67,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnGrabInput(InputAction.CallbackContext context)
     {
-        if (context.started) //press z button
+        if (context.started && ! PauseMenu.isGamePaused) //press z button
         {
             if (player.CheckIfTouchingWall())
             {
@@ -76,19 +82,19 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnAttackShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanShoot && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press 1 button
+        if (context.started && CanShoot && CanPortalShoot && ! player.CheckIfTouchingWall() && ! PauseMenu.isGamePaused) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             AttackShootInput = true;
             CanShoot = false;
             attackShootInputStartTime = Time.time;
-            Invoke("changeCanShoot", 1.5f); //Can only shoot again 1.5s later
+            Invoke("changeCanShoot", 1f); //Can only shoot again 1s later
         }
     }
 
 
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanPortalShoot && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press 2 button
+        if (context.started && CanShoot && CanPortalShoot && ! player.CheckIfCanPortalShoot() && ! PauseMenu.isGamePaused) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             PortalShootInput = true;
             CanPortalShoot = false;
@@ -99,7 +105,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanTeleport && (Portal.portalCount == 2) && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press up button
+        if (context.started && CanTeleport && (Portal.portalCount == 2) && ! PauseMenu.isGamePaused) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             TeleportInput = true;
         }
@@ -111,15 +117,16 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnDestroyAllPortalsInput(InputAction.CallbackContext context)
     {
-        if (context.started && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press d
+        if (context.started && ! PauseMenu.isGamePaused) //press d, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
+            player.destroyPortalSound.Play();
             Portal.destroyAllPortals();
         }
     }
 
     public void OnPushInput(InputAction.CallbackContext context)
     {
-        if (context.started) //press x
+        if (context.started && ! PauseMenu.isGamePaused) //press x
         {
             // Debug.Log("Push State: " + player.isInPushState);
             // Debug.Log("Grounded: " + player.CheckIfGrounded());

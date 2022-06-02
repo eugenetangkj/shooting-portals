@@ -1260,8 +1260,8 @@ GameObject:
   - component: {fileID: 900169900}
   - component: {fileID: 900169899}
   - component: {fileID: 900169898}
-  - component: {fileID: 900169901}
   - component: {fileID: 900169902}
+  - component: {fileID: 900169903}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1335,18 +1335,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &900169901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900169897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75730804ad8dd0d46b3caab9b5da0789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &900169902
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1443,6 +1431,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &900169903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900169897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b9fb24919c27b46933393fd0b7c974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelToUpdate: 1
+  timelineDuration: 86.1
+  playerLevelSelected: 0
+  sceneToLoad: Loading Screen Portal
 --- !u!1 &922705128
 GameObject:
   m_ObjectHideFlags: 0

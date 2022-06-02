@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerDeathState : PlayerState
 {
+    private bool playedSoundBefore = false;
     public PlayerDeathState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -11,10 +12,15 @@ public class PlayerDeathState : PlayerState
 
     public override void Enter()
     {
-        player.pushSound.Stop();
+        if (! playedSoundBefore)
+        {
+        playedSoundBefore = true;
         player.defeatedSound.Play();
+        }
+        player.pushSound.Stop();
+        player.setVelocityZero();
         base.Enter();
-        player.Invoke("restartLevel", 3.5f);
+        player.Invoke("restartLevel", 2.5f);
     }
 
     public override void Exit()
