@@ -20,8 +20,15 @@ public class SceneLoadingPortal : SceneLoading
         AsyncOperation asyncLoad;
         if (playerCurrLevel == 0)
         {
-            asyncLoad = SceneManager.LoadSceneAsync("Intro Cut Scene");    
-        } else {
+            asyncLoad = SceneManager.LoadSceneAsync("Intro Cutscene");    
+        } else if (PlayerfabLoad.playerLevelSelected == "Intro")
+        {
+            asyncLoad = SceneManager.LoadSceneAsync("Intro Cut scene"); 
+        } else if (PlayerfabLoad.playerLevelSelected == "Outro")
+        {
+            asyncLoad = SceneManager.LoadSceneAsync("Outro Cutscene"); 
+        } else //PlayerfabLoad.playerLevelSelected == "Level Selection"
+        {
             asyncLoad = SceneManager.LoadSceneAsync("Level Selection");
         }
         

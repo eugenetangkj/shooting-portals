@@ -7,7 +7,7 @@ public class AfterCutScene : MonoBehaviour
 {
     [SerializeField] private int levelToUpdate;
     [SerializeField] private float timelineDuration;
-    [SerializeField] private float playerLevelSelected;
+    [SerializeField] private string playerLevelSelected;
     [SerializeField] private string sceneToLoad;
 
 

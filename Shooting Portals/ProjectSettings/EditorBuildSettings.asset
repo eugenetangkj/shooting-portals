@@ -6,20 +6,29 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Login Menu.unity
-    guid: de5bc29360bde8a45a344c45695ba1f7
+    path: Assets/Scenes/Login/Introduction.unity
+    guid: b7d6ed1361236b74f87c889134784db3
+  - enabled: 1
+    path: Assets/Scenes/Login/Login Menu New.unity
+    guid: c2893b902ce3dfb43b923d44979323cc
+  - enabled: 1
+    path: Assets/Scenes/Login/New Player Login.unity
+    guid: 09a16de819b74a94fbb97ede04223488
+  - enabled: 1
+    path: Assets/Scenes/Login/Existing Player Login.unity
+    guid: 5ee58cdf38f9bd548b71d2812d3e990f
   - enabled: 1
     path: Assets/Scenes/Start Screen.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Level Selection.unity
+    guid: 7b80e41042bd34a43b8c42abe46340e1
   - enabled: 1
     path: Assets/Scenes/Loading Screen Portal.unity
     guid: cd97cd869f2e5ee4cb7f5991ecb50d97
   - enabled: 1
     path: Assets/Scenes/Intro Cut Scene.unity
     guid: d012f3bcb44071e459d880b46d701b15
-  - enabled: 1
-    path: Assets/Scenes/Level Selection.unity
-    guid: f2b4e53586b4a2d488d0ee18702e3c55
   - enabled: 1
     path: Assets/Scenes/Loading Screen Industrial.unity
     guid: c8f4edce239f9fd4f9239e9ab3a11d9d
@@ -30,18 +39,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 1.unity
     guid: eeddda11a52fb4e0fba738976f492d42
   - enabled: 1
-    path: Assets/Scenes/Level 2 Cutscene.unity
-    guid: 7853b339c2b3e0543bae41ea617efc37
-  - enabled: 1
     path: Assets/Scenes/Level 2.unity
     guid: 9e81e8789820cdd44be6d6886be9d226
   - enabled: 1
-    path: Assets/Scenes/New Player Login.unity
-    guid: 09a16de819b74a94fbb97ede04223488
-  - enabled: 1
-    path: Assets/Scenes/Login Menu New.unity
-    guid: c2893b902ce3dfb43b923d44979323cc
-  - enabled: 1
-    path: Assets/Scenes/Existing Player Login.unity
-    guid: 5ee58cdf38f9bd548b71d2812d3e990f
+    path: Assets/Scenes/Level 2 Cutscene.unity
+    guid: 7853b339c2b3e0543bae41ea617efc37
   m_configObjects: {}
