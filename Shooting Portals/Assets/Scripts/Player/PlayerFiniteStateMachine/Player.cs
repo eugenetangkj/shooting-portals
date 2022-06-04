@@ -215,7 +215,7 @@ public class Player : MonoBehaviour
 
     public bool CheckIfBlockWillTouch()
     {
-        Debug.DrawRay(movableWallCheck.position, Vector2.right * FacingDirection * playerData.movableCheckWallDistance, Color.green);
+        //Debug.DrawRay(movableWallCheck.position, Vector2.right * FacingDirection * playerData.movableCheckWallDistance, Color.green);
         return Physics2D.Raycast(movableWallCheck.position, Vector2.right * FacingDirection, playerData.movableCheckWallDistance, playerData.whatIsGround);
     }
 

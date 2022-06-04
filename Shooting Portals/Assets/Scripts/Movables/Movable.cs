@@ -16,6 +16,14 @@ public class Movable : MonoBehaviour
     [SerializeField] GameObject preventPushingOne;
     [SerializeField] GameObject preventPushingTwo;
 
+    //Prevent two movables from colliding
+    [SerializeField] GameObject detectMovableLeft;
+    [SerializeField] GameObject detectMovableRight;
+
+    [SerializeField] LayerMask movableLayer;
+    [SerializeField] float movableCheckDistance;
+
+
     bool isTouchingWall;
 
     void Start()
@@ -27,15 +35,22 @@ public class Movable : MonoBehaviour
 
     public bool CheckIfGroundLedge(Transform checker)
     {
+        
         return Physics2D.Raycast(checker.position, Vector2.down, groundLedgeCheckDistance, whatIsGround);
     }
 
-
-
-
-
-
-
+    public bool CheckIfTouchingMovable()
+    {
+        if (player.FacingDirection == 1)
+        {
+            Debug.DrawRay(detectMovableRight.transform.position, Vector2.right * player.FacingDirection * movableCheckDistance, Color.green);
+            return Physics2D.Raycast(detectMovableRight.transform.position, Vector2.right * player.FacingDirection, movableCheckDistance, movableLayer);
+        }
+        else //player.FacingDirection == -1
+        {
+          return Physics2D.Raycast(detectMovableLeft.transform.position, Vector2.right * player.FacingDirection, movableCheckDistance, movableLayer);  
+        }
+    }
 
 
     void Update()
@@ -45,8 +60,11 @@ public class Movable : MonoBehaviour
         {
             
             isTouchingWall = player.CheckIfBlockWillTouch();
-
-            if (! player.isInPushState && ! player.InputHandler.PushInput)
+            if (CheckIfTouchingMovable())
+            {
+                this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            }
+            else if (! player.isInPushState && ! player.InputHandler.PushInput)
             {
                 this.gameObject.transform.SetParent(null);
             }
