@@ -12,6 +12,7 @@ public class PortalContact : MonoBehaviour
     [SerializeField] GameObject canvas;
 
     private bool inContact = false;
+    private bool hasTeleported = false;
 
     //Up Arrow Key instance
     [SerializeField] GameObject key;
@@ -22,10 +23,11 @@ public class PortalContact : MonoBehaviour
     }
 
     private void Update() {
-        if (inContact && Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (inContact && Input.GetKeyDown(KeyCode.UpArrow) && ! hasTeleported) {
             playerAnim.SetTrigger("disappear");
             background.GetComponent<Animator>().SetTrigger("appear");
             canvas.GetComponent<Animator>().SetTrigger("appear");
+            hasTeleported = true;
             Invoke("nextLevel", 3.9f);
         }
     }
