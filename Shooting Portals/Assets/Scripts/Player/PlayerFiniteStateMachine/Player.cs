@@ -230,10 +230,10 @@ public class Player : MonoBehaviour
         return Physics2D.Raycast(groundLedgeCheck.position, Vector2.down, playerData.groundLedgeCheckDistance, playerData.whatIsGround);
     }
 
-    public bool CheckIfCanPortalShoot()
-    {
-        return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.portalShootOffset * playerData.wallCheckDistance, playerData.whatIsGround);  
-    }
+    // public bool CheckIfCanPortalShoot()
+    // {
+    //     return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.portalShootOffset * playerData.wallCheckDistance, playerData.whatIsGround);  
+    // }
 
     public void CheckIfShouldFlip(int xInput)
     {
@@ -290,10 +290,24 @@ public class Player : MonoBehaviour
     private void createAttackShot()
     {
         Instantiate(attackShot, firePoint.position, firePoint.rotation);
+
     }
+
     private void createPortalShot()
     {
+        if (! this.CheckIfTouchingWall())
+        {
         Instantiate(portalShot, firePoint.position, firePoint.rotation);
+        }
+        else
+        {
+            //Player is touching wall
+            float newX = (this.FacingDirection == 1)
+                         ? firePoint.position.x - playerData.portalShootOffSetNew
+                         : firePoint.position.x + playerData.portalShootOffSetNew;
+            Instantiate(portalShot, new Vector2(newX, firePoint.position.y), firePoint.rotation);
+        }
+
     }
 
     //Jump
@@ -323,7 +337,18 @@ public class Player : MonoBehaviour
     }
     private void createPortalJumpShot()
     {
-        Instantiate(portalShot, firePointJump.position, firePointJump.rotation);
+        if (! this.CheckIfTouchingWall())
+        {
+        Instantiate(portalShot, firePoint.position, firePoint.rotation);
+        }
+        else
+        {
+            //Player is touching wall
+            float newX = (this.FacingDirection == 1)
+                         ? firePointJump.position.x - playerData.portalShootOffSetNew
+                         : firePointJump.position.x + playerData.portalShootOffSetNew;
+            Instantiate(portalShot, new Vector2(newX, firePointJump.position.y), firePointJump.rotation);
+        }
     }
 
     //Prevents player from moving
