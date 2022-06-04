@@ -44,7 +44,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        if (! PauseMenu.isGamePaused)
+        if (! PauseMenu.isGamePaused && ! player.haveCompletedLevel)
         {
         RawMovementInput = context.ReadValue<Vector2>();
         NormInputX = (int) (RawMovementInput * Vector2.right).normalized.x; //if vector's x component is 0, normalize returns zero vector, otherwise returns an unit vector
@@ -57,7 +57,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.started && ! PauseMenu.isGamePaused) //press jump button
+        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press jump button
         {
             GrabInput = false;
             JumpInput = true;
@@ -67,7 +67,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnGrabInput(InputAction.CallbackContext context)
     {
-        if (context.started && ! PauseMenu.isGamePaused) //press z button
+        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press z button
         {
             if (player.CheckIfTouchingWall())
             {
@@ -82,7 +82,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnAttackShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanShoot && CanPortalShoot && ! player.CheckIfTouchingWall() && ! PauseMenu.isGamePaused) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && CanShoot && CanPortalShoot && ! player.CheckIfTouchingWall() &&
+            ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             AttackShootInput = true;
             CanShoot = false;
@@ -94,7 +95,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanShoot && CanPortalShoot && ! player.CheckIfCanPortalShoot() && ! PauseMenu.isGamePaused) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && CanShoot && CanPortalShoot && ! player.CheckIfCanPortalShoot()
+            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             PortalShootInput = true;
             CanPortalShoot = false;
@@ -105,7 +107,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
-        if (context.started && CanTeleport && (Portal.portalCount == 2) && ! PauseMenu.isGamePaused) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && CanTeleport && (Portal.portalCount == 2)
+            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             TeleportInput = true;
         }
@@ -117,7 +120,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnDestroyAllPortalsInput(InputAction.CallbackContext context)
     {
-        if (context.started && ! PauseMenu.isGamePaused) //press d, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press d, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             player.destroyPortalSound.Play();
             Portal.destroyAllPortals();
@@ -126,7 +129,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPushInput(InputAction.CallbackContext context)
     {
-        if (context.started && ! PauseMenu.isGamePaused) //press x
+        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press x
         {
             // Debug.Log("Push State: " + player.isInPushState);
             // Debug.Log("Grounded: " + player.CheckIfGrounded());

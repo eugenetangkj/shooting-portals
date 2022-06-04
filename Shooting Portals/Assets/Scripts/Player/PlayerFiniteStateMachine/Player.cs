@@ -96,6 +96,8 @@ public class Player : MonoBehaviour
 
     public bool isInPushState { get; private set; }
 
+    public bool haveCompletedLevel = false;
+
 
 
     #endregion
@@ -136,6 +138,7 @@ public class Player : MonoBehaviour
         FacingDirection = 1;
         isInPushState = false;
         StateMachine.Initialize(IdleState);
+
     }
 
     private void Update()
