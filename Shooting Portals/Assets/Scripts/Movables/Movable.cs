@@ -44,10 +44,12 @@ public class Movable : MonoBehaviour
         if (player.FacingDirection == 1)
         {
             return Physics2D.Raycast(detectMovableRight.transform.position, Vector2.right * player.FacingDirection, movableCheckDistance, movableLayer);
+            // return Physics2D.OverlapCircle(detectMovableRight.transform.position, 0.2f, movableLayer);
         }
         else //player.FacingDirection == -1
         {
             return Physics2D.Raycast(detectMovableLeft.transform.position, Vector2.right * player.FacingDirection, movableCheckDistance, movableLayer);
+            // return Physics2D.OverlapCircle(detectMovableLeft.transform.position, 0.2f, movableLayer);
         }
     }
 
@@ -59,6 +61,7 @@ public class Movable : MonoBehaviour
         {
             
             isTouchingWall = player.CheckIfBlockWillTouch();
+            Debug.Log(CheckIfTouchingMovable());
             if (CheckIfTouchingMovable())
             {
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = true;

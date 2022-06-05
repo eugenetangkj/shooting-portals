@@ -9,6 +9,7 @@ public class CheckFallingBrick : MonoBehaviour
     [SerializeField] FallingBrick brickTwo;
     [SerializeField] GameObject timer;
     [SerializeField] AudioSource brickFallSound;
+    [SerializeField] float fallDuration;
 
     private bool shouldFall = false;
     private bool canToggle = true;
@@ -21,7 +22,7 @@ public class CheckFallingBrick : MonoBehaviour
             canToggle = false;
             timer.GetComponent<Animator>().SetBool("appear", true);
             Invoke("makeBricksFall", 5f);
-            Invoke("restoreBricks", 9f);
+            Invoke("restoreBricks", fallDuration);
         } 
     }
 
