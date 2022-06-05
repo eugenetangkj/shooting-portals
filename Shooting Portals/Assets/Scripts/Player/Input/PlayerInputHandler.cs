@@ -110,7 +110,12 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.started && CanTeleport && (Portal.portalCount == 2)
             && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
+            if (player.isInPushState && Portal.gotBlock)
+            {
+                //Do nothing
+            } else {
             TeleportInput = true;
+            }
         }
         if (context.canceled) // release up button
         {
