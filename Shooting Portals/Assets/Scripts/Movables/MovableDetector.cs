@@ -28,6 +28,7 @@ public class MovableDetector : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("reached");
         if (collision.tag == "Movables")
         {
             if (player.FacingDirection == 1)
