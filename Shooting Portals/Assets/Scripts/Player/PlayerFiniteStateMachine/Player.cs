@@ -59,8 +59,6 @@ public class Player : MonoBehaviour
     [SerializeField] Transform firePointJump;
     [SerializeField] GameObject attackShot;
     [SerializeField] GameObject portalShot;
-
-
     [SerializeField] LevelData levelData;
 
 
@@ -97,8 +95,6 @@ public class Player : MonoBehaviour
     public bool isInPushState { get; private set; }
 
     public bool haveCompletedLevel = false;
-
-
 
     #endregion
 

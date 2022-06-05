@@ -101,7 +101,7 @@ public class PlayerInputHandler : MonoBehaviour
             PortalShootInput = true;
             CanPortalShoot = false;
             portalShootInputStartTime = Time.time;
-            Invoke("changeCanPortalShoot", 2.5f); //Can only shoot again 2.5s later
+            Invoke("changeCanPortalShoot", 1f); //Can only shoot again 2.5s later
         }
     }
 

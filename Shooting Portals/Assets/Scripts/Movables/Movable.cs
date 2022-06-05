@@ -43,12 +43,11 @@ public class Movable : MonoBehaviour
     {
         if (player.FacingDirection == 1)
         {
-            Debug.DrawRay(detectMovableRight.transform.position, Vector2.right * player.FacingDirection * movableCheckDistance, Color.green);
             return Physics2D.Raycast(detectMovableRight.transform.position, Vector2.right * player.FacingDirection, movableCheckDistance, movableLayer);
         }
         else //player.FacingDirection == -1
         {
-          return Physics2D.Raycast(detectMovableLeft.transform.position, Vector2.right * player.FacingDirection, movableCheckDistance, movableLayer);  
+            return Physics2D.Raycast(detectMovableLeft.transform.position, Vector2.right * player.FacingDirection, movableCheckDistance, movableLayer);
         }
     }
 
@@ -83,7 +82,6 @@ public class Movable : MonoBehaviour
                 this.gameObject.transform.SetParent(null); 
 
             }
-            
             else if (isTouchingWall)
             {
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = true;

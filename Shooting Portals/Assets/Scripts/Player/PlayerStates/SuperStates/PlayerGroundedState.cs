@@ -77,6 +77,13 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.TeleportState);
         }
+        else if (attackShootInput && ! pushInput) //NEW
+        {   stateMachine.ChangeState(player.AttackShootState);
+        }
+         else if (portalShootInput && !pushInput) //NEW
+        {
+            stateMachine.ChangeState(player.PortalShootState);
+        }  
         else if (isTouchingMovable && ! pushInput)
         {
             stateMachine.ChangeState(player.IdleState);
@@ -88,13 +95,14 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.PushState);
         }
-        else if (attackShootInput && ! pushInput)
-        {   stateMachine.ChangeState(player.AttackShootState);
-        }  
-        else if (portalShootInput && !pushInput)
-        {
-            stateMachine.ChangeState(player.PortalShootState);
-        }
+        //OLD, rearranged order above
+        // else if (attackShootInput && ! pushInput)
+        // {   stateMachine.ChangeState(player.AttackShootState);
+        // }  
+        // else if (portalShootInput && !pushInput)
+        // {
+        //     stateMachine.ChangeState(player.PortalShootState);
+        // }
     }
 
     public override void PhysicsUpdate()
