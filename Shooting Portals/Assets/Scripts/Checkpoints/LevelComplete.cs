@@ -7,7 +7,7 @@ public class LevelComplete : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] int level; //Player level to update
-    [SerializeField] float selectedLevel; //Player level to select
+    [SerializeField] string selectedLevel; //Player level to select
 
     //TODO: Update after each level with the corresponding scene to load
     private string[] scenesToLoad = new string[]
