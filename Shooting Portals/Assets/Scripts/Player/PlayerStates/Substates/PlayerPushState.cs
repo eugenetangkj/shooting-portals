@@ -41,6 +41,10 @@ public class PlayerPushState : PlayerGroundedState
         // {
         //     pushingSound.Stop();
         // }
+        if (player.InputHandler.PushInput == false)
+        {
+        pushingSound.Stop();
+        }
         player.togglePlayerInPushState();
         base.Exit();
     }
