@@ -14,6 +14,7 @@ public class PlayerLogin : MonoBehaviour
     [SerializeField] private GameObject emailInput;
     [SerializeField] private GameObject passwordInput;
     [SerializeField] private GameObject transition;
+    [SerializeField] private GameObject backButton;
 
     public void Start()
     {
@@ -50,6 +51,7 @@ public class PlayerLogin : MonoBehaviour
     //Note that when a user registers, Playfab automatically logs in so we can directly call another API request after registration
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
+        backButton.SetActive(false);
         messageText.GetComponent<TextMeshProUGUI>().text = "Registered and logged in";
         Invoke("nextLevel", 2f);
     }
@@ -76,6 +78,7 @@ public class PlayerLogin : MonoBehaviour
     //Action after successful login
     private void OnLoginSuccess(LoginResult result)
     {
+        backButton.SetActive(false);
         messageText.GetComponent<TextMeshProUGUI>().text = "Logged in";
         //Debug.Log("Successful login/account created");
         //Trigger fade out
