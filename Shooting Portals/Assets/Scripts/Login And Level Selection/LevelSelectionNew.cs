@@ -146,15 +146,15 @@ public class LevelSelectionNew : MonoBehaviour
        {
            SceneManager.LoadScene("Loading Screen Industrial");
        }
-       else if (PlayerfabLoad.playerLevelSelected == "Level 3" || PlayerfabLoad.playerLevelSelected == "Level 4")
+       else if (PlayerfabLoad.playerLevelSelected == "Level 3" || PlayerfabLoad.playerLevelSelected == "Level 4" || PlayerfabLoad.playerLevelSelected == "Level 5")
        {
-           SceneManager.LoadScene("Loading Screen Forest");
+           SceneManager.LoadScene("Level Selection"); //Supposed to be "Loading Screen Forest"
        }
-       else if (PlayerfabLoad.playerLevelSelected == "Level 5" || PlayerfabLoad.playerLevelSelected == "Level 6" || PlayerfabLoad.playerLevelSelected == "Level 7")
+       else if (PlayerfabLoad.playerLevelSelected == "Level 6" || PlayerfabLoad.playerLevelSelected == "Level 7" || PlayerfabLoad.playerLevelSelected == "Level 8")
        {
            SceneManager.LoadScene("Loading Screen Magic");
        }
-       else if (PlayerfabLoad.playerLevelSelected == "Level 8" || PlayerfabLoad.playerLevelSelected == "Level 9" || PlayerfabLoad.playerLevelSelected == "Level 10")
+       else if (PlayerfabLoad.playerLevelSelected == "Level 9" || PlayerfabLoad.playerLevelSelected == "Level 10")
        {
            SceneManager.LoadScene("Loading Screen Monster");
        }
