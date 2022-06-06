@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 111
+  controlID: 49
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 112
+  controlID: 50
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 113
+  controlID: 51
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -409,7 +409,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 4c55ffffa658ffff205dffffec5fffff5a65ffffbe67ffff1668ffff7c6affff426dffff586fffff666fffff6e6fffff7c6fffff846fffff8c6fffffba6fffffd06ffffff26ffffffe6fffff1270ffff5875ffff8676ffffda76ffff4479ffff0e7cffff287effff3a7effff467effff5a7effff667effff727effffa47effffbe7effffe47efffff47efffffe7effff9882ffff58f3ffff0cfbffff86a9000032ab000024ac000020ad0000b2ad00000e0f0100
+      m_ExpandedIDs: 0cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -425,7 +425,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 8}
+        m_ClientGUIView: {fileID: 11}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -680,9 +680,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 8.4203005, y: -6.1136823, z: -0.12681298}
+    m_Target: {x: 91.936356, y: -13.194888, z: -1.6145911}
     speed: 2
-    m_Value: {x: 7.283169, y: -5.9309673, z: -0.11582843}
+    m_Value: {x: 85.350845, y: -13.095409, z: -1.5129234}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -733,9 +733,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.278486
+    m_Target: 168.71263
     speed: 2
-    m_Value: 11.180047
+    m_Value: 158.54588
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1020,22 +1020,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Level 2
+    - Assets/Scenes/Login
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Level 2
+  - Assets/Scenes/Login
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\drago\Eugene Tang\shooting-portals\Shooting Portals
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: ea730000
-    m_LastClickedID: 29674
-    m_ExpandedIDs: 00000000ca730000fa730000fc7300009a91000000ca9a3b
+    m_SelectedIDs: 96720000
+    m_LastClickedID: 29334
+    m_ExpandedIDs: 00000000507200008672000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1063,7 +1063,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca730000
+    m_ExpandedIDs: 0000000050720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000147800001a7d00006e6b00006c740000c8bb000096680000306d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1177,7 +1177,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -39758
+  m_LastSelectedObjectID: 84470
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1223,6 +1223,7 @@ MonoBehaviour:
     - {fileID: 5685202616055828354, guid: 47b2e70de7d86c544999f1a1aef8c4f9, type: 2}
     - {fileID: -1221619400499418936, guid: e785e2d0953261448bc6c8c143376e58, type: 2}
     - {fileID: -3445980443321654766, guid: e44fd391d2ed58f4cadb300a1eafb6b6, type: 2}
+    - {fileID: 3168816239650175132, guid: be360aac5025b0a4f8f914b9b8e4b1e5, type: 2}
     m_ValueSerializationHelper:
     - e00: 1
       e01: 0
@@ -1464,10 +1465,26 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: e44fd391d2ed58f4cadb300a1eafb6b6, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: be360aac5025b0a4f8f914b9b8e4b1e5, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -3445980443321654766, guid: e44fd391d2ed58f4cadb300a1eafb6b6, type: 2}
+  - m_Target: {fileID: 3168816239650175132, guid: be360aac5025b0a4f8f914b9b8e4b1e5, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
