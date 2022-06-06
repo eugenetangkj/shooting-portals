@@ -16,16 +16,16 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (isGamePaused)
             {
-                //Game is already paused. Pressing escape will
+                //Game is already paused. Pressing p will
                 //resume the game
                 Resume();
             } else
             {
-                //Game is not paused. Pressing escape will
+                //Game is not paused. Pressing p will
                 //pause the game
                 Pause();
             }
