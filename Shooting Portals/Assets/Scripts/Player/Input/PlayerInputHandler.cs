@@ -112,7 +112,8 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (player.isInPushState && Portal.gotBlock)
             {
-            } else {
+            }
+            else {
             TeleportInput = true;
             }
         }

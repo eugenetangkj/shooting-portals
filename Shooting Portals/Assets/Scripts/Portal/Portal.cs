@@ -39,7 +39,8 @@ public class Portal : MonoBehaviour
     {
         if (objectHit.tag == "Player" && portalArray[1] != null)
         {
-            Invoke("setContactToTrue", 0.1f);
+            // Invoke("setContactToTrue", 0.1f);
+            inContactWithPlayer = true;
             portalInContact =  this;
             getPortalToTeleportTo(portalInContact);
 
