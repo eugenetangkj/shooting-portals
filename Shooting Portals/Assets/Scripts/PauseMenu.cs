@@ -16,16 +16,16 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (isGamePaused)
             {
-                //Game is already paused. Pressing escape will
+                //Game is already paused. Pressing p will
                 //resume the game
                 Resume();
             } else
             {
-                //Game is not paused. Pressing escape will
+                //Game is not paused. Pressing p will
                 //pause the game
                 Pause();
             }
@@ -62,7 +62,6 @@ public class PauseMenu : MonoBehaviour
     public void YesForRestart()
     {
         PlayerfabLoad.updatePlayerCheckpoint("0"); //Resets checkpoint to 0
-        PlayerfabLoad.playerLevelSelected = levelToSelect;
         Time.timeScale = 1f; //Resumes time
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Restarts current level scene
         isGamePaused = false;
@@ -100,7 +99,7 @@ public class PauseMenu : MonoBehaviour
     public void YesForQuit()
     {
         PlayerfabLoad.updatePlayerCheckpoint("0"); //Resets checkpoint to 0
-        PlayerfabLoad.playerLevelSelected = levelToSelect;
+        PlayerfabLoad.playerLevelSelected = "Level Selection";
         Time.timeScale = 1f; //Resumes time
         SceneManager.LoadScene("Level Selection");
         isGamePaused = false;

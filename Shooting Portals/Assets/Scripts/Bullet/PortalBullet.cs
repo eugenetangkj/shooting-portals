@@ -14,6 +14,7 @@ public class PortalBullet : MonoBehaviour
 
     private Vector2 portalPos;
     private float portalYoffset = 0.6f;
+
     
     void Start()
     {
@@ -34,8 +35,26 @@ public class PortalBullet : MonoBehaviour
         {
             anim.SetBool("hit", true);
             rb.velocity = Vector2.zero;
+            
             Invoke("DestroyBullet", 0.5f);
         }
+
+        else if (objectHit.tag == "Movables")
+        {
+           if (count == 0)
+            {
+                Debug.Log("reached");
+                portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
+                Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
+                Portal.createPortal(portalToCreate);
+                portalToCreate.transform.SetParent(objectHit.transform);
+                count = count + 1;
+            }
+            anim.SetBool("hit", true);
+            rb.velocity = Vector2.zero;
+            Invoke("DestroyBullet", 0.5f); //Destroys the bullet on contact
+        } 
+        
         else if (objectHit.tag != "Portal")
         {
         if (count == 0)

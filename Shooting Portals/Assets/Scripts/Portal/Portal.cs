@@ -25,6 +25,10 @@ public class Portal : MonoBehaviour
 
     public static int portalCount = 0;
 
+    public static bool gotBlock = false;
+
+    [SerializeField] LayerMask movableLayer;
+
 
     private void Awake()
     {
@@ -33,11 +37,15 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D objectHit)
     {
-        if (objectHit.tag == "Player")
+        if (objectHit.tag == "Player" && portalArray[1] != null)
         {
-            Invoke("setContactToTrue", 0.1f);
+            // Invoke("setContactToTrue", 0.1f);
+            inContactWithPlayer = true;
             portalInContact =  this;
             getPortalToTeleportTo(portalInContact);
+
+            gotBlock = Physics2D.OverlapCircle(portalToTeleportTo.transform.position, 1.85f, movableLayer);
+                     
         }
     }
 

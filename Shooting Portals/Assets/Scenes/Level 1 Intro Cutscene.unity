@@ -1973,7 +1973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToUpdate: 1
   timelineDuration: 48.1
-  playerLevelSelected: 1.2
+  playerLevelSelected: Level 1
   sceneToLoad: Loading Screen Industrial
 --- !u!1 &917083467
 GameObject:
@@ -2077,6 +2077,10 @@ PrefabInstance:
     - target: {fileID: 6639842839006261199, guid: cad4b9c019b9f0c4fb4c3a8b2b6d65cd, type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6639842839006261199, guid: cad4b9c019b9f0c4fb4c3a8b2b6d65cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cad4b9c019b9f0c4fb4c3a8b2b6d65cd, type: 3}

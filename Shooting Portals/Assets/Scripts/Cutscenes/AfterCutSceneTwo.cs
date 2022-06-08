@@ -20,7 +20,7 @@ public class AfterCutSceneTwo : MonoBehaviour
     }
 
     private void nextLevel() {
-        PlayerfabLoad.playerLevelSelected = -1;
+        PlayerfabLoad.playerLevelSelected = "Level 1";
         SceneManager.LoadScene("Loading Screen Industrial");
     }
 }

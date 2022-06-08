@@ -18,28 +18,23 @@ public class SceneLoadingIndustrial : SceneLoading
     protected override IEnumerator LoadAsyncScene()
     {
         AsyncOperation asyncLoad;
-        if (PlayerfabLoad.playerLevelSelected == 1f)
+        if (PlayerfabLoad.playerLevelSelected == "Level 1 Cutscene")
         {
-            asyncLoad = SceneManager.LoadSceneAsync("Level Selection");
+            asyncLoad = SceneManager.LoadSceneAsync("Level 1 Intro Cutscene");
         }
-        else if (PlayerfabLoad.playerLevelSelected == 1.1f)
+        else if (PlayerfabLoad.playerLevelSelected == "Level 1" )
         {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 1 Intro Cutscene");    
-        }
-        else if (PlayerfabLoad.playerLevelSelected == 1.2f) {
             asyncLoad = SceneManager.LoadSceneAsync("Level 1");
         }
-        else if (PlayerfabLoad.playerLevelSelected == 2f) {
-            asyncLoad = SceneManager.LoadSceneAsync("Level Selection");
-        }
-        else if (PlayerfabLoad.playerLevelSelected == 2.1f)
-        {
+        else if (PlayerfabLoad.playerLevelSelected == "Level 2") {
             asyncLoad = SceneManager.LoadSceneAsync("Level 2");
-        } else if (PlayerfabLoad.playerLevelSelected == 2.2f) {
+        }
+        else if (PlayerfabLoad.playerLevelSelected == "Level 2 Cutscene") {
             asyncLoad = SceneManager.LoadSceneAsync("Level 2 Cutscene");
-        } else
+        }
+        else //PlayerfabLoad.playerLevelSelected == "Level Selection"
         {
-            asyncLoad = SceneManager.LoadSceneAsync("Login Menu"); //To be updated again next time
+            asyncLoad = SceneManager.LoadSceneAsync("Level Selection");
         }
     
         //While loading

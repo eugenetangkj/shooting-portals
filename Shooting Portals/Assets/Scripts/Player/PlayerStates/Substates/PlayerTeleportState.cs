@@ -28,22 +28,23 @@ public class PlayerTeleportState : PlayerAbilityState
         base.Enter();
         player.teleportSound.Play();
         //player.InputHandler.PushInput = false;
-        player.transform.position = Portal.getPositionToTeleport();
-        if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2") //Go from portal 2 to portal 1
-        {
-            float directionRequired = - Player.ShootDirection[0]; 
-            if (directionRequired == player.FacingDirection)
-            {
-             player.flip();   
-            }
-        } else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1") //Go from portal 1 to portal 2
-        {
-            float directionRequired = - Player.ShootDirection[1]; 
-            if (directionRequired == player.FacingDirection)
-            {
-             player.flip();   
-            }
-        }
+        player.transform.position = Portal.getPositionToTeleport(); //Teleports the player
+
+        // if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2") //Go from portal 2 to portal 1
+        // {
+        //     float directionRequired = - Player.ShootDirection[0]; 
+        //     if (directionRequired == player.FacingDirection)
+        //     {
+        //      player.flip();   
+        //     }
+        // } else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1") //Go from portal 1 to portal 2
+        // {
+        //     float directionRequired = - Player.ShootDirection[1]; 
+        //     if (directionRequired == player.FacingDirection)
+        //     {
+        //      player.flip();   
+        //     }
+        // }
         player.InputHandler.UseTeleportInput();
         isAbilityDone = true;
     }

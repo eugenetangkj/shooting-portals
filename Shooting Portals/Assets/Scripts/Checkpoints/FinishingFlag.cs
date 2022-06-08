@@ -16,6 +16,7 @@ public class FinishingFlag : MonoBehaviour
         if (collision.tag == "Player" && ! hasFinishedBefore)
         {
             hasFinishedBefore = true;
+            player.haveCompletedLevel = true;
             player.GetComponent<Animator>().SetTrigger("cheer");
             player.levelCompletedSound.Play();
             levelCompleteWords.SetTrigger("appear");
