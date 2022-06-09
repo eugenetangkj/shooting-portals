@@ -39,7 +39,7 @@ public class PortalBullet : MonoBehaviour
             Invoke("DestroyBullet", 0.5f);
         }
 
-        else if (objectHit.tag == "Movables")
+        else if (objectHit.tag == "Movables" || objectHit.tag == "Moving Platforms")
         {
            if (count == 0)
             {
