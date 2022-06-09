@@ -13,18 +13,6 @@ public class CheckFallingPlatform : MonoBehaviour
 
     private bool canToggle = true;
 
-    private Portal portalToDestroy;
-
-    private Transform[] childrenTransforms;
-
-    private int numberOfPortalsToDestroy;
-
-    private void Update()
-    {
-        childrenTransforms = platform.GetComponentsInChildren<Transform>();
-    }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,29 +31,13 @@ public class CheckFallingPlatform : MonoBehaviour
         platform.GetComponent<Animator>().SetBool("shake", false);
         platform.GetComponent<BoxCollider2D>().enabled = false;
         platform.fall();
-        foreach(Transform transformChild in childrenTransforms)
-        {
-            if (transformChild.GetComponent<Portal>() != null)
-            {
-                numberOfPortalsToDestroy += 1;
-                Portal.destroyOnePortal(transformChild.GetComponent<Portal>());
-            }
-        }
-        Invoke("checkPortals", 2f);
     }
 
     private void restorePlatform()
     {
-        numberOfPortalsToDestroy = 0;
         platform.restore();
         platform.GetComponent<BoxCollider2D>().enabled = true;
-        
         canToggle = true;
-    }
-
-    private void checkPortals()
-    {
-        Portal.updatePortalArray(numberOfPortalsToDestroy);
     }
 
 

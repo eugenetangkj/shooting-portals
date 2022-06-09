@@ -33,7 +33,6 @@ public class PortalBullet : MonoBehaviour
     {
         if (objectHit.tag == "Portal Breaker")
         {
-            Debug.Log("reached");
             anim.SetBool("hit", true);
             rb.velocity = Vector2.zero;
             // this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;

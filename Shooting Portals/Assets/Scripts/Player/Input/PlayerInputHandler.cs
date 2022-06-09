@@ -110,7 +110,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Portal Count: " + Portal.portalCount);
         if (context.started && CanTeleport && (Portal.portalCount == 2)
             && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
