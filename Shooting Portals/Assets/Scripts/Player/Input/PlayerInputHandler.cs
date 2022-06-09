@@ -22,10 +22,12 @@ public class PlayerInputHandler : MonoBehaviour
 
 
 
+
     private float inputHoldTime = 0.05f;
     private float jumpInputStartTime;
     private float attackShootInputStartTime;
     private float portalShootInputStartTime;
+
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class PlayerInputHandler : MonoBehaviour
         CheckAttackShootInputHoldTime();
         CheckPortalShootInputHoldTime();
         CanTeleport = Portal.inContactWithPlayer;
+        //Debug.Log(Portal.portalCount);
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -96,7 +99,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
         if (context.started && CanShoot && CanPortalShoot
-            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && ! player.CheckIfTouchingPortalBreaker()) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             PortalShootInput = true;
             CanPortalShoot = false;
@@ -107,6 +110,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
+        Debug.Log("Portal Count: " + Portal.portalCount);
         if (context.started && CanTeleport && (Portal.portalCount == 2)
             && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
@@ -131,6 +135,8 @@ public class PlayerInputHandler : MonoBehaviour
             Portal.destroyAllPortals();
         }
     }
+
+
 
     public void OnPushInput(InputAction.CallbackContext context)
     {
@@ -201,4 +207,5 @@ public class PlayerInputHandler : MonoBehaviour
     {
         CanPortalShoot = true;
     }
+
 }

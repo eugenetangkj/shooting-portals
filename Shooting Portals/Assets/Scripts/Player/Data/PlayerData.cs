@@ -31,6 +31,7 @@ public class PlayerData : ScriptableObject
     [Header("Portal Shoot")]
     public float portalShootOffset = 2.3f;
     public float portalShootOffSetNew = 0.8f;
+    public LayerMask portalBreaker;
 
 
 

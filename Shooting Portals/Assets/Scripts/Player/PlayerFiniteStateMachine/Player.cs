@@ -231,6 +231,11 @@ public class Player : MonoBehaviour
     //     return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.portalShootOffset * playerData.wallCheckDistance, playerData.whatIsGround);  
     // }
 
+    public bool CheckIfTouchingPortalBreaker()
+    {
+        return Physics2D.OverlapCircle(firePoint.position, playerData.groundCheckRadius, playerData.portalBreaker);
+    }
+
     public void CheckIfShouldFlip(int xInput)
     {
         if (xInput != 0 && xInput != FacingDirection)

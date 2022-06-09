@@ -7,7 +7,7 @@ using UnityEngine.UI;
 //This class represents a portal from the portal gun
 public class Portal : MonoBehaviour
 {
-    static Portal[] portalArray = new Portal[2];
+    private static Portal[] portalArray = new Portal[2];
 
     private static Portal holder;
 
@@ -23,9 +23,10 @@ public class Portal : MonoBehaviour
 
     public static float portalTwoShootDirection;
 
-    public static int portalCount = 0;
+    public static int portalCount;
 
     public static bool gotBlock = false;
+
 
     [SerializeField] LayerMask movableLayer;
 
@@ -87,6 +88,7 @@ public class Portal : MonoBehaviour
             portalArray[1] = portalToCreate;
             portalArray[1].tag = "Portal 2";
         }
+        
     }
 
     public static void destroyAllPortals()
@@ -98,11 +100,23 @@ public class Portal : MonoBehaviour
         else if (portalArray[1] == null)
         {
             portalArray[0].GetComponent<Animator>().SetBool("destroy", true);
-            holder.Invoke("destroyPortals", 1f);
+            if (holder != null)
+            {
+                holder.Invoke("destroyPortals", 0.5f);
+            }
+            else{
+                destroyPortalsStatic();
+            }
         } else {
             portalArray[0].GetComponent<Animator>().SetBool("destroy", true);
             portalArray[1].GetComponent<Animator>().SetBool("destroy", true);
-            holder.Invoke("destroyPortals", 1f);
+            if (holder != null)
+            {
+                holder.Invoke("destroyPortals", 0.5f);
+            } else {
+                destroyPortalsStatic();
+            }
+            //destroyPortals();
         }
         PortalUI.makePortalsDisappear();
         portalCount = 0;
@@ -120,7 +134,19 @@ public class Portal : MonoBehaviour
         }
     }
 
-    private static void destroyOnePortal(Portal portalToDestroy)
+    private static void destroyPortalsStatic()
+    {
+        for (int i = 0; i < 2; i = i + 1)
+        {
+            if (portalArray[i] != null)
+            {
+                Destroy(portalArray[i].gameObject);
+                portalArray[i] = null;
+            }
+        }
+    }
+
+    public static void destroyOnePortal(Portal portalToDestroy)
     {
         portalToDestroy.GetComponent<Animator>().SetBool("destroy", true);
         toDestroy = portalToDestroy;
@@ -148,4 +174,41 @@ public class Portal : MonoBehaviour
         return portalToTeleportTo.transform.position;
     }
 
+    public static void updatePortalArray(int count)
+    {
+        if (count == 0)
+        {
+            //Portal.portalCount = 0;
+        } else if (count == 1)
+        {
+            if (portalArray[0] == null && portalArray[1] == null)
+            {
+                PortalUI.makePortalsDisappear();
+                Portal.portalCount = 0;
+            }
+            else if (portalArray[0] == null && portalArray[1] != null)
+            {
+                portalArray[1].tag = "Portal 1";
+                portalArray[0] = portalArray[1];
+                portalArray[1] = null;
+                PortalUI.makePortalTwoDisappear();
+                Portal.portalCount = 1;
+            } else if (portalArray[0] != null && portalArray[1] == null)
+            {
+                PortalUI.makePortalTwoDisappear();
+                Portal.portalCount = 1;
+            }
+        } else {
+            //Count == 2
+            PortalUI.makePortalsDisappear();
+            Portal.portalCount = 0;
+        }
+
+    }
+
+
+
+
+
+ 
 }
