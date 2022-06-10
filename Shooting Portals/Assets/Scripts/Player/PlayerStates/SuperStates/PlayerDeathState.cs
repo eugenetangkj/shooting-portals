@@ -20,6 +20,7 @@ public class PlayerDeathState : PlayerState
         player.pushSound.Stop();
         player.setVelocityZero();
         base.Enter();
+        Portal.portalCount = 0;
         player.Invoke("restartLevel", 2.5f);
     }
 
