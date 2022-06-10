@@ -8,6 +8,7 @@ public class LeafCollectible : MonoBehaviour
     public bool hasTaken {get; private set;}
     private Animator anim;
     public static bool newSet = true;
+    [SerializeField] private AudioSource collectAudio;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class LeafCollectible : MonoBehaviour
                 startTime = Time.time;
                 newSet = false;
             }
+            collectAudio.Play();
             anim.SetBool("disappear", true);
             hasTaken = true;
         }

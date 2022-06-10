@@ -8,7 +8,7 @@ public class CheckFallingPlatform : MonoBehaviour
     [SerializeField] FallingBrick platform;
     [SerializeField] GameObject detector;
     
-    //[SerializeField] AudioSource platformFallSound;
+    [SerializeField] AudioSource platformFallSound;
     [SerializeField] float fallDuration;
 
 
@@ -28,7 +28,7 @@ public class CheckFallingPlatform : MonoBehaviour
 
     private void makePlatformFall()
     {
-        //platformFallSound.Play(); Play platform fall sound
+        platformFallSound.Play();
         platform.GetComponent<Animator>().SetBool("shake", false);
         platform.GetComponent<BoxCollider2D>().enabled = false;
         detector.GetComponent<BoxCollider2D>().enabled = false;
