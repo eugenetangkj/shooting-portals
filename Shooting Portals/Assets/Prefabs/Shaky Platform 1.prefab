@@ -49,6 +49,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   platform: {fileID: 3397734060158715211}
+  detector: {fileID: 3397734059827172644}
   fallDuration: 6
 --- !u!61 &3397734059510847145
 BoxCollider2D:
@@ -86,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3397734059827172647}
   - component: {fileID: 3397734059827172646}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Collider
   m_TagString: Moving Platforms
   m_Icon: {fileID: 0}

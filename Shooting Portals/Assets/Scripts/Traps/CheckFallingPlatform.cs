@@ -6,6 +6,7 @@ public class CheckFallingPlatform : MonoBehaviour
 {
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] FallingBrick platform;
+    [SerializeField] GameObject detector;
     
     //[SerializeField] AudioSource platformFallSound;
     [SerializeField] float fallDuration;
@@ -30,6 +31,7 @@ public class CheckFallingPlatform : MonoBehaviour
         //platformFallSound.Play(); Play platform fall sound
         platform.GetComponent<Animator>().SetBool("shake", false);
         platform.GetComponent<BoxCollider2D>().enabled = false;
+        detector.GetComponent<BoxCollider2D>().enabled = false;
         platform.fall();
     }
 
