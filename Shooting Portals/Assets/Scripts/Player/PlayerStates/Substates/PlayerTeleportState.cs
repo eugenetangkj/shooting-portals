@@ -28,7 +28,8 @@ public class PlayerTeleportState : PlayerAbilityState
         base.Enter();
         player.teleportSound.Play();
         //player.InputHandler.PushInput = false;
-        player.transform.position = Portal.getPositionToTeleport(); //Teleports the player
+        Vector2 temp = Portal.getPositionToTeleport(); //Teleports the player
+        player.transform.position = new Vector2(temp.x, temp.y + 0.2f);
 
         // if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2") //Go from portal 2 to portal 1
         // {
