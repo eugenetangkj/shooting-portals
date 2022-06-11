@@ -27,9 +27,22 @@ public class PlayerTeleportState : PlayerAbilityState
     {
         base.Enter();
         player.teleportSound.Play();
-        //player.InputHandler.PushInput = false;
-        Vector2 temp = Portal.getPositionToTeleport(); //Teleports the player
-        player.transform.position = new Vector2(temp.x, temp.y + 0.2f);
+        
+        //player.transform.position = Portal.getPositionToTeleport(); //Teleports the player
+
+        float offsetRequired = 0;
+        if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2" && player.InputHandler.PushInput) //Go from portal 2 to portal 1
+        {
+            Debug.Log("1. Player Shoot Direction: " + Player.ShootDirection[1]);
+            offsetRequired = Player.ShootDirection[1] * -2f;
+        } else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1" && player.InputHandler.PushInput) //Go from portal 1 to portal 2
+        {
+            offsetRequired = Player.ShootDirection[0] * -2f;
+            Debug.Log("2. Player Shoot Direction: " + Player.ShootDirection[0]);
+        }
+        player.transform.position = new Vector2(Portal.getPositionToTeleport().x + offsetRequired, Portal.getPositionToTeleport().y);  
+
+
 
         // if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2") //Go from portal 2 to portal 1
         // {

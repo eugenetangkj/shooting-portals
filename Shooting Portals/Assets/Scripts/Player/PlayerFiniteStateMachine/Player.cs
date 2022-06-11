@@ -206,8 +206,21 @@ public class Player : MonoBehaviour
 
     public bool CheckIfTouchingMovable()
     {
-        return Physics2D.Raycast(movableCheck.position, Vector2.right * FacingDirection, playerData.movableCheckDistance, playerData.whatIsMovable);
+        return Physics2D.OverlapBox(movableCheck.position, new Vector2(0.5f, 0.5f), 0f, playerData.whatIsMovable)
+               || Physics2D.OverlapBox(movableCheck.position, new Vector2(0.5f, 0.5f), 0f, playerData.whatIsClimb);
     }
+
+    public Collider2D CheckTouchingWhichMovable()
+    {
+        return Physics2D.OverlapBox(movableCheck.position, new Vector2(0.5f, 0.5f), 0f, playerData.whatIsMovable);
+    }
+
+    public Collider2D CheckTouchingWhichMovableTwo()
+    {
+        return Physics2D.OverlapBox(movableCheck.position, new Vector2(1f, 1f), 0f, playerData.whatIsClimb);
+    }
+
+
 
     public bool CheckIfBlockWillTouch()
     {
@@ -220,6 +233,12 @@ public class Player : MonoBehaviour
         //Debug.DrawRay(movableCheck.position, Vector2.right * FacingDirection * (playerData.movableCheckDistance + 2f), Color.green);
         return Physics2D.Raycast(movableCheck.position, Vector2.right * FacingDirection, playerData.movableCheckDistance + 2f, playerData.whatIsMovable);
     }
+
+    public RaycastHit2D CheckWhichBlockWillTouchTwo()
+    {
+        return Physics2D.Raycast(movableWallCheck.position, Vector2.right * FacingDirection, playerData.movableCheckWallDistance, playerData.whatIsClimb);
+    }
+
 
     public bool CheckIfGroundLedge()
     {
@@ -278,7 +297,7 @@ public class Player : MonoBehaviour
         Invoke("createPortalShot", 0.2f);
         if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
-            ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+            ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1; //1 if player is facing right
         } else if (ShootDirection[1] == 0)
         {
             ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;

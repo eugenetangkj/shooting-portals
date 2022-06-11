@@ -44,6 +44,7 @@ public class PlayerData : ScriptableObject
     public float groundLedgeCheckDistance = 0.5f;
     public LayerMask whatIsGround;
     public LayerMask whatIsMovable;
+    public LayerMask whatIsClimb;
 
 
 

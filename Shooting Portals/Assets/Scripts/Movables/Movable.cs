@@ -74,6 +74,15 @@ public class Movable : MonoBehaviour
         {
             
             isTouchingWall = player.CheckIfBlockWillTouch();
+            if (! player.InputHandler.PushInput)
+            {
+                this.gameObject.transform.SetParent(null);
+                this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                preventFalling.GetComponent<BoxCollider2D>().enabled = false; 
+            }
+
+
+
             if (CheckIfTouchingMovable())
             {
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = true;

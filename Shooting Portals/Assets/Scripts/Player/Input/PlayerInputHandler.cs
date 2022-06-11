@@ -110,7 +110,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
-        Debug.Log(Portal.portalCount);
+        //Debug.Log(Portal.portalCount);
         if (context.started && CanTeleport && (Portal.portalCount == 2)
             && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
@@ -140,13 +140,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPushInput(InputAction.CallbackContext context)
     {
-        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press x
+        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && ! player.InputHandler.TeleportInput) //press x
         {
             // Debug.Log("Push State: " + player.isInPushState);
             // Debug.Log("Grounded: " + player.CheckIfGrounded());
             if ((player.isInPushState || player.CheckIfTouchingMovable()) && player.CheckIfGrounded())
             {
-                // Debug.Log("reached");
                 PushInput = (PushInput == true) ? false : true;
             }
         }
