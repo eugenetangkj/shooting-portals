@@ -407,6 +407,9 @@ MonoBehaviour:
   movableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   movableCheckDistance: 0.05
 --- !u!50 &106360216
 Rigidbody2D:
@@ -7671,6 +7674,9 @@ MonoBehaviour:
   movableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 0
   movableCheckDistance: 0.05
 --- !u!50 &445410858
 Rigidbody2D:
@@ -12415,7 +12421,7 @@ GameObject:
   - component: {fileID: 1158481010}
   - component: {fileID: 1158481009}
   - component: {fileID: 1158481008}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Spike 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14529,7 +14535,7 @@ GameObject:
   - component: {fileID: 2066540739}
   - component: {fileID: 2066540738}
   - component: {fileID: 2066540737}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Spike 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
