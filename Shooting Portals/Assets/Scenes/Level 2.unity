@@ -322,6 +322,9 @@ MonoBehaviour:
   movableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   movableCheckDistance: 0.05
 --- !u!61 &50880836
 BoxCollider2D:
@@ -1759,6 +1762,9 @@ MonoBehaviour:
   movableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   movableCheckDistance: 0.05
 --- !u!61 &398639580
 BoxCollider2D:
@@ -2710,6 +2716,9 @@ MonoBehaviour:
   movableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 0
   movableCheckDistance: 0.05
 --- !u!61 &464998520
 BoxCollider2D:
@@ -14647,6 +14656,9 @@ MonoBehaviour:
   movableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   movableCheckDistance: 0.05
 --- !u!61 &874330193
 BoxCollider2D:
@@ -15112,6 +15124,9 @@ MonoBehaviour:
   movableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   movableCheckDistance: 0.05
 --- !u!61 &1039824115
 BoxCollider2D:
