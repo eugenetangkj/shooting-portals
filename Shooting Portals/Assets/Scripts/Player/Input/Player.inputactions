@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Destroy All Portals",
+                    "name": "Destroy Portals",
                     "type": "Button",
                     "id": "2b92914d-5756-42b1-96c5-276d4789f8e6",
                     "expectedControlType": "Button",
@@ -159,7 +159,7 @@
                 {
                     "name": "",
                     "id": "3ead919c-53c7-459b-8d49-4b9fe21b3f79",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -170,7 +170,7 @@
                 {
                     "name": "",
                     "id": "daaa33be-12b0-42b1-9a61-746cbdd67dca",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/v",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -192,11 +192,11 @@
                 {
                     "name": "",
                     "id": "45b2b004-3ab1-4f96-88d1-6234d624849f",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Destroy All Portals",
+                    "action": "Destroy Portals",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

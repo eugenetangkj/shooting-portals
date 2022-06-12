@@ -6828,6 +6828,7 @@ GameObject:
   - component: {fileID: 208568686}
   - component: {fileID: 208568687}
   - component: {fileID: 208568688}
+  - component: {fileID: 208568689}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7056,6 +7057,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 208568686}
+--- !u!114 &208568689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208568681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b115e361e25f8498905600f26bcaa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: {fileID: -944628639613478452, guid: 0fa618c960a64a44f8f2ef725b1df264, type: 3}
 --- !u!1 &241958978
 GameObject:
   m_ObjectHideFlags: 0
@@ -16001,6 +16015,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1126206530851550799, guid: 31a97e435e70a2547bd312d5e2272b62, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 208568689}
     - target: {fileID: 1126206530851550799, guid: 31a97e435e70a2547bd312d5e2272b62, type: 3}
       propertyPath: levelData
       value: 

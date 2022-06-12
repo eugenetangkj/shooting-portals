@@ -9,7 +9,7 @@ public class TrapActivatedWaypointFollower : MonoBehaviour
     [SerializeField] private float speed = 2f;
 
 
-    private bool shouldMove = false;
+    public bool shouldMove = false;
 
     // Update is called once per frame
     private void Update()

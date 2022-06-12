@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject attackShot;
     [SerializeField] GameObject portalShot;
     [SerializeField] LevelData levelData;
+    [SerializeField] GetControls controls;
 
 
     public Rigidbody2D RB { get; private set; }
@@ -96,6 +97,8 @@ public class Player : MonoBehaviour
 
     public bool haveCompletedLevel = false;
 
+    [SerializeField] public bool inStartScreen;
+
     #endregion
 
     #region Unity Callback Functions
@@ -124,6 +127,7 @@ public class Player : MonoBehaviour
 
         playerCheckPoint = PlayerfabLoad.getPlayerCheckPoint();
         goToCheckPoint();
+        controls.GetKeys();
     }
 
     private void Start()

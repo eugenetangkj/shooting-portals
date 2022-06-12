@@ -13,7 +13,7 @@ public class Sensor : MonoBehaviour
         
         if (collision.gameObject.tag == "Sensor")
         {
-            trapActivatedWaypointFollower.toggleShouldMove();
+            trapActivatedWaypointFollower.shouldMove = true;
         }
     }
 
@@ -21,7 +21,7 @@ public class Sensor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sensor")
         {
-            trapActivatedWaypointFollower.toggleShouldMove();
+            trapActivatedWaypointFollower.shouldMove = false;
         }
     }
 }

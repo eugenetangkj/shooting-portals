@@ -18,6 +18,9 @@ public class PlayerfabLoad : MonoBehaviour
 
     //Player's level selection
     public static string playerLevelSelected = "Level Selection";
+
+    //Player's bindings
+    public static string playerBindings;
  
     #endregion
 
@@ -40,12 +43,14 @@ public class PlayerfabLoad : MonoBehaviour
             //No level data, so we set level to be 0
             PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest() {
                 Data = new Dictionary<string, string>(){{"PlayerLevel", "0"},
-                                                        {"PlayerCheckpoint", "0"}
+                                                        {"PlayerCheckpoint", "0"},
+                                                        {"PlayerBindings", ""}
                                                        }
                 }, setDataSuccess, onError); 
             PlayerfabLoad.playerLevel = 0;  
             PlayerfabLoad.playerCheckpoint = 0;
             PlayerfabLoad.playerLevelSelected = "Level Selection";
+            PlayerfabLoad.playerBindings = "";
         }
 
         else
@@ -56,6 +61,16 @@ public class PlayerfabLoad : MonoBehaviour
 
             PlayerfabLoad.playerCheckpoint = 0; //Reset checkpoint to 0 whenever the user logs in again
             updatePlayerCheckpoint("0");
+
+            if (! results.Data.ContainsKey("PlayerBindings"))
+            {
+                PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest() {
+                Data = new Dictionary<string, string>(){{"PlayerBindings", ""}}
+            }, setDataSuccess, onError);
+            }
+
+            PlayerfabLoad.playerBindings = results.Data["PlayerBindings"].Value;
+            Debug.Log( PlayerfabLoad.playerBindings = results.Data["PlayerBindings"].Value);
         }
     }
 
@@ -96,6 +111,19 @@ public class PlayerfabLoad : MonoBehaviour
     }
 
     #endregion
+
+    #region Player Bindings
+    //Updates the player's bindings
+    public static void updatePlayerBindings(string newBindings)
+    {
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest() {
+            Data = new Dictionary<string, string>(){{"PlayerBindings", newBindings}}
+            }, setDataSuccess, onError);
+        PlayerfabLoad.playerBindings = newBindings;
+    }
+
+    #endregion
+
 
     #region Other Functions
     //Runs when player's level data is updated successfully
