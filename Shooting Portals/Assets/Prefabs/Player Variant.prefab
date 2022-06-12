@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 8777543410745036716, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
+      propertyPath: m_Size.x
+      value: 0.43260568
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777543410745036716, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.01197812
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777543410745036716, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.009860039
+      objectReference: {fileID: 0}
     - target: {fileID: 8777543410745036718, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
       propertyPath: levelData
       value: 
@@ -35,6 +47,10 @@ PrefabInstance:
       propertyPath: destroyPortalSound
       value: 
       objectReference: {fileID: 2339208054312832201}
+    - target: {fileID: 8777543410745036719, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8777543410745036721, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -90,6 +106,10 @@ PrefabInstance:
     - target: {fileID: 8777543410745036722, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
       propertyPath: m_Name
       value: Player Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777543411058117037, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8777543411233468637, guid: 82b166584b0932b4c9c9c0d9dd8e1aff, type: 3}
       propertyPath: m_LocalPosition.x

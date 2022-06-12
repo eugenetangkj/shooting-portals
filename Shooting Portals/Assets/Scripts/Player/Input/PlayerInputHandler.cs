@@ -22,10 +22,12 @@ public class PlayerInputHandler : MonoBehaviour
 
 
 
+
     private float inputHoldTime = 0.05f;
     private float jumpInputStartTime;
     private float attackShootInputStartTime;
     private float portalShootInputStartTime;
+
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class PlayerInputHandler : MonoBehaviour
         CheckAttackShootInputHoldTime();
         CheckPortalShootInputHoldTime();
         CanTeleport = Portal.inContactWithPlayer;
+        //Debug.Log(Portal.portalCount);
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -83,7 +86,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnAttackShootInput(InputAction.CallbackContext context)
     {
         if (context.started && CanShoot && CanPortalShoot &&
-            ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && PlayerfabLoad.getPlayerLevelAfter() >= 2) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+            ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press q button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             AttackShootInput = true;
             CanShoot = false;
@@ -96,7 +99,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
         if (context.started && CanShoot && CanPortalShoot
-            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && PlayerfabLoad.getPlayerLevelAfter() >= 2) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && ! player.CheckIfTouchingPortalBreaker()) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             PortalShootInput = true;
             CanPortalShoot = false;
@@ -107,8 +110,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
+        //Debug.Log(Portal.portalCount);
         if (context.started && CanTeleport && (Portal.portalCount == 2)
-            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && PlayerfabLoad.getPlayerLevelAfter() >= 2) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             if (player.isInPushState && Portal.gotBlock)
             {
@@ -125,22 +129,23 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnDestroyAllPortalsInput(InputAction.CallbackContext context)
     {
-        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && PlayerfabLoad.getPlayerLevelAfter() >= 2) //press d, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press d, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             player.destroyPortalSound.Play();
             Portal.destroyAllPortals();
         }
     }
 
+
+
     public void OnPushInput(InputAction.CallbackContext context)
     {
-        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press x
+        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && ! player.InputHandler.TeleportInput) //press x
         {
             // Debug.Log("Push State: " + player.isInPushState);
             // Debug.Log("Grounded: " + player.CheckIfGrounded());
             if ((player.isInPushState || player.CheckIfTouchingMovable()) && player.CheckIfGrounded())
             {
-                // Debug.Log("reached");
                 PushInput = (PushInput == true) ? false : true;
             }
         }
@@ -201,4 +206,5 @@ public class PlayerInputHandler : MonoBehaviour
     {
         CanPortalShoot = true;
     }
+
 }

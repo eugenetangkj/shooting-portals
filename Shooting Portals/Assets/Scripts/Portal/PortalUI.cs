@@ -33,4 +33,9 @@ public class PortalUI : MonoBehaviour
         portalOneUI.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
         portalTwoUI.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
     }
+
+    public static void makePortalTwoDisappear()
+    {
+        portalTwoUI.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+    }
 }

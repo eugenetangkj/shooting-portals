@@ -21,6 +21,7 @@ public class Movable : MonoBehaviour
     [SerializeField] GameObject detectMovableRight;
 
     [SerializeField] LayerMask movableLayer;
+    [SerializeField] LayerMask spikeLayer;
     [SerializeField] float movableCheckDistance;
 
 
@@ -53,6 +54,18 @@ public class Movable : MonoBehaviour
         }
     }
 
+    public bool CheckIfNearSpikes()
+    {
+       if (player.FacingDirection == 1)
+        {
+            return Physics2D.OverlapCircle(detectMovableRight.transform.position, 0.3f, spikeLayer);
+        }
+        else //player.FacingDirection == -1
+        {
+            return Physics2D.OverlapCircle(detectMovableLeft.transform.position, 0.3f, spikeLayer);
+        }
+    }
+
 
     void Update()
     {
@@ -61,9 +74,23 @@ public class Movable : MonoBehaviour
         {
             
             isTouchingWall = player.CheckIfBlockWillTouch();
+            if (! player.InputHandler.PushInput)
+            {
+                this.gameObject.transform.SetParent(null);
+                this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                preventFalling.GetComponent<BoxCollider2D>().enabled = false; 
+            }
+
+
+
             if (CheckIfTouchingMovable())
             {
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            }
+            //NEW
+            else if (CheckIfNearSpikes())
+            {
+               this.gameObject.GetComponent<BoxCollider2D>().enabled = true; 
             }
             else if (! player.isInPushState && ! player.InputHandler.PushInput)
             {

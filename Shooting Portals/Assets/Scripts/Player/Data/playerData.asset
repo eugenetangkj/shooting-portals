@@ -22,12 +22,15 @@ MonoBehaviour:
   startOffset: {x: 0.5, y: 0.1}
   stopOffset: {x: 0.5, y: 0.5}
   portalShootOffset: 0.5
-  portalShootOffSetNew: 0.7
+  portalShootOffSetNew: 0.85
+  portalBreaker:
+    serializedVersion: 2
+    m_Bits: 131072
   groundCheckRadius: 0.1
   wallCheckDistance: 0.6
   latchCheckDistance: 0.6
-  movableCheckDistance: 0.6
-  movableCheckWallDistance: 0.45
+  movableCheckDistance: 0.55
+  movableCheckWallDistance: 0.33
   groundLedgeCheckDistance: 0.5
   whatIsGround:
     serializedVersion: 2
@@ -35,3 +38,6 @@ MonoBehaviour:
   whatIsMovable:
     serializedVersion: 2
     m_Bits: 1024
+  whatIsClimb:
+    serializedVersion: 2
+    m_Bits: 128
