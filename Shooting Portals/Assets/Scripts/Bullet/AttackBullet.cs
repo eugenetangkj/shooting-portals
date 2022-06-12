@@ -7,7 +7,7 @@ public class AttackBullet : MonoBehaviour
     [SerializeField] float bulletSpeed = 20f;
     private Rigidbody2D rb;
     private Animator anim;
-    private float bulletLifeSpan = 0.5f;
+    private float bulletLifeSpan = 0.4f;
     private float bulletSpawnTime;
     
     void Start()
