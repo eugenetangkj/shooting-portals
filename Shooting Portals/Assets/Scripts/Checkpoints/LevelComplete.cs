@@ -13,7 +13,10 @@ public class LevelComplete : MonoBehaviour
     private string[] scenesToLoad = new string[]
         {
             "Loading Screen Industrial",
-            "Loading Screen Industrial"
+            "Loading Screen Industrial",
+            "Loading Screen Forest",
+            "Loading Screen Forest",
+            "Loading Screen Forest"
         };
 
 

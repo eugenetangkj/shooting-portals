@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject attackShot;
     [SerializeField] GameObject portalShot;
     [SerializeField] LevelData levelData;
+    [SerializeField] GetControls controls;
 
 
     public Rigidbody2D RB { get; private set; }
@@ -96,6 +97,8 @@ public class Player : MonoBehaviour
 
     public bool haveCompletedLevel = false;
 
+    [SerializeField] public bool inStartScreen;
+
     #endregion
 
     #region Unity Callback Functions
@@ -124,6 +127,7 @@ public class Player : MonoBehaviour
 
         playerCheckPoint = PlayerfabLoad.getPlayerCheckPoint();
         goToCheckPoint();
+        controls.GetKeys();
     }
 
     private void Start()
@@ -206,8 +210,21 @@ public class Player : MonoBehaviour
 
     public bool CheckIfTouchingMovable()
     {
-        return Physics2D.Raycast(movableCheck.position, Vector2.right * FacingDirection, playerData.movableCheckDistance, playerData.whatIsMovable);
+        return Physics2D.OverlapBox(movableCheck.position, new Vector2(0.5f, 0.5f), 0f, playerData.whatIsMovable)
+               || Physics2D.OverlapBox(movableCheck.position, new Vector2(0.5f, 0.5f), 0f, playerData.whatIsClimb);
     }
+
+    public Collider2D CheckTouchingWhichMovable()
+    {
+        return Physics2D.OverlapBox(movableCheck.position, new Vector2(0.5f, 0.5f), 0f, playerData.whatIsMovable);
+    }
+
+    public Collider2D CheckTouchingWhichMovableTwo()
+    {
+        return Physics2D.OverlapBox(movableCheck.position, new Vector2(1f, 1f), 0f, playerData.whatIsClimb);
+    }
+
+
 
     public bool CheckIfBlockWillTouch()
     {
@@ -221,6 +238,12 @@ public class Player : MonoBehaviour
         return Physics2D.Raycast(movableCheck.position, Vector2.right * FacingDirection, playerData.movableCheckDistance + 2f, playerData.whatIsMovable);
     }
 
+    public RaycastHit2D CheckWhichBlockWillTouchTwo()
+    {
+        return Physics2D.Raycast(movableWallCheck.position, Vector2.right * FacingDirection, playerData.movableCheckWallDistance, playerData.whatIsClimb);
+    }
+
+
     public bool CheckIfGroundLedge()
     {
         return Physics2D.Raycast(groundLedgeCheck.position, Vector2.down, playerData.groundLedgeCheckDistance, playerData.whatIsGround);
@@ -230,6 +253,11 @@ public class Player : MonoBehaviour
     // {
     //     return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.portalShootOffset * playerData.wallCheckDistance, playerData.whatIsGround);  
     // }
+
+    public bool CheckIfTouchingPortalBreaker()
+    {
+        return Physics2D.OverlapCircle(firePoint.position, playerData.groundCheckRadius, playerData.portalBreaker);
+    }
 
     public void CheckIfShouldFlip(int xInput)
     {
@@ -273,7 +301,7 @@ public class Player : MonoBehaviour
         Invoke("createPortalShot", 0.2f);
         if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
-            ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+            ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1; //1 if player is facing right
         } else if (ShootDirection[1] == 0)
         {
             ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;

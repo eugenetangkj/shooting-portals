@@ -35,15 +35,14 @@ public class PortalBullet : MonoBehaviour
         {
             anim.SetBool("hit", true);
             rb.velocity = Vector2.zero;
-            
+            // this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             Invoke("DestroyBullet", 0.5f);
         }
 
-        else if (objectHit.tag == "Movables")
+        else if (objectHit.tag == "Movables" || objectHit.tag == "Moving Platforms")
         {
            if (count == 0)
             {
-                Debug.Log("reached");
                 portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
                 Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
                 Portal.createPortal(portalToCreate);
@@ -62,6 +61,7 @@ public class PortalBullet : MonoBehaviour
             portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
             Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
             Portal.createPortal(portalToCreate);
+
             count = count + 1;
         }
         anim.SetBool("hit", true);
