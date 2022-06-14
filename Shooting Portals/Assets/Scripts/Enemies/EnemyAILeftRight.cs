@@ -9,6 +9,7 @@ public class EnemyAILeftRight : MonoBehaviour
     [SerializeField] private GameObject enemyToDestroy;
     [SerializeField] private DeathLogic deathLogic;
     [SerializeField] private AudioSource hitSound;
+    [SerializeField] private GameObject slimeDetector;
 
 
     public bool shouldReturn;
@@ -20,6 +21,7 @@ public class EnemyAILeftRight : MonoBehaviour
 
     private Vector3 enemyOriginalPos;
     [SerializeField] private float speed = 0.5f;
+
     // Update is called once per frame
     
     private void Start()
@@ -48,7 +50,6 @@ public class EnemyAILeftRight : MonoBehaviour
             }
 
             enemyX = transform.position.x;
-
 
             if (shouldReturn)
             {
@@ -82,6 +83,7 @@ public class EnemyAILeftRight : MonoBehaviour
             this.hitSound.Play();
             this.GetComponent<BoxCollider2D>().enabled = false;
             Destroy(deathLogic);
+            Destroy(slimeDetector);
             Invoke("DestroyEnemy", 1.2f);
         }
     }
