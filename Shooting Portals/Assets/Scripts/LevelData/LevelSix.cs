@@ -6,7 +6,7 @@ public class LevelSix : LevelData
 {
     private float[,] spawnPositions = new float[,]
         {
-            {39.06049f, -22.45f}, //Checkpoint 1  {-36.22847f, -21.46f}
+            {-36.22847f, -21.46f}, //Checkpoint 1  {-36.22847f, -21.46f}
             {-7.16f, -19.4271f}, //Checkpoint 2
             {17.8f, -16.42711f}, //Checkpoint 3
             {39.06049f, -22.45f}, //Checkpoint 4

@@ -6,12 +6,14 @@ public class FireDisappear : MonoBehaviour
 {
     [SerializeField] GameObject lava;
     [SerializeField] GameObject fireBoat;
+    [SerializeField] AudioSource soundEffect;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            soundEffect.Play();
             foreach (Transform child in lava.transform)
             {
                 child.gameObject.GetComponent<Animator>().SetBool("disappear", true);
