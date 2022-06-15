@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeDetector : MonoBehaviour
+public class EyeballDetector : MonoBehaviour
 {
-    [SerializeField] EnemyAILeftRight slime;
+    [SerializeField] EnemyAI eyeball;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            slime.shouldReturn = false;
+            eyeball.shouldReturn = false;
         }
     }
 
@@ -18,7 +18,7 @@ public class SlimeDetector : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            slime.shouldReturn = true;
+            eyeball.shouldReturn = true;
         }
     }
 }

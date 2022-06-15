@@ -2,23 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAILeftRight : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private Player player;
 
     [SerializeField] private GameObject enemyToDestroy;
     [SerializeField] private DeathLogic deathLogic;
     [SerializeField] private AudioSource hitSound;
-    [SerializeField] private GameObject slimeDetector;
+    [SerializeField] private GameObject eyeballDetector;
 
 
     public bool shouldReturn;
-
     private float enemyX;
+
     private Animator anim;
     private bool isAlive;
-
-    [SerializeField] private bool facingLeft;
 
 
     private Vector3 enemyOriginalPos;
@@ -29,10 +27,10 @@ public class EnemyAILeftRight : MonoBehaviour
     private void Start()
     {
         enemyOriginalPos = transform.position;
-        enemyX = transform.position.x;
         anim = this.GetComponent<Animator>();
         shouldReturn = true;
         isAlive = true;
+        enemyX = this.transform.position.x;
     }
 
     
@@ -40,24 +38,7 @@ public class EnemyAILeftRight : MonoBehaviour
     {
         if (isAlive)
         {
-            if (transform.position == enemyOriginalPos)
-            {
-                anim.SetBool("move", false);
-                if (facingLeft)
-                {
-                    transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
-                }
-                else {
-                    transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
-                }
-
-            }
-            else
-            {
-            anim.SetBool("move", true);
-            }
-
-            enemyX = transform.position.x;
+            enemyX = this.transform.position.x;
 
             if (shouldReturn)
             {
@@ -67,7 +48,7 @@ public class EnemyAILeftRight : MonoBehaviour
             else
             {
                 //Move towards player position
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, enemyOriginalPos.y), Time.deltaTime * speed);
+                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
             }
 
             if (transform.position.x > enemyX)
@@ -75,7 +56,7 @@ public class EnemyAILeftRight : MonoBehaviour
                 //Moving towards the right
                 transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
             }
-            else if (transform.position.x < enemyX) 
+            else 
             {
                 //Moving towards the left
                 transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
@@ -93,7 +74,7 @@ public class EnemyAILeftRight : MonoBehaviour
             this.hitSound.Play();
             this.GetComponent<BoxCollider2D>().enabled = false;
             Destroy(deathLogic);
-            Destroy(slimeDetector);
+            Destroy(eyeballDetector);
             Invoke("DestroyEnemy", 1.2f);
         }
     }
