@@ -531,6 +531,7 @@ MonoBehaviour:
   hitSound: {fileID: 23076914}
   eyeballDetector: {fileID: 377013664}
   shouldReturn: 0
+  facingLeft: 1
   speed: 1.5
 --- !u!1001 &30919830
 PrefabInstance:
@@ -26097,6 +26098,7 @@ MonoBehaviour:
   hitSound: {fileID: 1139599930}
   eyeballDetector: {fileID: 496353357}
   shouldReturn: 0
+  facingLeft: 1
   speed: 1.5
 --- !u!82 &1139599930
 AudioSource:

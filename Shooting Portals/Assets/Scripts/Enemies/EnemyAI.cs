@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
 
     private Animator anim;
     private bool isAlive;
+    [SerializeField] private bool facingLeft;
 
 
     private Vector3 enemyOriginalPos;
@@ -38,6 +39,18 @@ public class EnemyAI : MonoBehaviour
     {
         if (isAlive)
         {
+            if (transform.position == enemyOriginalPos)
+            {
+                if (facingLeft)
+                {
+                    transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
+                }
+                else {
+                    transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+                }
+
+            }
+
             enemyX = this.transform.position.x;
 
             if (shouldReturn)
@@ -56,7 +69,7 @@ public class EnemyAI : MonoBehaviour
                 //Moving towards the right
                 transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
             }
-            else 
+            else if (transform.position.x < enemyX)
             {
                 //Moving towards the left
                 transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
