@@ -12,14 +12,7 @@ public class WaterDisappear : MonoBehaviour
     {
         if (collision.tag == "Sensor")
         {
-            Debug.Log("reachedOne");
-            foreach (Transform child in water.transform)
-            {
-                child.gameObject.GetComponent<Animator>().SetBool("disappear", true);
-                child.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                
-            }
-            Invoke("destroyWater", 1.2f);
+            destroyWater();
         }
         
     }
@@ -28,25 +21,25 @@ public class WaterDisappear : MonoBehaviour
     {
         if (collision.tag == "Sensor")
         {
-            Debug.Log("reachedTwo");
             createWater();
-            foreach (Transform child in water.transform)
-            {
-                child.gameObject.GetComponent<Animator>().SetBool("disappear", false);
-                child.gameObject.GetComponent<BoxCollider2D>().enabled = true;
-                
-            }
+            // foreach (Transform child in water.transform)
+            // {
+            //     child.gameObject.GetComponent<Animator>().SetBool("disappear", false);
+            //     child.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            // }
         }
     }
 
 
     private void destroyWater()
     {
+        Debug.Log("reachedOne");
         water.SetActive(false);
     }
 
     private void createWater()
     {
+        Debug.Log("reachedTwo");
         water.SetActive(true);
     }
 

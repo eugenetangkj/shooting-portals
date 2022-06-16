@@ -16,7 +16,10 @@ public class LevelComplete : MonoBehaviour
             "Loading Screen Industrial",
             "Loading Screen Forest",
             "Loading Screen Forest",
-            "Loading Screen Forest"
+            "Loading Screen Forest",
+            "Loading Screen Elemental",
+            "Loading Screen Elemental",
+            "Loading Screen Elemental"
         };
 
 

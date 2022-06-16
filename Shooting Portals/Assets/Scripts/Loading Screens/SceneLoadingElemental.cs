@@ -6,7 +6,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 
-public class SceneLoadingForest : SceneLoading
+public class SceneLoadingElemental : SceneLoading
 {
     [SerializeField] private Image progressBar;
     
@@ -18,27 +18,26 @@ public class SceneLoadingForest : SceneLoading
     protected override IEnumerator LoadAsyncScene()
     {
         AsyncOperation asyncLoad;
-        if (PlayerfabLoad.playerLevelSelected == "Level 3 Cutscene")
+        if (PlayerfabLoad.playerLevelSelected == "Level 6 Cutscene")
         {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 3 Cutscene");
+            asyncLoad = SceneManager.LoadSceneAsync("Level 6 Cutscene");
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 3" )
+        else if (PlayerfabLoad.playerLevelSelected == "Level 6" )
         {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 3");
+            asyncLoad = SceneManager.LoadSceneAsync("Level 6");
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 4") {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 4");
+        else if (PlayerfabLoad.playerLevelSelected == "Level 7") {
+            asyncLoad = SceneManager.LoadSceneAsync("Level 7");
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 5") {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 5");
+        else if (PlayerfabLoad.playerLevelSelected == "Level 8 Pre Cutscene") {
+            asyncLoad = SceneManager.LoadSceneAsync("Level 8 Pre Cutscene");
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 5 Pre Cutscene") {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 5 Pre Cutscene");
+        else if (PlayerfabLoad.playerLevelSelected == "Level 8") {
+            asyncLoad = SceneManager.LoadSceneAsync("Level 8");
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 5 Post Cutscene") {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 5 Post Cutscene");
+        else if (PlayerfabLoad.playerLevelSelected == "Level 8 Post Cutscene") {
+            asyncLoad = SceneManager.LoadSceneAsync("Level 8 Post Cutscene");
         }
-        
         else //PlayerfabLoad.playerLevelSelected == "Level Selection"
         {
             asyncLoad = SceneManager.LoadSceneAsync("Level Selection");
