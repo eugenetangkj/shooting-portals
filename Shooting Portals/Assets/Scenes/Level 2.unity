@@ -15855,6 +15855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1485325762}
   springSound: {fileID: 1009834665}
+  jumpDistance: 26
 --- !u!61 &1009834667
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20246,6 +20247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1485325762}
   springSound: {fileID: 1813254843}
+  jumpDistance: 0
 --- !u!82 &1813254843
 AudioSource:
   m_ObjectHideFlags: 0
