@@ -32,11 +32,11 @@ public class SceneLoadingForest : SceneLoading
         else if (PlayerfabLoad.playerLevelSelected == "Level 5") {
             asyncLoad = SceneManager.LoadSceneAsync("Level 5");
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 5 Cutscene Intro") {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 5 Cutscene Intro");
+        else if (PlayerfabLoad.playerLevelSelected == "Level 5 Pre Cutscene") {
+            asyncLoad = SceneManager.LoadSceneAsync("Level 5 Pre Cutscene");
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 5 Cutscene Outro") {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 5 Cutscene Outro");
+        else if (PlayerfabLoad.playerLevelSelected == "Level 5 Post Cutscene") {
+            asyncLoad = SceneManager.LoadSceneAsync("Level 5 Post Cutscene");
         }
         
         else //PlayerfabLoad.playerLevelSelected == "Level Selection"
