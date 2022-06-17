@@ -34413,7 +34413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2425866891405190923, guid: 75bb2acce4af79e4386eee0088893010, type: 3}
       propertyPath: levelToSelect
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2425866891405190924, guid: 75bb2acce4af79e4386eee0088893010, type: 3}
       propertyPath: m_Name
@@ -34423,6 +34423,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6358911749139298656, guid: 75bb2acce4af79e4386eee0088893010, type: 3}
+      propertyPath: actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 0fa618c960a64a44f8f2ef725b1df264, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75bb2acce4af79e4386eee0088893010, type: 3}
 --- !u!1001 &6470243791729632456
