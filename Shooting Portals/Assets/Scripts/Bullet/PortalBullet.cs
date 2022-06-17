@@ -43,6 +43,7 @@ public class PortalBullet : MonoBehaviour
         {
            if (count == 0)
             {
+                Debug.Log("reached");
                 portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
                 Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
                 Portal.createPortal(portalToCreate);

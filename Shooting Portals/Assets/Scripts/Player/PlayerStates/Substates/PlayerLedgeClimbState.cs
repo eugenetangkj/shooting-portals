@@ -40,12 +40,14 @@ public class PlayerLedgeClimbState : PlayerState
         startPos.Set(cornerPos.x - (player.FacingDirection * playerData.startOffset.x), cornerPos.y - playerData.startOffset.y);
         stopPos.Set(cornerPos.x + (player.FacingDirection * playerData.stopOffset.x), cornerPos.y + playerData.stopOffset.y);
 
-        player.transform.position = startPos;
+        //player.transform.position = startPos;
+        player.GetComponent<Rigidbody2D>().gravityScale = 0f;
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.GetComponent<Rigidbody2D>().gravityScale = 5f;
         isHanging = false;
 
         if (isClimbing)
@@ -68,7 +70,7 @@ public class PlayerLedgeClimbState : PlayerState
             yInput = player.InputHandler.NormInputY;
 
             player.setVelocityZero();
-            player.transform.position = startPos;
+            // player.transform.position = startPos;
 
             if (xInput == player.FacingDirection && isHanging && !isClimbing)
             {
