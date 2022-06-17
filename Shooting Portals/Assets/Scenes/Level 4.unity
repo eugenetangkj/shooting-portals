@@ -1940,6 +1940,8 @@ GameObject:
   - component: {fileID: 517159360}
   - component: {fileID: 517159359}
   - component: {fileID: 517159362}
+  - component: {fileID: 517159363}
+  - component: {fileID: 517159364}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2047,6 +2049,31 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &517159363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517159358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b115e361e25f8498905600f26bcaa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: {fileID: -944628639613478452, guid: 0fa618c960a64a44f8f2ef725b1df264, type: 3}
+--- !u!114 &517159364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517159358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f41b01202e20445b034a5a43b31d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &528291027
 GameObject:
   m_ObjectHideFlags: 0
@@ -8746,11 +8773,11 @@ PrefabInstance:
     - target: {fileID: 1126206530851550799, guid: 31a97e435e70a2547bd312d5e2272b62, type: 3}
       propertyPath: controls
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 517159363}
     - target: {fileID: 1126206530851550799, guid: 31a97e435e70a2547bd312d5e2272b62, type: 3}
       propertyPath: levelData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 517159364}
     - target: {fileID: 1126206530851550800, guid: 31a97e435e70a2547bd312d5e2272b62, type: 3}
       propertyPath: m_RootOrder
       value: 1
