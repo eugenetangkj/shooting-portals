@@ -16,6 +16,7 @@ public class PlayerWallGrabState : PlayerTouchingWallState
 
     public override void Enter()
     {
+        Debug.Log("IN WALL GRAB STATE");
         base.Enter();
         // holdPosition = player.transform.position;
         // HoldPosition();
@@ -34,6 +35,7 @@ public class PlayerWallGrabState : PlayerTouchingWallState
 
     public override void LogicUpdate()
     {
+        Debug.Log(grabInput);
         base.LogicUpdate();
         
 
