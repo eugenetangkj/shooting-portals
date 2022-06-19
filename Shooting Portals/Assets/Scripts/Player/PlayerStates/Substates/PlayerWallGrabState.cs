@@ -16,9 +16,11 @@ public class PlayerWallGrabState : PlayerTouchingWallState
 
     public override void Enter()
     {
+        Debug.Log("IN WALL GRAB STATE");
         base.Enter();
-        holdPosition = player.transform.position;
-        HoldPosition();
+        // holdPosition = player.transform.position;
+        // HoldPosition();
+        player.GetComponent<Rigidbody2D>().gravityScale = 0f;
     }
 
     
@@ -26,12 +28,14 @@ public class PlayerWallGrabState : PlayerTouchingWallState
     public override void Exit()
     {
         base.Exit();
+        player.GetComponent<Rigidbody2D>().gravityScale = 5f;
     }
 
     
 
     public override void LogicUpdate()
     {
+        Debug.Log(grabInput);
         base.LogicUpdate();
         
 
@@ -50,7 +54,7 @@ public class PlayerWallGrabState : PlayerTouchingWallState
 
     private void HoldPosition()
     {
-        player.transform.position = holdPosition;
+        //player.transform.position = holdPosition;
         player.setVelocityX(0f);
         player.setVelocityY(0f);
     }

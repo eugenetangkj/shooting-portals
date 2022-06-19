@@ -7,8 +7,8 @@ public class SensorForFire : MonoBehaviour
     [SerializeField] GameObject fireballOne;
     [SerializeField] GameObject fireballTwo;
 
-    [SerializeField] Animator animOne;
-    [SerializeField] Animator animTwo;
+    private Animator animOne;
+    private Animator animTwo;
 
 
     private void Start()

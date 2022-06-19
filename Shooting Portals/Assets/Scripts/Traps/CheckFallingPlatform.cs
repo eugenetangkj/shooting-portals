@@ -9,7 +9,8 @@ public class CheckFallingPlatform : MonoBehaviour
     [SerializeField] GameObject detector;
     
     [SerializeField] AudioSource platformFallSound;
-    [SerializeField] float fallDuration;
+    [SerializeField] float restoreDuration;
+    [SerializeField] float inAirDuration;
 
 
     private bool canToggle = true;
@@ -20,8 +21,8 @@ public class CheckFallingPlatform : MonoBehaviour
         if (collision.tag == "Player" && canToggle)
         {
             platform.GetComponent<Animator>().SetBool("shake", true);
-            Invoke("makePlatformFall", 1f);
-            Invoke("restorePlatform", fallDuration);    
+            Invoke("makePlatformFall", inAirDuration);
+            Invoke("restorePlatform", restoreDuration);    
         }
     }
 

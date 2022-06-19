@@ -7,6 +7,7 @@ public class PlayerActivatedPlatform : MonoBehaviour
     [SerializeField] private GameObject[] waypoints;
     [SerializeField] private float speed = 2f;
     [SerializeField] private GameObject platform;
+    [SerializeField] private GameObject animatedTransition;
 
     private int moveDirection;
 
@@ -27,6 +28,7 @@ public class PlayerActivatedPlatform : MonoBehaviour
         if (collision.tag == "Player")
         {
             moveDirection = 1;
+            animatedTransition.SetActive(false);
         }
     }
 

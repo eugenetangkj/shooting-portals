@@ -51,7 +51,8 @@ MonoBehaviour:
   platform: {fileID: 3397734060158715211}
   detector: {fileID: 3397734059827172644}
   platformFallSound: {fileID: 1669049578604142556}
-  fallDuration: 3
+  restoreDuration: 3
+  inAirDuration: 1
 --- !u!61 &3397734059510847145
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +109,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3397734060158715215}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3397734059827172646
 BoxCollider2D:
@@ -147,7 +148,7 @@ GameObject:
   - component: {fileID: 3397734059955605229}
   - component: {fileID: 3397734059955605228}
   m_Layer: 17
-  m_Name: PortalBreaker
+  m_Name: PortalBreaker Left
   m_TagString: Portal Breaker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +182,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.085613966, y: 0.0551866}
+  m_Offset: {x: -1.9662931, y: -0.001732111}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -192,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.463515, y: 1.5808458}
+  m_Size: {x: 0.35980082, y: 0.66172516}
   m_EdgeRadius: 0
 --- !u!1 &3397734060158715212
 GameObject:
@@ -230,6 +231,7 @@ Transform:
   m_Children:
   - {fileID: 3397734059510847151}
   - {fileID: 3397734059955605229}
+  - {fileID: 2015057504863329079}
   - {fileID: 3397734059827172647}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -461,3 +463,61 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &6225296710793494047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2015057504863329079}
+  - component: {fileID: 2943460310661654156}
+  m_Layer: 17
+  m_Name: PortalBreaker Right
+  m_TagString: Portal Breaker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2015057504863329079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225296710793494047}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.906, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3397734060158715215}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2943460310661654156
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225296710793494047}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.9662931, y: -0.001732111}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.35980082, y: 0.66172516}
+  m_EdgeRadius: 0
