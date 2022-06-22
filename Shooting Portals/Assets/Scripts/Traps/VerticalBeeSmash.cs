@@ -8,9 +8,10 @@ public class VerticalBeeSmash : MonoBehaviour
     private bool shouldReset;
     private bool hasTouched;
     private bool isAttached;
-    [SerializeField] float beeVerticalSpeed = 4f;
-    [SerializeField] float beeStartTime = 1f;
-    [SerializeField] float beeTravelDuration = 8f;
+    [SerializeField] private float beeVerticalSpeed = 4f;
+    [SerializeField] private float beeStartTime = 1f;
+    [SerializeField] private float beeTravelDuration = 8f;
+
     void Start()
     {
         originalPos = this.transform.position;

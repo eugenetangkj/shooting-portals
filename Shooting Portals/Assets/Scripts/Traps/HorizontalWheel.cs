@@ -6,9 +6,11 @@ public class HorizontalWheel : MonoBehaviour
 {
     private Vector2 originalPos;
     private bool shouldReset;
-    [SerializeField] float wheelHorizontalSpeed = 4f;
-    [SerializeField] float wheelStartTime = 6f;
-    [SerializeField] float wheelTravelDuration = 6f;
+    [SerializeField] private float wheelHorizontalSpeed = 4f;
+    [SerializeField] private float wheelStartTime = 6f;
+    [SerializeField] private float wheelTravelDuration = 6f;
+
+
     void Start()
     {
         originalPos = this.transform.position;
@@ -32,4 +34,5 @@ public class HorizontalWheel : MonoBehaviour
     {
         shouldReset = (shouldReset) ? false : true;
     }
+
 }
