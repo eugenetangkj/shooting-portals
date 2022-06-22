@@ -22,7 +22,8 @@ public class CheckFallingPlatform : MonoBehaviour
         {
             platform.GetComponent<Animator>().SetBool("shake", true);
             Invoke("makePlatformFall", inAirDuration);
-            Invoke("restorePlatform", restoreDuration);    
+            Invoke("restorePlatform", restoreDuration);
+            canToggle = false;    
         }
     }
 

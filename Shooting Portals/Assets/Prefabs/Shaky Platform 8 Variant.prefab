@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1669049578604142556, guid: c5290b2a93324ec4091cf4e6cc135865, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3397734060158715208, guid: c5290b2a93324ec4091cf4e6cc135865, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -21,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3397734060158715212, guid: c5290b2a93324ec4091cf4e6cc135865, type: 3}
       propertyPath: m_Name
-      value: Shaky Platform 8
+      value: Shaky Platform 8 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3397734060158715215, guid: c5290b2a93324ec4091cf4e6cc135865, type: 3}
       propertyPath: m_RootOrder
