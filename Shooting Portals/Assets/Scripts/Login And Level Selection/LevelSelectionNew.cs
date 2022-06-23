@@ -79,7 +79,7 @@ public class LevelSelectionNew : MonoBehaviour
 
     public void selectLevelfive()
     {
-        PlayerfabLoad.playerLevelSelected = "Level 5";
+        PlayerfabLoad.playerLevelSelected = "Level 5 Pre Cutscene";
         levelChart.SetActive(false);
         levelFiveInformation.SetActive(true);
         currentlySelected = levelFiveInformation;
@@ -146,7 +146,7 @@ public class LevelSelectionNew : MonoBehaviour
        {
            SceneManager.LoadScene("Loading Screen Industrial");
        }
-       else if (PlayerfabLoad.playerLevelSelected == "Level 3 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 4" || PlayerfabLoad.playerLevelSelected == "Level 5")
+       else if (PlayerfabLoad.playerLevelSelected == "Level 3 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 4" || PlayerfabLoad.playerLevelSelected == "Level 5 Pre Cutscene")
        {
            SceneManager.LoadScene("Loading Screen Forest"); //Supposed to be "Loading Screen Forest"
        }
