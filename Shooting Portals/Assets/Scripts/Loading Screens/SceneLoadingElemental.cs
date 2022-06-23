@@ -33,7 +33,7 @@ public class SceneLoadingElemental : SceneLoading
             asyncLoad = SceneManager.LoadSceneAsync("Level 8 Pre Cutscene");
         }
         else if (PlayerfabLoad.playerLevelSelected == "Level 8") {
-            asyncLoad = SceneManager.LoadSceneAsync("Level 8");
+            asyncLoad = SceneManager.LoadSceneAsync("Level Selection"); //Supposed to be "Level 8"
         }
         else if (PlayerfabLoad.playerLevelSelected == "Level 8 Post Cutscene") {
             asyncLoad = SceneManager.LoadSceneAsync("Level 8 Post Cutscene");
