@@ -28,7 +28,7 @@ public class GetControls: MonoBehaviour
 
     public void GetKeys()
     {
-        Invoke("GetKeysActual", 0.5f);
+        Invoke("GetKeysActual", 1f);
     }
 
     public void GetKeysActual()

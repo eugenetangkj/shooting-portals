@@ -1627,7 +1627,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01757145, y: 0.30056524}
+  m_Offset: {x: 1.557148, y: 1.2658553}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1638,7 +1638,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.87215614, y: 1.5525608}
+  m_Size: {x: 8.936604, y: 3.483141}
   m_EdgeRadius: 0
 --- !u!1 &322894344
 GameObject:
@@ -24148,6 +24148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6358911749139298656, guid: 75bb2acce4af79e4386eee0088893010, type: 3}
+      propertyPath: actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 0fa618c960a64a44f8f2ef725b1df264, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75bb2acce4af79e4386eee0088893010, type: 3}
 --- !u!1001 &3862821560737235042
