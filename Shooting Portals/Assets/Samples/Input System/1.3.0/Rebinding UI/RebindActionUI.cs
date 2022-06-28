@@ -470,14 +470,13 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             UpdateActionLabel();
             UpdateBindingDisplay();
         }
+        #endif
 
-        void Start()
+        private void Start()
         {
             UpdateActionLabel();
             UpdateBindingDisplay();
         }
-
-        #endif
 
         private void UpdateActionLabel()
         {
