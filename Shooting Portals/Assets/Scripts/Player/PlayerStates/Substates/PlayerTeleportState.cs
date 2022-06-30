@@ -43,10 +43,10 @@ public class PlayerTeleportState : PlayerAbilityState
         }
         else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2")
         {
-           offsetRequired = Player.ShootDirection[1] * -0.01f; 
+           offsetRequired = Player.ShootDirection[1] * -0.1f; 
         } else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1")
         {
-           offsetRequired = 0; //Player.ShootDirection[0] * -0.01f; 
+           offsetRequired = Player.ShootDirection[0] * -0.1f; ; //Player.ShootDirection[0] * -0.01f; 
         }
         
         

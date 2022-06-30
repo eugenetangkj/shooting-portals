@@ -8,6 +8,7 @@ public class EnemyWithBlock : MonoBehaviour
     [SerializeField] private DeathLogic deathLogic;
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private GameObject target;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

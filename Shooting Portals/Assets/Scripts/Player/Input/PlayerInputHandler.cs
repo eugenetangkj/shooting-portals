@@ -77,6 +77,7 @@ public class PlayerInputHandler : MonoBehaviour
             GrabInput = (GrabInput == true) ? false : true;
             }
         }
+        Debug.Log(GrabInput);
         // if (context.canceled) //release z button
         // {
         //     GrabInput = false;
