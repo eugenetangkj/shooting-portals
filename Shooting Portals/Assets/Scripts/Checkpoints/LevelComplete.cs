@@ -19,7 +19,9 @@ public class LevelComplete : MonoBehaviour
             "Loading Screen Forest",
             "Loading Screen Elemental",
             "Loading Screen Elemental",
-            "Loading Screen Elemental"
+            "Loading Screen Elemental",
+            "Loading Screen Monster",
+            "Loading Screen Monster"
         };
 
 
