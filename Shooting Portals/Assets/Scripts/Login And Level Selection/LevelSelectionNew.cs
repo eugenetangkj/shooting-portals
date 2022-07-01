@@ -111,7 +111,7 @@ public class LevelSelectionNew : MonoBehaviour
 
     public void selectLevelNine()
     {
-        PlayerfabLoad.playerLevelSelected = "Level 9";
+        PlayerfabLoad.playerLevelSelected = "Level 9 Cutscene";
         levelChart.SetActive(false);
         levelNineInformation.SetActive(true);
         currentlySelected = levelNineInformation;
@@ -138,26 +138,26 @@ public class LevelSelectionNew : MonoBehaviour
     #region Enter and Back Functions
     public void enterButton()
     {
-       if (PlayerfabLoad.playerLevelSelected == "Intro" || PlayerfabLoad.playerLevelSelected == "Outro")
-       {
-           SceneManager.LoadScene("Loading Screen Portal");
-       }
-       else if (PlayerfabLoad.playerLevelSelected == "Level 1 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 2")
-       {
-           SceneManager.LoadScene("Loading Screen Industrial");
-       }
-       else if (PlayerfabLoad.playerLevelSelected == "Level 3 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 4" || PlayerfabLoad.playerLevelSelected == "Level 5 Pre Cutscene")
-       {
-           SceneManager.LoadScene("Loading Screen Forest"); //Supposed to be "Loading Screen Forest"
-       }
-       else if (PlayerfabLoad.playerLevelSelected == "Level 6 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 7" || PlayerfabLoad.playerLevelSelected == "Level 8")
-       {
-           SceneManager.LoadScene("Loading Screen Elemental");
-       }
-       else if (PlayerfabLoad.playerLevelSelected == "Level 9" || PlayerfabLoad.playerLevelSelected == "Level 10")
-       {
-           SceneManager.LoadScene("Loading Screen Monster");
-       }
+        if (PlayerfabLoad.playerLevelSelected == "Intro" || PlayerfabLoad.playerLevelSelected == "Outro")
+        {
+            SceneManager.LoadScene("Loading Screen Portal");
+        }
+        else if (PlayerfabLoad.playerLevelSelected == "Level 1 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 2")
+        {
+            SceneManager.LoadScene("Loading Screen Industrial");
+        }
+        else if (PlayerfabLoad.playerLevelSelected == "Level 3 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 4" || PlayerfabLoad.playerLevelSelected == "Level 5 Pre Cutscene")
+        {
+            SceneManager.LoadScene("Loading Screen Forest"); //Supposed to be "Loading Screen Forest"
+        }
+        else if (PlayerfabLoad.playerLevelSelected == "Level 6 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 7" || PlayerfabLoad.playerLevelSelected == "Level 8")
+        {
+            SceneManager.LoadScene("Loading Screen Elemental");
+        }
+        else if (PlayerfabLoad.playerLevelSelected == "Level 9 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 10 Pre Cutscene")
+        {
+            SceneManager.LoadScene("Loading Screen Monster");
+        }
     }
 
     public void backButton()
