@@ -100,7 +100,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
         if (context.started && CanShoot && CanPortalShoot
-            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && ! player.CheckIfTouchingPortalBreaker()) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press w button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             PortalShootInput = true;
             CanPortalShoot = false;
