@@ -33,13 +33,13 @@ public class PlayerTeleportState : PlayerAbilityState
         float offsetRequired = 0;
         if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2" && player.InputHandler.PushInput) //Go from portal 2 to portal 1
         {
-            Debug.Log("1. Player Shoot Direction: " + Player.ShootDirection[1]);
+            //Debug.Log("1. Player Shoot Direction: " + Player.ShootDirection[1]);
             offsetRequired = Player.ShootDirection[1] * -1.25f;
         }
         else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1" && player.InputHandler.PushInput) //Go from portal 1 to portal 2
         {
             offsetRequired = Player.ShootDirection[0] * -1.25f;
-            Debug.Log("2. Player Shoot Direction: " + Player.ShootDirection[0]);
+            //Debug.Log("2. Player Shoot Direction: " + Player.ShootDirection[0]);
         }
         else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2")
         {
