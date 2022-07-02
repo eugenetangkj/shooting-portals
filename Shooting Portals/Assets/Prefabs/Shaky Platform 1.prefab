@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3397734059510847145}
   m_Layer: 0
   m_Name: Player Detector
-  m_TagString: Untagged
+  m_TagString: Player Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3397734059827172646}
   m_Layer: 15
   m_Name: Collider
-  m_TagString: Moving Platforms
+  m_TagString: Shaky Platforms
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 1669049578604142556}
   m_Layer: 6
   m_Name: Shaky Platform 1
-  m_TagString: Moving Platforms
+  m_TagString: Shaky Platforms
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,7 +301,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019647956, y: -0.00042495131}
+  m_Offset: {x: -0.015742838, y: -0.00042495131}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -312,7 +312,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.81684, y: 0.41373354}
+  m_Size: {x: 2.773539, y: 0.41373354}
   m_EdgeRadius: 0
 --- !u!50 &3397734060158715214
 Rigidbody2D:
