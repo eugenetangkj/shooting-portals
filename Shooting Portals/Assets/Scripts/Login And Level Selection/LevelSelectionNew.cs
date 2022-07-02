@@ -20,8 +20,9 @@ public class LevelSelectionNew : MonoBehaviour
     [SerializeField] GameObject levelTenInformation;
     [SerializeField] GameObject outroInformation;
     [SerializeField] GameObject[] levelsArray;
-
+    
     [SerializeField] GameObject transition;
+    [SerializeField] GameObject acknowledgmentsButton;
 
     private GameObject currentlySelected;
     #endregion
@@ -40,6 +41,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Intro";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         introInformation.SetActive(true);
         currentlySelected = introInformation;
         
@@ -49,6 +51,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 1 Cutscene";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelOneInformation.SetActive(true);
         currentlySelected = levelOneInformation;
     }
@@ -57,6 +60,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 2";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelTwoInformation.SetActive(true);
         currentlySelected = levelTwoInformation;
     }
@@ -65,6 +69,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 3 Cutscene";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelThreeInformation.SetActive(true);
         currentlySelected = levelThreeInformation;
     }
@@ -73,6 +78,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 4";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelFourInformation.SetActive(true);
         currentlySelected = levelFourInformation;
     }
@@ -81,6 +87,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 5 Pre Cutscene";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelFiveInformation.SetActive(true);
         currentlySelected = levelFiveInformation;
     }
@@ -89,6 +96,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 6 Cutscene";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelSixInformation.SetActive(true);
         currentlySelected = levelSixInformation;
     }
@@ -97,6 +105,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 7";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelSevenInformation.SetActive(true);
         currentlySelected = levelSevenInformation;
     }
@@ -105,6 +114,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 8";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelEightInformation.SetActive(true);
         currentlySelected = levelEightInformation;
     }
@@ -113,6 +123,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 9 Cutscene";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelNineInformation.SetActive(true);
         currentlySelected = levelNineInformation;
     }
@@ -121,6 +132,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Level 10";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         levelTenInformation.SetActive(true);
         currentlySelected = levelTenInformation;
     }
@@ -129,6 +141,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         PlayerfabLoad.playerLevelSelected = "Outro";
         levelChart.SetActive(false);
+        acknowledgmentsButton.SetActive(false);
         outroInformation.SetActive(true);
         currentlySelected = outroInformation;
     }
@@ -164,6 +177,7 @@ public class LevelSelectionNew : MonoBehaviour
     {
         currentlySelected.SetActive(false);
         levelChart.SetActive(true);
+        acknowledgmentsButton.SetActive(true);
     }
     #endregion
 
