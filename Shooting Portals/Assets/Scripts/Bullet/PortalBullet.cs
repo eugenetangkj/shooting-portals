@@ -31,7 +31,7 @@ public class PortalBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D objectHit)
     {
-        if (objectHit.tag == "Portal Breaker" || objectHit.tag == "Movables" ||objectHit.tag == "Sensor")
+        if (objectHit.tag == "Portal Breaker" || objectHit.tag == "Movables" || objectHit.tag == "Sensor" || objectHit.tag == "Shaky Platforms" || objectHit.tag == "Player Sensor")
         {
             anim.SetBool("hit", true);
             rb.velocity = Vector2.zero;
@@ -58,6 +58,7 @@ public class PortalBullet : MonoBehaviour
         {
         if (count == 0)
         {
+            Debug.Log(objectHit.tag);
             portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
             Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
             Portal.createPortal(portalToCreate);
