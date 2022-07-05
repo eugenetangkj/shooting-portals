@@ -41,6 +41,7 @@ public class CheckFallingPlatform : MonoBehaviour
     {
         platform.restore();
         platform.GetComponent<BoxCollider2D>().enabled = true;
+        detector.GetComponent<BoxCollider2D>().enabled = true;
         canToggle = true;
     }
 

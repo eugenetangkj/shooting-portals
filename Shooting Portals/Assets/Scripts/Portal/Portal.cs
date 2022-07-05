@@ -148,4 +148,9 @@ public class Portal : MonoBehaviour
         return portalToTeleportTo.transform.position;
     }
 
+    public static bool checkGotTwoPortals()
+    {
+        return (portalArray[1] != null);
+    }
+
 }

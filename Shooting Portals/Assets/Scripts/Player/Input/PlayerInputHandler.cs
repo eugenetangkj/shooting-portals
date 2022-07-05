@@ -41,7 +41,7 @@ public class PlayerInputHandler : MonoBehaviour
         CheckJumpInputHoldTime();
         CheckAttackShootInputHoldTime();
         CheckPortalShootInputHoldTime();
-        CanTeleport = Portal.inContactWithPlayer;
+        CanTeleport = player.CheckIfTouchingPortal() && Portal.checkGotTwoPortals();
         //Debug.Log(Portal.portalCount);
     }
 
