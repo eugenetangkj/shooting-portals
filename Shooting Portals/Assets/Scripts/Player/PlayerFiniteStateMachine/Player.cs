@@ -259,6 +259,17 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapCircle(firePoint.position, playerData.groundCheckRadius, playerData.portalBreaker);
     }
 
+    public bool CheckIfTouchingPortal()
+    {
+        return Physics2D.OverlapCircle(this.transform.position, playerData.portalCheckRadius, playerData.whatIsPortal);
+    }
+
+
+
+
+
+
+
     public void CheckIfShouldFlip(int xInput)
     {
         if (xInput != 0 && xInput != FacingDirection)

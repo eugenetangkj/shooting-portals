@@ -34,6 +34,14 @@ public class PlayerData : ScriptableObject
     public LayerMask portalBreaker;
 
 
+    [Header("Portal and Teleportation")]
+    public float portalCheckRadius = 0.3f;
+    public LayerMask whatIsPortal;
+
+
+
+
+
 
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;
