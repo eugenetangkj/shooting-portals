@@ -5,7 +5,8 @@ using UnityEngine;
 public class BossOctopus : MonoBehaviour
 {
     #region Octopus Variables
-    private float bossHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
     private Animator anim;
     private float[,] spawnPositions = new float[,]
         {
@@ -37,15 +38,28 @@ public class BossOctopus : MonoBehaviour
     //Enemy being damaged
     private bool currentlyHealing;
     [SerializeField] private GameObject hitAnimation;
+    [SerializeField] private OctopusHealthBar healthBar;
+
 
     //Slime Blast
     [SerializeField] private GameObject slimeBlast;
+    private int targetToSpawnSlimeBlast;
+
+
+    //Spawn Moving Platforms
+    [SerializeField] private GameObject[] movingPlatforms;
+
+
+
+
+
 
     #endregion
 
     private void Awake()
     {
-        bossHealth = 100;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         anim = this.GetComponent<Animator>();
         currentlyHealing = false;
         
@@ -53,12 +67,19 @@ public class BossOctopus : MonoBehaviour
 
     private void Update()
     {
+        if (currentHealth == 90)
+        {
+            currentHealth = currentHealth - 0.00001f;
+            makeOctopusDisappear();
+            movingPlatforms[0].SetActive(true);
+        }
+        //TODO: Fill in the other health checkpoints
    
     }
 
     private void OnEnable()
     {
-        spawnBossOctopus();
+        anim.SetBool("disappear", false);
         currentlyHealing = false;
         InvokeRepeating("makeRandomTargetAppear", timeTakenForFirstTarget, timeBetweenTargets);
         InvokeRepeating("spawnBabyOctopus", timeTakenForFirstBaby, timeBetweenBabies);
@@ -88,9 +109,10 @@ public class BossOctopus : MonoBehaviour
         }
     }
 
-    private void spawnBossOctopus()
+    private void spawnBossOctopus(int roomDetected)
     {
         int playerCheckpoint = PlayerfabLoad.getPlayerCheckPoint();
+
         this.transform.position = new Vector2(spawnPositions[playerCheckpoint, 0], spawnPositions[playerCheckpoint, 1]);
     }
 
@@ -103,17 +125,23 @@ public class BossOctopus : MonoBehaviour
 
     public void doDamage()
     {
-        bossHealth = bossHealth - 2;
-        Vector2 slimeBlastPos = new Vector2(this.transform.position.x - 1f, player.transform.position.y);
+        currentHealth = currentHealth - 2f;
+        healthBar.SetHealth(currentHealth);
+
+        Vector2 slimeBlastPos = new Vector2(this.transform.position.x - 1f, targets[targetToSpawnSlimeBlast].transform.position.y + 2f);
         GameObject slimeBlastSpawned = Instantiate(slimeBlast, slimeBlastPos, this.transform.rotation);
         slimeBlastSpawned.GetComponent<SlimeBlast>().shootTowardsPlayer(player);
-        Debug.Log("Boss Health " + bossHealth);
-        
+        Debug.Log("Boss Health " + currentHealth);
+    }
+
+
+    public void addHealth()
+    {
+        currentHealth = currentHealth + 0.00001f;
     }
 
     public void activateHealing()
     {
-        Debug.Log("reached1");
         currentlyHealing = true;
         hitAnimation.SetActive(true);
         makeTargetsDisappear();
@@ -121,10 +149,25 @@ public class BossOctopus : MonoBehaviour
 
     public void deactivateHealing()
     {
-        Debug.Log("reached2");
         currentlyHealing = false;
         anim.SetBool("hit", false);
         hitAnimation.SetActive(false);
+    }
+
+    public void setTargetSpawnArea(int targetNumber)
+    {
+        targetToSpawnSlimeBlast = targetNumber;
+    }
+
+    private void makeOctopusDisappear()
+    {
+        currentlyHealing = true;
+        anim.SetBool("disappear", true);
+    }
+
+    private void despawnOctopus()
+    {
+        this.gameObject.SetActive(false);
     }
 
 

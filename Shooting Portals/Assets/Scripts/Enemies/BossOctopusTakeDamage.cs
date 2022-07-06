@@ -6,6 +6,7 @@ public class BossOctopusTakeDamage : MonoBehaviour
 {
     [SerializeField] private BossOctopus bossOctopus;
     [SerializeField] private AudioSource audioEffect;
+    [SerializeField] private int targetNumber;
 
     private Animator anim;
     
@@ -13,6 +14,7 @@ public class BossOctopusTakeDamage : MonoBehaviour
     {
         if (collision.tag == "Attack Bullet")
         {
+            bossOctopus.setTargetSpawnArea(targetNumber);
             bossOctopus.doDamage();
             audioEffect.Play();
             anim.SetBool("hit", true);

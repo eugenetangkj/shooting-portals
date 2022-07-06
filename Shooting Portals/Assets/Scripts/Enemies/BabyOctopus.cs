@@ -84,6 +84,9 @@ public class BabyOctopus : MonoBehaviour
             this.GetComponent<BoxCollider2D>().enabled = false;
             Destroy(deathLogic);
             Invoke("DestroyEnemy", 1.2f);
+        } else if (collision.tag == "Player")
+        {
+            player.StateMachine.ChangeState(player.DeathState);
         }
     }
 
