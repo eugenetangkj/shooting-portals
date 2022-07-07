@@ -8,6 +8,9 @@ public class BossOctopus : MonoBehaviour
     public float maxHealth = 100;
     public float currentHealth;
     private Animator anim;
+
+
+    //Spawning
     private float[,] spawnPositions = new float[,]
         {
             {-14.36549f, -195.1223f}, //Spawn Position 1
@@ -19,6 +22,17 @@ public class BossOctopus : MonoBehaviour
             {142.0245f, -196.0923f}, //Spawn Position 7
             {166.0745f, -193.8223f} //Spawn Position 8
         };
+    
+    private int[] healthValues = new int[] {100, 90, 80, 68, 58, 44, 28, 14};
+
+
+    private int numberOfHits = 0;
+    private int playerCheckpoint;
+
+    private bool isAlive;
+
+    public int bossCheckpoint {get; private set;}
+
 
     [SerializeField] private GameObject[] targets;
 
@@ -58,28 +72,74 @@ public class BossOctopus : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
         anim = this.GetComponent<Animator>();
         currentlyHealing = false;
-        
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     private void Update()
     {
-        if (currentHealth == 90)
+        if (playerCheckpoint == 0 && numberOfHits == 5 && isAlive) //Room 1
         {
-            currentHealth = currentHealth - 0.00001f;
+            makeTargetsDisappear();
             makeOctopusDisappear();
             movingPlatforms[0].SetActive(true);
+            playerCheckpoint += playerCheckpoint + 1;
         }
-        //TODO: Fill in the other health checkpoints
-   
+        else if (playerCheckpoint == 1 && numberOfHits == 5 && isAlive) //Room 2
+        {
+            makeTargetsDisappear();
+            makeOctopusDisappear();
+            movingPlatforms[1].SetActive(true); 
+        }
+        else if (playerCheckpoint == 2 && numberOfHits == 6 && isAlive) //Room 3
+        {
+            makeTargetsDisappear();
+            makeOctopusDisappear();
+            movingPlatforms[2].SetActive(true); 
+        }
+        else if (playerCheckpoint == 3 && numberOfHits == 5 && isAlive) //Room 4
+        {
+            makeTargetsDisappear();
+            makeOctopusDisappear();
+            movingPlatforms[3].SetActive(true); 
+        }
+        else if (playerCheckpoint == 4 && numberOfHits == 7 && isAlive) //Room 5
+        {
+            makeTargetsDisappear();
+            makeOctopusDisappear();
+            movingPlatforms[4].SetActive(true); 
+        }
+        else if (playerCheckpoint == 5 && numberOfHits == 8 && isAlive) //Room 6
+        {
+            makeTargetsDisappear();
+            makeOctopusDisappear();
+            movingPlatforms[5].SetActive(true); 
+        }
+        else if (playerCheckpoint == 6 && numberOfHits == 7 && isAlive) // Room 7
+        {
+            makeTargetsDisappear();
+            makeOctopusDisappear();
+            movingPlatforms[6].SetActive(true); 
+        }
+        else if (playerCheckpoint == 7 && numberOfHits == 7 && isAlive) //Room 8
+        {
+            makeTargetsDisappear();
+            makeOctopusDisappear();
+            movingPlatforms[7].SetActive(true); 
+        }
     }
 
     private void OnEnable()
     {
+        isAlive = true;
+        numberOfHits = 0;
+        playerCheckpoint = PlayerfabLoad.getPlayerCheckPoint();
+        bossCheckpoint = playerCheckpoint;
+        currentHealth = healthValues[playerCheckpoint];
+        healthBar.SetHealth(currentHealth);
         anim.SetBool("disappear", false);
+        anim.SetBool("hit", false);
         currentlyHealing = false;
         InvokeRepeating("makeRandomTargetAppear", timeTakenForFirstTarget, timeBetweenTargets);
         InvokeRepeating("spawnBabyOctopus", timeTakenForFirstBaby, timeBetweenBabies);
@@ -88,7 +148,7 @@ public class BossOctopus : MonoBehaviour
     private void makeRandomTargetAppear()
     {
         //Only let targets appear if boss octopus is not healing
-        if (! currentlyHealing)
+        if (! currentlyHealing && isAlive)
         {
             int targetToAppear = Random.Range(0, 2);
             targets[targetToAppear].SetActive(true);
@@ -109,11 +169,9 @@ public class BossOctopus : MonoBehaviour
         }
     }
 
-    private void spawnBossOctopus(int roomDetected)
+    public void spawnBossOctopus(int roomDetected)
     {
-        int playerCheckpoint = PlayerfabLoad.getPlayerCheckPoint();
-
-        this.transform.position = new Vector2(spawnPositions[playerCheckpoint, 0], spawnPositions[playerCheckpoint, 1]);
+        this.transform.position = new Vector2(spawnPositions[roomDetected - 1, 0], spawnPositions[roomDetected - 1, 1]);
     }
 
     private void spawnBabyOctopus()
@@ -131,13 +189,6 @@ public class BossOctopus : MonoBehaviour
         Vector2 slimeBlastPos = new Vector2(this.transform.position.x - 1f, targets[targetToSpawnSlimeBlast].transform.position.y + 2f);
         GameObject slimeBlastSpawned = Instantiate(slimeBlast, slimeBlastPos, this.transform.rotation);
         slimeBlastSpawned.GetComponent<SlimeBlast>().shootTowardsPlayer(player);
-        Debug.Log("Boss Health " + currentHealth);
-    }
-
-
-    public void addHealth()
-    {
-        currentHealth = currentHealth + 0.00001f;
     }
 
     public void activateHealing()
@@ -161,14 +212,36 @@ public class BossOctopus : MonoBehaviour
 
     private void makeOctopusDisappear()
     {
+        if (currentHealth != 0)
+        {
+        bossCheckpoint += 1;
+        isAlive = false;
         currentlyHealing = true;
+        anim.SetBool("hit", false);
         anim.SetBool("disappear", true);
+        }
+        else if (currentHealth == 0)
+        {
+            bossCheckpoint += 1;
+            isAlive = false;
+            currentlyHealing = true;
+            anim.SetBool("hit", false);
+            anim.SetTrigger("death");
+        }
     }
 
     private void despawnOctopus()
     {
         this.gameObject.SetActive(false);
+        CancelInvoke();
     }
+
+    public void increaseHit()
+    {
+        this.numberOfHits += 1;
+    }
+
+    
 
 
 

@@ -167,7 +167,7 @@ public class LevelSelectionNew : MonoBehaviour
         {
             SceneManager.LoadScene("Loading Screen Elemental");
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 9 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 10 Pre Cutscene")
+        else if (PlayerfabLoad.playerLevelSelected == "Level 9 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 10")
         {
             SceneManager.LoadScene("Loading Screen Monster");
         }

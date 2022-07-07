@@ -16,6 +16,7 @@ public class BossOctopusTakeDamage : MonoBehaviour
         {
             bossOctopus.setTargetSpawnArea(targetNumber);
             bossOctopus.doDamage();
+            bossOctopus.increaseHit();
             audioEffect.Play();
             anim.SetBool("hit", true);
         }

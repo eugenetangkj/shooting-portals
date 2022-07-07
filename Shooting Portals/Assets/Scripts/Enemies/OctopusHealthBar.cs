@@ -9,7 +9,6 @@ public class OctopusHealthBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
-
     public void SetMaxHealth(float health)
     {
         slider.maxValue = health;

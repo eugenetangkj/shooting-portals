@@ -7,13 +7,13 @@ public class LevelTen : LevelData
     private float[,] spawnPositions = new float[,]
         {
             {-35.64f, -200.428f}, //Checkpoint 1  {-35.64f, -200.428f}
-            {-6.5f, -200.428f}, //Checkpoint 2
-            {20.67f, -200.428f}, //Checkpoint 3
-            {50.53f, -200.428f}, //Checkpoint 4
+            {-6.412f, -200.428f}, //Checkpoint 2
+            {21.71f, -200.428f}, //Checkpoint 3
+            {48.09f, -200.428f}, //Checkpoint 4
             {73.85f, -200.428f}, //Checkpoint 5
-            {98.56f, -200.428f}, //Checkpoint 6
-            {124.78f, -200.428f}, //Checkpoint 7
-            {150.11f, -200.428f} //Checkpoint 8
+            {100.54f, -200.428f}, //Checkpoint 6
+            {126.6f, -200.428f}, //Checkpoint 7
+            {151.55f, -200.428f} //Checkpoint 8
             
         };
 
