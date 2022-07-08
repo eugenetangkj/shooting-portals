@@ -53,6 +53,7 @@ public class BossOctopus : MonoBehaviour
     private bool currentlyHealing;
     [SerializeField] private GameObject hitAnimation;
     [SerializeField] private OctopusHealthBar healthBar;
+    [SerializeField] private AudioSource bossHit;
 
 
     //Slime Blast
@@ -183,6 +184,7 @@ public class BossOctopus : MonoBehaviour
 
     public void doDamage()
     {
+        bossHit.Play();
         currentHealth = currentHealth - 2f;
         healthBar.SetHealth(currentHealth);
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossOctopusTakeDamage : MonoBehaviour
 {
     [SerializeField] private BossOctopus bossOctopus;
-    [SerializeField] private AudioSource audioEffect;
+    //[SerializeField] private AudioSource audioEffect;
     [SerializeField] private int targetNumber;
 
     private Animator anim;
@@ -17,7 +17,7 @@ public class BossOctopusTakeDamage : MonoBehaviour
             bossOctopus.setTargetSpawnArea(targetNumber);
             bossOctopus.doDamage();
             bossOctopus.increaseHit();
-            audioEffect.Play();
+            //audioEffect.Play();
             anim.SetBool("hit", true);
         }
     }

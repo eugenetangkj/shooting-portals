@@ -65,7 +65,6 @@ public class PlayerGroundedState : PlayerState
         teleportInput = player.InputHandler.TeleportInput;
         pushInput = player.InputHandler.PushInput;
 
-        Debug.Log("Teleport Input" + teleportInput);
 
 
         if (jumpInput && ! pushInput)
