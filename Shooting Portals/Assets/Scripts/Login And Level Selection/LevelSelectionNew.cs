@@ -130,7 +130,7 @@ public class LevelSelectionNew : MonoBehaviour
 
     public void selectLevelTen()
     {
-        PlayerfabLoad.playerLevelSelected = "Level 10";
+        PlayerfabLoad.playerLevelSelected = "Level 10 Pre Cutscene";
         levelChart.SetActive(false);
         acknowledgmentsButton.SetActive(false);
         levelTenInformation.SetActive(true);

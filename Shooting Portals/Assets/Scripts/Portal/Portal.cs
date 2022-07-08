@@ -28,6 +28,7 @@ public class Portal : MonoBehaviour
     public static bool gotBlock = false;
 
     [SerializeField] LayerMask movableLayer;
+    [SerializeField] LayerMask playerLayer;
 
 
     private void Awake()
@@ -35,27 +36,41 @@ public class Portal : MonoBehaviour
         holder = this;
     }
 
-    void OnTriggerEnter2D(Collider2D objectHit)
+    private void Update()
     {
-        if (objectHit.tag == "Player" && portalArray[1] != null)
+        if (Physics2D.OverlapCircle(this.transform.position, 1f, playerLayer) && portalArray[1] != null)
         {
-            // Invoke("setContactToTrue", 0.1f);
             inContactWithPlayer = true;
             portalInContact =  this;
             getPortalToTeleportTo(portalInContact);
 
-            gotBlock = Physics2D.OverlapCircle(portalToTeleportTo.transform.position, 1.85f, movableLayer);
-                     
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D objectHit)
-    {
-        if (objectHit.tag == "Player")
-        {
+            gotBlock = Physics2D.OverlapCircle(portalToTeleportTo.transform.position, 1.85f, movableLayer);  
+        } else {
             inContactWithPlayer = false;
         }
     }
+
+    // void OnTriggerEnter2D(Collider2D objectHit)
+    // {
+    //     if (objectHit.tag == "Player" && portalArray[1] != null)
+    //     {
+    //         // Invoke("setContactToTrue", 0.1f);
+    //         inContactWithPlayer = true;
+    //         portalInContact =  this;
+    //         getPortalToTeleportTo(portalInContact);
+
+    //         gotBlock = Physics2D.OverlapCircle(portalToTeleportTo.transform.position, 1.85f, movableLayer);
+                     
+    //     }
+    // }
+
+    // void OnTriggerExit2D(Collider2D objectHit)
+    // {
+    //     if (objectHit.tag == "Player")
+    //     {
+    //         inContactWithPlayer = false;
+    //     }
+    // }
 
     private void setContactToTrue()
     {

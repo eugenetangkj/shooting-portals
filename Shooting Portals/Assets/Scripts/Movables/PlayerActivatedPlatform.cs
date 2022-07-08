@@ -28,7 +28,10 @@ public class PlayerActivatedPlatform : MonoBehaviour
         if (collision.tag == "Player")
         {
             moveDirection = 1;
+            if (animatedTransition != null)
+            {
             animatedTransition.SetActive(false);
+            }
         }
     }
 

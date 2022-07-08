@@ -43,12 +43,14 @@ public class PlayerTeleportState : PlayerAbilityState
         }
         else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2")
         {
-           offsetRequired = Player.ShootDirection[1] * -0.1f; 
-        } else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1")
+            offsetRequired = Player.ShootDirection[1] * -0.1f; 
+        }
+        else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1")
         {
-           offsetRequired = Player.ShootDirection[0] * -0.1f; ; //Player.ShootDirection[0] * -0.01f; 
+            offsetRequired = Player.ShootDirection[0] * -0.1f; ; //Player.ShootDirection[0] * -0.01f; 
         }
         
+
         
         player.transform.position = new Vector2(Portal.getPositionToTeleport().x + offsetRequired, Portal.getPositionToTeleport().y);
 

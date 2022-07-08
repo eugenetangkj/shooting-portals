@@ -55,6 +55,7 @@ public class PlayerGroundedState : PlayerState
 
     public override void LogicUpdate()
     {
+        
         base.LogicUpdate();
         xInput = player.InputHandler.NormInputX;
         jumpInput = player.InputHandler.JumpInput;
@@ -63,6 +64,7 @@ public class PlayerGroundedState : PlayerState
         portalShootInput = player.InputHandler.PortalShootInput;
         teleportInput = player.InputHandler.TeleportInput;
         pushInput = player.InputHandler.PushInput;
+
 
 
         if (jumpInput && ! pushInput)
