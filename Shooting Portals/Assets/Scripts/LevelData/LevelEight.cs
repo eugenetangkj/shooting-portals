@@ -6,7 +6,7 @@ public class LevelEight : LevelData
 {
     private float[,] spawnPositions = new float[,]
         {
-            {81.61f, -61.49f}, //Checkpoint 1 {81.61f, -61.49f}
+            {88.09f, -87.417f}, //Checkpoint 1 {88.09f, -87.417f}
         };
 
     public override float[,] getSpawnPositions()
