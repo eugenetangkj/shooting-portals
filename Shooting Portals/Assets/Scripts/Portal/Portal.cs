@@ -144,7 +144,10 @@ public class Portal : MonoBehaviour
 
     private void toDestroyPortal()
     {
-        Destroy(toDestroy.gameObject);
+        if (toDestroy.gameObject != null)
+        {
+            Destroy(toDestroy.gameObject);
+        }
     }
 
 

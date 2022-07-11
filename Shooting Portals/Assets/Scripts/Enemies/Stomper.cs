@@ -45,9 +45,10 @@ public class Stomper : MonoBehaviour
         canMove = true;
     }
 
-    private void stopRunning()
+    public void stopRunning()
     {
         rb.velocity = new Vector2(0f, 0f);
+        canMove = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
