@@ -119,6 +119,8 @@ public class Portal : MonoBehaviour
             portalArray[1].GetComponent<Animator>().SetBool("destroy", true);
             holder.Invoke("destroyPortals", 1f);
         }
+        Player.ShootDirection[0] = 0;
+        Player.ShootDirection[1] = 0;
         PortalUI.makePortalsDisappear();
         portalCount = 0;
     }

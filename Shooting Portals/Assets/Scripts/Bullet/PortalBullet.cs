@@ -38,36 +38,37 @@ public class PortalBullet : MonoBehaviour
             // this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             Invoke("DestroyBullet", 0.5f);
         }
-
-        else if (objectHit.tag == "Moving Platforms")
+        else
         {
-           if (count == 0)
+            if (objectHit.tag == "Moving Platforms")
             {
-                portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
-                Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
-                Portal.createPortal(portalToCreate);
-                portalToCreate.transform.SetParent(objectHit.transform);
-                count = count + 1;
+                if (count == 0)
+                {
+                    Player.updateShootDirection();
+                    portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
+                    Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
+                    Portal.createPortal(portalToCreate);
+                    portalToCreate.transform.SetParent(objectHit.transform);
+                    count = count + 1;
+                }
+                anim.SetBool("hit", true);
+                rb.velocity = Vector2.zero;
+                Invoke("DestroyBullet", 0.5f); //Destroys the bullet on contact
             }
-            anim.SetBool("hit", true);
-            rb.velocity = Vector2.zero;
-            Invoke("DestroyBullet", 0.5f); //Destroys the bullet on contact
-        } 
-        
-        else if (objectHit.tag != "Portal")
-        {
-        if (count == 0)
-        {
-            Debug.Log(objectHit.tag);
-            portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
-            Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
-            Portal.createPortal(portalToCreate);
-
-            count = count + 1;
-        }
-        anim.SetBool("hit", true);
-        rb.velocity = Vector2.zero;
-        Invoke("DestroyBullet", 0.5f); //Destroys the bullet on contact
+            else if (objectHit.tag != "Portal")
+            {
+                if (count == 0)
+                {
+                    Player.updateShootDirection();
+                    portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
+                    Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
+                    Portal.createPortal(portalToCreate);
+                    count = count + 1;
+                }
+                anim.SetBool("hit", true);
+                rb.velocity = Vector2.zero;
+                Invoke("DestroyBullet", 0.5f); //Destroys the bullet on contact
+            }
         }
     }
 
