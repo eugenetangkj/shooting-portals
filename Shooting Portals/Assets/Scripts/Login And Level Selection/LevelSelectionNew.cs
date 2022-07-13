@@ -112,7 +112,7 @@ public class LevelSelectionNew : MonoBehaviour
 
     public void selectLevelEight()
     {
-        PlayerfabLoad.playerLevelSelected = "Level 8";
+        PlayerfabLoad.playerLevelSelected = "Level 8 Pre Cutscene";
         levelChart.SetActive(false);
         acknowledgmentsButton.SetActive(false);
         levelEightInformation.SetActive(true);
@@ -163,7 +163,7 @@ public class LevelSelectionNew : MonoBehaviour
         {
             SceneManager.LoadScene("Loading Screen Forest"); //Supposed to be "Loading Screen Forest"
         }
-        else if (PlayerfabLoad.playerLevelSelected == "Level 6 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 7" || PlayerfabLoad.playerLevelSelected == "Level 8")
+        else if (PlayerfabLoad.playerLevelSelected == "Level 6 Cutscene" || PlayerfabLoad.playerLevelSelected == "Level 7" || PlayerfabLoad.playerLevelSelected == "Level 8 Pre Cutscene")
         {
             SceneManager.LoadScene("Loading Screen Elemental");
         }
