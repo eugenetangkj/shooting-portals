@@ -66726,16 +66726,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 219, y: -88, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 76
-      m_TileSpriteIndex: 80
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 233, y: -88, z: 0}
     second:
       serializedVersion: 2
@@ -81860,7 +81850,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: dbc7dc606f58b374ca5e1841e80623d5, type: 2}
   - m_RefCount: 83
     m_Data: {fileID: 11400000, guid: 38cec067b26581448a3d7a392bec09f2, type: 2}
-  - m_RefCount: 77
+  - m_RefCount: 76
     m_Data: {fileID: 11400000, guid: 3109afadd1ca5bb4dafc2f7e7be92224, type: 2}
   - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 6a22d4e31646745489e8c52a99aaef74, type: 2}
@@ -82055,7 +82045,7 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: c39265a0d5c374f5ba0e1d713f131a2c, type: 3}
   - m_RefCount: 83
     m_Data: {fileID: 21300000, guid: 9170906372345485595c34d5dee2d45d, type: 3}
-  - m_RefCount: 77
+  - m_RefCount: 76
     m_Data: {fileID: 21300000, guid: 9afa48cf458654f758dd526410867ece, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: 21300000, guid: 9c897c1aac02047838b8e1148533bd65, type: 3}
@@ -82082,7 +82072,7 @@ Tilemap:
   - m_RefCount: 76
     m_Data: {fileID: 21300000, guid: 03473d87ab71441b2a0d3603434c58e8, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1513
+  - m_RefCount: 1512
     m_Data:
       e00: 1
       e01: 0
@@ -82965,7 +82955,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 1555
+  - m_RefCount: 1554
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -83642,7 +83632,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 6.413446, y: 0.03265561}
+  m_Offset: {x: 5.951799, y: 0.032655597}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -83653,7 +83643,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.806029, y: 0.7776258}
+  m_Size: {x: 12.882735, y: 0.7776258}
   m_EdgeRadius: 0
 --- !u!1 &927138243
 GameObject:
@@ -88570,7 +88560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490032655}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 216.56, y: -87.26, z: -0.21279003}
+  m_LocalPosition: {x: 215.87, y: -87.32, z: -0.21279003}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
