@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a Stomper, which is the boss in Level 8
 public class Stomper : MonoBehaviour
 {
+    #region Stomper Data
     [SerializeField] private float headStart;
     [SerializeField] private float stomperHorizontalVelocity;
     [SerializeField] private Player player;
     private Rigidbody2D rb;
     private bool canMove;
     private float enemyOriginalYPos;
+    #endregion
 
+    #region Main Methods
     private void Start()
     {
         Invoke("startRunning", headStart);
@@ -20,7 +24,6 @@ public class Stomper : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (canMove)
@@ -40,17 +43,6 @@ public class Stomper : MonoBehaviour
         }
     }
 
-    private void startRunning()
-    {
-        canMove = true;
-    }
-
-    public void stopRunning()
-    {
-        rb.velocity = new Vector2(0f, 0f);
-        canMove = false;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -58,6 +50,22 @@ public class Stomper : MonoBehaviour
             stopRunning();
         }
     }
+    #endregion
 
+    #region Stomper Methods
 
+    //Make stomper start running
+    private void startRunning()
+    {
+        canMove = true;
+    }
+
+    //Make stomper stop running
+    public void stopRunning()
+    {
+        rb.velocity = new Vector2(0f, 0f);
+        canMove = false;
+    }
+
+    #endregion
 }

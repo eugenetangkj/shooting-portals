@@ -156,6 +156,8 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Set Functions
+
+    //Sets horizontal velocity of player
     public void setVelocityX(float velocity)
     {
         workspace.Set(velocity, CurrentVelocity.y);
@@ -163,6 +165,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
+    //Sets vertical velocity of player
     public void setVelocityY(float velocity)
     {
         workspace.Set(CurrentVelocity.x, velocity);
@@ -170,6 +173,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
+    //Sets velocity of player
     public void setVelocity(float velocity, Vector2 angle, int direction)
     {
         angle.Normalize();
@@ -178,6 +182,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
+    //Sets velocity of player to 0
     public void setVelocityZero()
     {
         RB.velocity = Vector2.zero;
@@ -200,6 +205,7 @@ public class Player : MonoBehaviour
         return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
     }
 
+    //Checks if there is a wall behind the player
     public bool CheckIfTouchingWallBack()
     {
         return Physics2D.Raycast(wallCheck.position, Vector2.right * - FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
@@ -225,8 +231,6 @@ public class Player : MonoBehaviour
     {
         return Physics2D.OverlapBox(movableCheck.position, new Vector2(1f, 1f), 0f, playerData.whatIsClimb);
     }
-
-
 
     public bool CheckIfBlockWillTouch()
     {
@@ -265,12 +269,6 @@ public class Player : MonoBehaviour
     {
         return Physics2D.OverlapCircle(this.transform.position, playerData.portalCheckRadius, playerData.whatIsPortal);
     }
-
-
-
-
-
-
 
     public void CheckIfShouldFlip(int xInput)
     {
@@ -424,22 +422,13 @@ public class Player : MonoBehaviour
     {
         if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
-            Debug.Log("Reached1");
             ShootDirection[0] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
-            Debug.Log(ShootDirection[0]);
-            Debug.Log(ShootDirection[1]);
         } else if (ShootDirection[1] == 0)
         {
-            Debug.Log("Reached2");
             ShootDirection[1] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
-            Debug.Log(ShootDirection[0]);
-            Debug.Log(ShootDirection[1]);
         } else {
-            Debug.Log("Reached3");
             ShootDirection[0] = ShootDirection[1];
             ShootDirection[1] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
-            Debug.Log(ShootDirection[0]);
-            Debug.Log(ShootDirection[1]);
         }
     }
     

@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents an EnemyAI that will move towards the player along the horizontal axis if the player
+//enters its vicinity.
 public class EnemyAILeftRight : MonoBehaviour
 {
+    #region EnemyAILeftRight Data
     [SerializeField] private Player player;
 
     [SerializeField] private GameObject enemyToDestroy;
@@ -24,8 +27,9 @@ public class EnemyAILeftRight : MonoBehaviour
     private Vector3 enemyOriginalPos;
     [SerializeField] private float speed = 0.5f;
 
-    // Update is called once per frame
+    #endregion
     
+    #region Main Methods
     private void Start()
     {
         enemyOriginalPos = transform.position;
@@ -83,7 +87,6 @@ public class EnemyAILeftRight : MonoBehaviour
         }
     }
 
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Attack Bullet")
@@ -98,8 +101,14 @@ public class EnemyAILeftRight : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region EnemyAILeftRight Methods
+
+    //Destroys the enemy AI
     private void DestroyEnemy()
     {
         Destroy(enemyToDestroy);
     }
+    #endregion
 }

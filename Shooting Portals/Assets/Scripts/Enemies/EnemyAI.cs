@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents an Enemy AI that will move both horizontally and vertically towards the player if the player
+//enter its vicinity.
 public class EnemyAI : MonoBehaviour
 {
+    #region EnemyAI Data
     [SerializeField] private Player player;
 
     [SerializeField] private GameObject enemyToDestroy;
@@ -22,9 +25,10 @@ public class EnemyAI : MonoBehaviour
 
     private Vector3 enemyOriginalPos;
     [SerializeField] private float speed = 0.5f;
+    #endregion
 
-    // Update is called once per frame
-    
+    #region Main Methods
+
     private void Start()
     {
         enemyOriginalPos = transform.position;
@@ -92,8 +96,13 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Enemy AI Methods
+    //Destroys the enemy AI
     private void DestroyEnemy()
     {
         Destroy(enemyToDestroy);
     }
+    #endregion
 }

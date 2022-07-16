@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+//This class handles the input that will control the Player prefab in game.
 public class PlayerInputHandler : MonoBehaviour
 {
     [SerializeField] private Player player;
 
+    #region Input Variables
     public Vector2 RawMovementInput { get; private set; }
     public int NormInputX { get; private set; }
     public int NormInputY { get; private set; }
@@ -19,16 +22,16 @@ public class PlayerInputHandler : MonoBehaviour
     public bool CanPortalShoot { get; private set; }
     public bool TeleportInput { get; private set; }
     public bool CanTeleport { get; private set; }
+    #endregion
 
-
-
-
+    #region Input Time Variables
     private float inputHoldTime = 0.05f;
     private float jumpInputStartTime;
     private float attackShootInputStartTime;
     private float portalShootInputStartTime;
+    #endregion
 
-
+    #region Main Functions
     private void Start()
     {
         CanShoot = true;
@@ -44,7 +47,11 @@ public class PlayerInputHandler : MonoBehaviour
         CanTeleport = player.CheckIfTouchingPortal() && Portal.checkGotTwoPortals();
         //Debug.Log(Portal.portalCount);
     }
+    #endregion
 
+    #region Input Functions
+
+    //Handles movement input when user presses arrow keys
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         if (! PauseMenu.isGamePaused && ! player.haveCompletedLevel && ! player.InputHandler.TeleportInput)
@@ -58,6 +65,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    //Handles jump input when user presses space
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press jump button
@@ -68,6 +76,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    //Handles grab input when user presses z
     public void OnGrabInput(InputAction.CallbackContext context)
     {
         if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press z button
@@ -77,13 +86,13 @@ public class PlayerInputHandler : MonoBehaviour
             GrabInput = (GrabInput == true) ? false : true;
             }
         }
-        Debug.Log(GrabInput);
         // if (context.canceled) //release z button
         // {
         //     GrabInput = false;
         // }
     }
 
+    //Handles attack input when user presses c
     public void OnAttackShootInput(InputAction.CallbackContext context)
     {
         if (context.started && CanShoot && CanPortalShoot &&
@@ -96,7 +105,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-
+    //Handles portal shoot input when user presses v
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
         if (context.started && CanShoot && CanPortalShoot
@@ -109,6 +118,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    //Handles teleport input when user presses up arrow key
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
         if (context.started && CanTeleport && (Portal.portalCount == 2)
@@ -127,6 +137,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    //Handles destroy portals input when user presses b
     public void OnDestroyAllPortalsInput(InputAction.CallbackContext context)
     {
         if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press d, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
@@ -137,7 +148,7 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
 
-
+    //Handles push input when user presses x
     public void OnPushInput(InputAction.CallbackContext context)
     {
         if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && ! player.InputHandler.TeleportInput) //press x
@@ -151,16 +162,31 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    #endregion
 
+    #region Use Input Functions
 
-
-
-
-
-
-
+    //Consumes jump input
     public void UseJumpInput() => JumpInput = false;
 
+    //Consumes attack input
+    public void UseAttackShootInput() => AttackShootInput = false;
+
+    //Consumes portal shoot input
+    public void UsePortalShootInput() => PortalShootInput = false;
+
+    //Consumes teleport input
+    public void UseTeleportInput() => TeleportInput = false;
+
+    //Consumes push input
+    public void UsePushInput() => TeleportInput = false;
+
+
+    #endregion
+
+    #region Check Input Hold Time Functions
+
+    //Holds jump input true for a short period of time when user input is detected, setting it false thereafter
     private void CheckJumpInputHoldTime()
     {
         if (Time.time >= jumpInputStartTime + inputHoldTime)
@@ -169,16 +195,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    public void UseAttackShootInput() => AttackShootInput = false;
-
-    public void UsePortalShootInput() => PortalShootInput = false;
-
-    public void UseTeleportInput() => TeleportInput = false;
-
-    public void UsePushInput() => TeleportInput = false;
-
-
-
+    //Holds attack shoot input true for a short period of time when user input is detected, setting it false thereafter
     private void CheckAttackShootInputHoldTime()
     {
         if (Time.time >= attackShootInputStartTime + inputHoldTime)
@@ -188,6 +205,7 @@ public class PlayerInputHandler : MonoBehaviour
         
     }
 
+    //Holds portal shoot input true for a short period of time when user input is detected, setting it false thereafter
     private void CheckPortalShootInputHoldTime()
     {
         if (Time.time >= portalShootInputStartTime + inputHoldTime)
@@ -196,15 +214,21 @@ public class PlayerInputHandler : MonoBehaviour
         }
         
     }
+    #endregion
 
+    #region Shoot Functions
+
+    //Allow for player to attack shoot
     private void changeCanShoot()
     {
         CanShoot = true;
     }
 
+    //Allow for player to portal shoot
     private void changeCanPortalShoot()
     {
         CanPortalShoot = true;
     }
+    #endregion
 
 }

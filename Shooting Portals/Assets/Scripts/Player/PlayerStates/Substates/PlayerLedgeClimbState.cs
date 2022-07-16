@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class encapsulates the state of the player doing a ledge climb
 public class PlayerLedgeClimbState : PlayerState
 {
     private Vector2 detectedPos;
@@ -77,12 +78,12 @@ public class PlayerLedgeClimbState : PlayerState
                 //Include if want to ledge climb
                 // isClimbing = true;
                 // player.Anim.SetBool("climbLedge", true);   
-            } else if (yInput == -1 && isHanging && !isClimbing)
+            } else if (yInput == -1 && isHanging && !isClimbing) //Player presses down arrow key
             {
                 player.InputHandler.GrabInput = false;
                 stateMachine.ChangeState(player.InAirState);
             }
-             else if (xInput == -player.FacingDirection && isHanging && !isClimbing)
+             else if (xInput == -player.FacingDirection && isHanging && !isClimbing) //Player presses the left/right arrow key, opposite to facing direction
             {
                 player.InputHandler.GrabInput = false;
                 stateMachine.ChangeState(player.InAirState);

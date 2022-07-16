@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class encapsulates the state of the player attacking while in air.
 public class PlayerAttackJumpState : PlayerAbilityState
 {
     public PlayerAttackJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)

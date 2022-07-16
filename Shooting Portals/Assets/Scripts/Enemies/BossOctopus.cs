@@ -2,6 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This class represents the Boss Octopus in Level 10.
+    Health distribution:
+    Room 1: 5
+    Room 2: 5
+    Room 3: 6
+    Room 4: 5
+    Room 5: 7
+    Room 6: 8
+    Room 7: 7
+    Room 8: 7
+    Total: 50
+
+    Each hit is worth 2 health.
+*/
 public class BossOctopus : MonoBehaviour
 {
     #region Octopus Variables
@@ -71,6 +85,7 @@ public class BossOctopus : MonoBehaviour
 
     #endregion
 
+    #region Main Methods
     private void Awake()
     {
         anim = this.GetComponent<Animator>();
@@ -145,7 +160,11 @@ public class BossOctopus : MonoBehaviour
         InvokeRepeating("makeRandomTargetAppear", timeTakenForFirstTarget, timeBetweenTargets);
         InvokeRepeating("spawnBabyOctopus", timeTakenForFirstBaby, timeBetweenBabies);
     }
+    #endregion
 
+    #region Boss Octopus Methods
+
+    //Randomly generates the vital points and targets on the Boss Octopus
     private void makeRandomTargetAppear()
     {
         //Only let targets appear if boss octopus is not healing
@@ -161,7 +180,7 @@ public class BossOctopus : MonoBehaviour
         }
     }
 
-
+    //Causes all vital points and targets on the Boss Octopus to disappear
     private void makeTargetsDisappear()
     {
         for (int i = 0; i < 2; i = i + 1)
@@ -170,11 +189,14 @@ public class BossOctopus : MonoBehaviour
         }
     }
 
+    //Spawns the Boss Octopus in the corresponding room
     public void spawnBossOctopus(int roomDetected)
     {
         this.transform.position = new Vector2(spawnPositions[roomDetected - 1, 0], spawnPositions[roomDetected - 1, 1]);
     }
 
+    
+    //Spawns a Baby Octopus instance
     private void spawnBabyOctopus()
     {
         Vector2 spawnBabyOctopusPosition = new Vector2(this.transform.position.x - 3f, this.transform.position.y);
@@ -182,6 +204,7 @@ public class BossOctopus : MonoBehaviour
         babyOctopusSpawned.GetComponent<BabyOctopus>().setPlayer(player);
     }
 
+    //Does damage to the Boss Octopus
     public void doDamage()
     {
         bossHit.Play();
@@ -193,6 +216,7 @@ public class BossOctopus : MonoBehaviour
         slimeBlastSpawned.GetComponent<SlimeBlast>().shootTowardsPlayer(player);
     }
 
+    //Boss octopus has been hit, so this method prevents player from attacking it while it is recovering
     public void activateHealing()
     {
         currentlyHealing = true;
@@ -200,6 +224,7 @@ public class BossOctopus : MonoBehaviour
         makeTargetsDisappear();
     }
 
+    //Boss octopus has recovered and this method allows player to start hitting it again
     public void deactivateHealing()
     {
         currentlyHealing = false;
@@ -207,11 +232,16 @@ public class BossOctopus : MonoBehaviour
         hitAnimation.SetActive(false);
     }
 
+    //Sets the position for the slimeblast to be created, either at the position of target 1 or target 2
+    //depending on where the player has shot
     public void setTargetSpawnArea(int targetNumber)
     {
         targetToSpawnSlimeBlast = targetNumber;
     }
 
+
+    //Causes the octopus to disappear. If health is not yet 0, the boss octopus will spawn in the next room. 
+    //If health is 0, boss octopus will no longer spawn.
     private void makeOctopusDisappear()
     {
         if (currentHealth != 0)
@@ -232,36 +262,18 @@ public class BossOctopus : MonoBehaviour
         }
     }
 
+    //Despawns the Boss Octopus
     private void despawnOctopus()
     {
         this.gameObject.SetActive(false);
         CancelInvoke();
     }
 
+    //Keeps track of the number of hits that the Boss Octopus has suffered thus far
     public void increaseHit()
     {
         this.numberOfHits += 1;
     }
-
+    #endregion
     
-
-
-
-    
-
-
-
-
-    /*
-    Room 1: 5
-    Room 2: 5
-    Room 3: 6
-    Room 4: 5
-    Room 5: 7
-    Room 6: 8
-    Room 7: 7
-    Room 8: 7
-
-    Total: 50
-    */
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class contains the logic for making a platform moving horizontally between 2 waypoints if and only if a sensor is activated.
 public class TrapActivatedWaypointFollower : MonoBehaviour
 {
     [SerializeField] private GameObject[] waypoints;
@@ -14,7 +15,7 @@ public class TrapActivatedWaypointFollower : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (shouldMove) 
+        if (shouldMove) //Sensor-activated
         {
             MovePlatform();
         }

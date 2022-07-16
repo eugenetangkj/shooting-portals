@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents an ability state of the player.
 public class PlayerAbilityState : PlayerState
 {
     protected bool isAbilityDone;
@@ -38,7 +39,7 @@ public class PlayerAbilityState : PlayerState
         base.LogicUpdate();
         if (isAbilityDone)
         {
-            if (isGrounded && player.CurrentVelocity.y < 0.01f)
+            if (isGrounded && player.CurrentVelocity.y < 0.01f) //On ground but no y-input by player
             {
                 stateMachine.ChangeState(player.IdleState);
             }

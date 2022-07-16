@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents an ice shard trap in Level 8
 public class IceShard : MonoBehaviour
 {
     private Vector2 originalPos;
@@ -10,10 +11,10 @@ public class IceShard : MonoBehaviour
 
 
     private Animator anim;
-    [SerializeField] private float shardVerticalSpeed = 4f;
+    [SerializeField] private float shardVerticalSpeed = 4f; //Speed at which ice shard drops
 
 
-    void Start()
+    private void Start()
     {
         originalPos = this.transform.position;
         shouldReset = true;
@@ -22,21 +23,20 @@ public class IceShard : MonoBehaviour
         anim = this.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (shouldReset)
         {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f); //Sets ice shard to be stationary
             isReseting = false;
-            this.transform.position = originalPos;
+            this.transform.position = originalPos; //Brings ice shard back to original position
             anim.SetBool("destroy", false);
             toggleShouldReset();
 
         }
         else if (! shouldReset && ! isReseting)
         {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, - shardVerticalSpeed);
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, - shardVerticalSpeed); //Moves ice shard downwards vertically
         }
     }
 
@@ -47,7 +47,8 @@ public class IceShard : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "JumpableGround")
+        //If ice shard touches ground, stop moving downwards and play shatter animation
+        if (collision.tag == "JumpableGround") 
         {
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             isReseting = true;

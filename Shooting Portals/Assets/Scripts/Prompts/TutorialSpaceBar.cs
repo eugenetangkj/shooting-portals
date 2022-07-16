@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class activates the Tutorial Prompt if player enters the vicinity
 public class TutorialSpaceBar : Tutorial
 {
     protected override void OnTriggerEnter2D(Collider2D collision)

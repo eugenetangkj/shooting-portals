@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a detector for an EnemyAIInverted instance. If the player enters into its collider,
+//it will activate the EnemyAiInvertedInstance.
 public class EnemyAIInvertedDetector : MonoBehaviour
 {
     [SerializeField] EnemyAIInverted enemy;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class handles the logic for shaky platforms
 public class CheckFallingPlatform : MonoBehaviour
 {
     [SerializeField] private LayerMask playerLayer;
@@ -9,8 +10,8 @@ public class CheckFallingPlatform : MonoBehaviour
     [SerializeField] GameObject detector;
     
     [SerializeField] AudioSource platformFallSound;
-    [SerializeField] float restoreDuration;
-    [SerializeField] float inAirDuration;
+    [SerializeField] float restoreDuration; //Time between spawning of shaky platforms
+    [SerializeField] float inAirDuration; //Time that shaky platform will shake before dropping
 
 
     private bool canToggle = true;
@@ -28,6 +29,7 @@ public class CheckFallingPlatform : MonoBehaviour
     }
 
 
+    //Make shaky platform fall
     private void makePlatformFall()
     {
         platformFallSound.Play();
@@ -37,6 +39,7 @@ public class CheckFallingPlatform : MonoBehaviour
         platform.fall();
     }
 
+    //Restores shaky platform to its original position
     private void restorePlatform()
     {
         platform.restore();

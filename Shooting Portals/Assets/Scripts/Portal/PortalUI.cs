@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This class handles the logic of syncing the Portal Count UI with the Portal class
 public class PortalUI : MonoBehaviour
 {
     [SerializeField] private Image portalOne;

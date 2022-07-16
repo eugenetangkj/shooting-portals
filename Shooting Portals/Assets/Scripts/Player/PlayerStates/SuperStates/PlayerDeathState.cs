@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents the death state of the player
 public class PlayerDeathState : PlayerState
 {
     private bool playedSoundBefore = false;
@@ -18,10 +19,10 @@ public class PlayerDeathState : PlayerState
         player.defeatedSound.Play();
         }
         player.pushSound.Stop();
-        player.setVelocityZero();
+        player.setVelocityZero(); //Set velocity of player to be 0
         base.Enter();
-        Portal.portalCount = 0;
-        player.Invoke("restartLevel", 2.5f);
+        Portal.portalCount = 0; //Resets portal count
+        player.Invoke("restartLevel", 2.5f); //Restarts level
     }
 
     public override void Exit()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents an object that will only disappear and have its collider set to inactive when two sensors are activated
 public class DoorForTwo : MonoBehaviour
 {
     [SerializeField] private SensorForDoorTwo sensorOne;

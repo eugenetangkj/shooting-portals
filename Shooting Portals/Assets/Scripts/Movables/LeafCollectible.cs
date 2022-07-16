@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a leaf used in the collectible puzzle of Level 3
 public class LeafCollectible : MonoBehaviour
 {
+    #region Leaf Data
     public static float startTime;
     public bool hasTaken {get; private set;}
     private Animator anim;
     public static bool newSet = true;
     [SerializeField] private AudioSource collectAudio;
+    #endregion
 
-    void Start()
+    #region Main Methods
+    private void Start()
     {
         hasTaken = false;
         anim = this.GetComponent<Animator>();
@@ -32,6 +36,10 @@ public class LeafCollectible : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Leaf Methods
+    //Makes the leaf appear
     public void makeLeafAppear()
     {
         if (hasTaken)
@@ -40,4 +48,5 @@ public class LeafCollectible : MonoBehaviour
         hasTaken = false;
         }    
     }
+    #endregion
 }

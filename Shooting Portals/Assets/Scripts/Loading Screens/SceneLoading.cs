@@ -6,6 +6,8 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 
+//This class is an abstract class that handles the logic for loading screens. Its child classes will handle the corresponding
+//transitions depending on the levels that they are responsible for.
 public abstract class SceneLoading : MonoBehaviour
 {
     protected int playerCurrLevel;

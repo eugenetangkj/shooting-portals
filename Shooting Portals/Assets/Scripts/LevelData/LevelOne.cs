@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class contains the spawn positions for the player in Level 1.
 public class LevelOne : LevelData
 {
     private float[,] spawnPositions = new float[,]

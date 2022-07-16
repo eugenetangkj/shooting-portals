@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class encapsulates the state in which the player is pushing a movable block
 public class PlayerPushState : PlayerGroundedState
 {
 
@@ -60,7 +61,7 @@ public class PlayerPushState : PlayerGroundedState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        if (player.InputHandler.NormInputX != 0)
+        if (player.InputHandler.NormInputX != 0) //Player is holding a movable block and pushing
         {
             player.Anim.SetInteger("pushMove", 1);
             if (! pushingSound.isPlaying)
@@ -68,7 +69,7 @@ public class PlayerPushState : PlayerGroundedState
                 pushingSound.Play();
             }
         }
-        else
+        else //Player is holding a movable block and not pushing
         {
             player.Anim.SetInteger("pushMove", 0);
             pushingSound.Stop();

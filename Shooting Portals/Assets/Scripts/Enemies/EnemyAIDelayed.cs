@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This class represents an enemy AI that will move towards the player in both vertical and horizontal axes if the player
+   enters its vicinity, but it does so in a delayed manner. Player's position is only fed to this enemy AI every few seconds,
+   instead of every frame. */
 public class EnemyAIDelayed : MonoBehaviour
 {
+    #region EnemyAIDelayed Data
     [SerializeField] private Player player;
 
     private Vector2 playerPos;
@@ -19,8 +23,9 @@ public class EnemyAIDelayed : MonoBehaviour
     [SerializeField] private float speed = 0.5f;
     [SerializeField] private float delay = 5f;
 
-    // Update is called once per frame
-    
+    #endregion
+
+    #region Main Methods
     private void Start()
     {
         enemyOriginalPos = transform.position;
@@ -30,11 +35,7 @@ public class EnemyAIDelayed : MonoBehaviour
         InvokeRepeating("trackPlayer", 0.01f, delay);
     }
 
-    private void trackPlayer()
-    {
-        playerPos = player.transform.position;
-    }
-
+ 
 
 
 
@@ -79,4 +80,17 @@ public class EnemyAIDelayed : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    #region EnemyAIDelayed Methods
+
+    //Supplies the player's current position to the enemy AI, but it is only called every few seconds
+    private void trackPlayer()
+    {
+        playerPos = player.transform.position;
+    }
+
+    #endregion
+
 }

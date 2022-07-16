@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a sensor that would activate a TrapActivatedWaypointFollower
 public class Sensor : MonoBehaviour
 {
     [SerializeField] private TrapActivatedWaypointFollower trapActivatedWaypointFollower;
@@ -13,7 +14,7 @@ public class Sensor : MonoBehaviour
         
         if (collision.gameObject.tag == "Sensor")
         {
-            trapActivatedWaypointFollower.shouldMove = true;
+            trapActivatedWaypointFollower.shouldMove = true; //When movable block moves over it
         }
     }
 
@@ -21,7 +22,7 @@ public class Sensor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sensor")
         {
-            trapActivatedWaypointFollower.shouldMove = false;
+            trapActivatedWaypointFollower.shouldMove = false; //When movable block moves away from it
         }
     }
 }

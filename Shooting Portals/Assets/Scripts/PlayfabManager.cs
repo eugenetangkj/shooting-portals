@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+//This class handles the functionality for the login interface.
 public class PlayfabManager : MonoBehaviour
 {
     //To obtain the content from the buttons and fields

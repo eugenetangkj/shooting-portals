@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class encapsulates the wall jump state of the player.
 public class PlayerWallJumpState : PlayerAbilityState
 {
     private int wallJumpDirection;
@@ -34,7 +35,7 @@ public class PlayerWallJumpState : PlayerAbilityState
     {
         if (isTouchingWall)
         {
-            wallJumpDirection = - player.FacingDirection;
+            wallJumpDirection = - player.FacingDirection; //Jumps in the opposite direction of the wall
         } else
         {
             wallJumpDirection = player.FacingDirection;

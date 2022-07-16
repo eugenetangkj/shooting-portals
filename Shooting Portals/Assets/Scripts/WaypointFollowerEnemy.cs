@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class is responsible for making an enemy move horizontally between 2 waypoints.
 public class WaypointFollowerEnemy : MonoBehaviour
 {
     [SerializeField] private GameObject[] waypoints;

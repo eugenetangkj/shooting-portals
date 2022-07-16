@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
+//This class handles the logic for saving new player bindings and retrieving previously saved player bindings when the player logs in again
 public class GetControls: MonoBehaviour
 {
     [SerializeField] private InputActionAsset actions;
@@ -20,6 +20,7 @@ public class GetControls: MonoBehaviour
     //     PlayerfabLoad.updatePlayerBindings(rebinds);
     // }
 
+    //Updates the new key bindings
     public void UpdateKeys()
     {
         var rebinds = actions.SaveBindingOverridesAsJson();
@@ -31,6 +32,7 @@ public class GetControls: MonoBehaviour
         Invoke("GetKeysActual", 1f);
     }
 
+    //Retrieves the player bindings from Playfab
     public void GetKeysActual()
     {
         var existingRebinds = PlayerfabLoad.playerBindings;

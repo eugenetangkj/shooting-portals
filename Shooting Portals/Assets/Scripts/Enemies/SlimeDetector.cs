@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a detector for an EnemyAILeftRight. If player enters its collider, it activates its associated EnemyAILeftRight to move towards the player.
 public class SlimeDetector : MonoBehaviour
 {
     [SerializeField] EnemyAILeftRight slime;
