@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a detector for EnemyAIDelayed. If player enters into its vicinity, it will activate its associated EnemyAIDelayed to move
+//towards the player.
 public class JumperDetector : MonoBehaviour
 {
     [SerializeField] EnemyAIDelayed jumper;

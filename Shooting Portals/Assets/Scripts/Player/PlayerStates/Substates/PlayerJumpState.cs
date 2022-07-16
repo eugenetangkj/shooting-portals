@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This state encapsulates the player state of jumping
 public class PlayerJumpState : PlayerAbilityState
 {
     public PlayerJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -19,7 +20,7 @@ public class PlayerJumpState : PlayerAbilityState
         player.jumpSound.Play();
         player.InputHandler.UseJumpInput();
         player.InputHandler.GrabInput = false;
-        player.setVelocityY(playerData.jumpVelocity);
+        player.setVelocityY(playerData.jumpVelocity); //Sets velocity upwards
         isAbilityDone = true;
     }
 

@@ -6,6 +6,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 
+//This class handles the scene transitions for levels associated with the Industrial Loading Screen.
 public class SceneLoadingIndustrial : SceneLoading
 {
     [SerializeField] private Image progressBar;

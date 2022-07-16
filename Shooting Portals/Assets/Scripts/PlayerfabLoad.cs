@@ -4,7 +4,7 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 
-//This class handles API requests to get and/or update player's level and checkpoints
+//This class handles API requests to get and/or update player's level, checkpoints and customisable controls
 //as the player progresses through the game.
 public class PlayerfabLoad : MonoBehaviour
 {
@@ -123,7 +123,6 @@ public class PlayerfabLoad : MonoBehaviour
     }
 
     #endregion
-
 
     #region Other Functions
     //Runs when player's level data is updated successfully

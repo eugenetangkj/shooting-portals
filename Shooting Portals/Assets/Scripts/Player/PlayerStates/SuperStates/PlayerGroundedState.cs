@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents the state of the player being on the ground
 public class PlayerGroundedState : PlayerState
 {
     protected int xInput;
@@ -67,33 +68,33 @@ public class PlayerGroundedState : PlayerState
 
 
 
-        if (jumpInput && ! pushInput)
+        if (jumpInput && ! pushInput) //Player wants to jump and is not pushing
         {
             stateMachine.ChangeState(player.JumpState);
         }
-        else if (isTouchingWall && grabInput)
+        else if (isTouchingWall && grabInput) //Player is touching a wall and wants top wall grab
         {
             stateMachine.ChangeState(player.WallGrabState);
         }
-        else if (teleportInput)
+        else if (teleportInput) //Player wants to teleport
         {
             stateMachine.ChangeState(player.TeleportState);
         }
-        else if (attackShootInput && ! pushInput) //NEW
+        else if (attackShootInput && ! pushInput) //Player wants to attack shoot and is not pushing
         {   stateMachine.ChangeState(player.AttackShootState);
         }
-         else if (portalShootInput && !pushInput) //NEW
+         else if (portalShootInput && !pushInput) //Player wants to portal shoot and is not pushing
         {
             stateMachine.ChangeState(player.PortalShootState);
         }  
-        else if (isTouchingMovable && ! pushInput)
+        else if (isTouchingMovable && ! pushInput) //Player is touching a movable block but does not want to push
         {
             stateMachine.ChangeState(player.IdleState);
-        } else if (player.isInPushState && ! pushInput)
+        } else if (player.isInPushState && ! pushInput) //Player is pushing and toggles X, means does not want to push
         {
             stateMachine.ChangeState(player.IdleState);
         }
-        else if (isTouchingMovable && pushInput)
+        else if (isTouchingMovable && pushInput) //Player is touching a movable and wants to push
         {
             stateMachine.ChangeState(player.PushState);
         }

@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//This class is responsible for the logic update after the playing of a cutscene
 public class AfterCutScene : MonoBehaviour
 {
-    [SerializeField] private int levelToUpdate;
-    [SerializeField] private float timelineDuration;
-    [SerializeField] private string playerLevelSelected;
-    [SerializeField] private string sceneToLoad;
+    #region AfterCutScene Data
+    [SerializeField] private int levelToUpdate; //Level to update for player after cutscene
+    [SerializeField] private float timelineDuration; //Duration of the timeline
+    [SerializeField] private string playerLevelSelected; //Desired level after the cutscene
+    [SerializeField] private string sceneToLoad; //Loading screen to transition into, after the cutscene
 
+    #endregion
 
-
-    void Start()
+    private void Start()
     {
         Invoke("nextLevel", timelineDuration);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         //Skips cutscene if player presses space
         if (Input.GetKeyDown(KeyCode.Space))
@@ -28,6 +30,7 @@ public class AfterCutScene : MonoBehaviour
     }
 
 
+    //Handles the logic after the playing of a cutscene. It updates the player's level if necessary, and loads into the corresponding loading screen
     private void nextLevel()
     {
         //Updates the player's level stored on Playfab

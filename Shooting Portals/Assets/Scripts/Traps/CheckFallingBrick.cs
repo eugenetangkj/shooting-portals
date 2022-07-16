@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class handles the logic of making the block traps fall and spawn in Level 2
 public class CheckFallingBrick : MonoBehaviour
 {
     [SerializeField] private LayerMask playerLayer;
@@ -16,7 +17,7 @@ public class CheckFallingBrick : MonoBehaviour
 
     private void Update()
     {
-        shouldFall = Physics2D.OverlapCircle(this.transform.position, 2f, playerLayer);
+        shouldFall = Physics2D.OverlapCircle(this.transform.position, 2f, playerLayer); //Checks if player enters the vicinity and that the blocks should be present in their original positions
         if (shouldFall && canToggle)
         {
             canToggle = false;
@@ -26,7 +27,7 @@ public class CheckFallingBrick : MonoBehaviour
         } 
     }
 
-
+    //Make both bricks fall downwards
     private void makeBricksFall()
     {
         brickFallSound.Play();
@@ -35,6 +36,7 @@ public class CheckFallingBrick : MonoBehaviour
         timer.GetComponent<Animator>().SetBool("appear", false);
     }
 
+    //Restores both bricks to original positions
     private void restoreBricks()
     {
         brickOne.restore();

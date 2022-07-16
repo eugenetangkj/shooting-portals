@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents an active GameObject that will be set to inactive once all the collectibles in the array have been collected.
 public class OrbObstacle : MonoBehaviour
 {
     [SerializeField] private Orb[] orbs;
@@ -14,12 +15,12 @@ public class OrbObstacle : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         bool intermediateDisappear = true;
         foreach (Orb orb in orbs)
         {
-            intermediateDisappear = intermediateDisappear && orb.hasTouched;
+            intermediateDisappear = intermediateDisappear && orb.hasTouched; //False as long as one collectible has yet to be collected.
         }
         if (intermediateDisappear)
         {
@@ -29,6 +30,7 @@ public class OrbObstacle : MonoBehaviour
         }
     }
 
+    //Sets the current instance to be inactive in the scene
     private void obstacleDisappear()
     {
         this.gameObject.SetActive(false);

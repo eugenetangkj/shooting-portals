@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//This class encapsulates the Pause Menu used in the levels.
 public class PauseMenu : MonoBehaviour
 {
     public static bool isGamePaused = false;
@@ -20,19 +21,19 @@ public class PauseMenu : MonoBehaviour
         {
             if (isGamePaused)
             {
-                //Game is already paused. Pressing p will
-                //resume the game
+                //Game is already paused. Pressing p will resume the game
                 Resume();
             } else
             {
-                //Game is not paused. Pressing p will
-                //pause the game
+                //Game is not paused. Pressing p will pause the game
                 Pause();
             }
         }
     }
 
     #region Resume and Pause Functions
+
+    //Resumes the game
     public void Resume()
     {
         //Disables all active menus
@@ -44,6 +45,7 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
     }
 
+    //Pauses the game
     private void Pause()
     {
         pauseMenuUI.SetActive(true); //Enables the pause menu

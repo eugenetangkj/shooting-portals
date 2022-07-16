@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class will make a GameObject inactive, and another active in scene if the player enters its vicinity.
 public class WheelTransition : MonoBehaviour
 {
     [SerializeField] private GameObject trapDisappear;

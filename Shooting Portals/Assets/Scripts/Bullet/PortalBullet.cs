@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a Portal Bullet instance, which will be instantiated whenever Pulse shoots, or presses V.
 public class PortalBullet : MonoBehaviour
 {
+    #region Portal Bullet Data
     [SerializeField] float bulletSpeed = 20f;
     [SerializeField] GameObject portalPrefab;
     private Rigidbody2D rb;
@@ -15,8 +17,10 @@ public class PortalBullet : MonoBehaviour
     private Vector2 portalPos;
     private float portalYoffset = 0.6f;
 
-    
-    void Start()
+    #endregion
+
+    #region Main Methods
+    private void Start()
     {
         bulletSpawnTime = Time.time;
         rb = GetComponent<Rigidbody2D>();
@@ -24,12 +28,12 @@ public class PortalBullet : MonoBehaviour
         rb.velocity = transform.right * bulletSpeed;
     }
 
-    void Update()
+    private void Update()
     {
         checkBulletExpiry();
     }
 
-    void OnTriggerEnter2D(Collider2D objectHit)
+    private void OnTriggerEnter2D(Collider2D objectHit)
     {
         if (objectHit.tag == "Portal Breaker" || objectHit.tag == "Movables" || objectHit.tag == "Sensor" || objectHit.tag == "Shaky Platforms" || objectHit.tag == "Player Sensor")
         {
@@ -72,12 +76,17 @@ public class PortalBullet : MonoBehaviour
         }
     }
 
-    void DestroyBullet()
+    #endregion
+
+    #region Portal Bullet Methods
+    //Destroys the portal bullet instance
+    private void DestroyBullet()
     {
         Destroy(gameObject);
     }
 
-    void checkBulletExpiry()
+    //Checks if the portal bullet instance is alive for longer than it should have been. If so, it calls DestroyBullet to destroy it.
+    private void checkBulletExpiry()
     {
         if (Time.time > bulletSpawnTime + bulletLifeSpan)
         {
@@ -86,5 +95,7 @@ public class PortalBullet : MonoBehaviour
             Invoke("DestroyBullet", 0.5f); //Destroys the bullet on contact
         }
     }
+    
+    #endregion
     
 }

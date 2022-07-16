@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class contains the spawn positions for the player in Level 8.
 public class LevelEight : LevelData
 {
     private float[,] spawnPositions = new float[,]

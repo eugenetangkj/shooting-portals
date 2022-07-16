@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class encapsulates the state of the player shooting a portal while in the air
 public class PlayerPortalShootJumpState : PlayerAbilityState
 {
     public PlayerPortalShootJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)

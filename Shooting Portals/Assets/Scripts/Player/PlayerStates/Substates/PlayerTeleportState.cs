@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class encapsulates the state of the player teleporting
 public class PlayerTeleportState : PlayerAbilityState
 {
     public PlayerTeleportState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -31,26 +32,22 @@ public class PlayerTeleportState : PlayerAbilityState
         //player.transform.position = Portal.getPositionToTeleport(); //Teleports the player
 
         float offsetRequired = 0;
+
+        //Generates the required offset
         if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2" && player.InputHandler.PushInput) //Go from portal 2 to portal 1
         {
-            //Debug.Log("Reached1");
-            //Debug.Log("1. Player Shoot Direction: " + Player.ShootDirection[1]);
             offsetRequired = Player.ShootDirection[1] * -1.25f;
         }
         else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1" && player.InputHandler.PushInput) //Go from portal 1 to portal 2
         {
-            //Debug.Log("Reached1");
             offsetRequired = Player.ShootDirection[0] * -1.25f;
-            //Debug.Log("2. Player Shoot Direction: " + Player.ShootDirection[0]);
         }
         else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 2")
         {
-            //Debug.Log("Reached2");
             offsetRequired = Player.ShootDirection[1] * -0.1f; 
         }
         else if (Portal.portalToTeleportTo.gameObject.tag == "Portal 1")
         {
-            //Debug.Log("Reached2");
             offsetRequired = Player.ShootDirection[0] * -0.1f; ; //Player.ShootDirection[0] * -0.01f; 
         }
         

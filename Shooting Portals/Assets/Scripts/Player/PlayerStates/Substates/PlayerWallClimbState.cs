@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents the wall climb state of the player.
 public class PlayerWallClimbState : PlayerTouchingWallState
 {
 
@@ -30,7 +31,7 @@ public class PlayerWallClimbState : PlayerTouchingWallState
         if (!isExitingState)
         {
             player.setVelocityY(playerData.wallClimbVelocity);
-            if (yInput != 1)
+            if (yInput != 1) //Player is not pressing the up arrow key
             {
                 stateMachine.ChangeState(player.WallGrabState);
             }

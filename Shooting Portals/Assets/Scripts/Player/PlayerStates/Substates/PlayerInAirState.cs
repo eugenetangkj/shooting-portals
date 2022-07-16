@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class encapsulates the state of the player being in air.
 public class PlayerInAirState : PlayerState
 {
     private bool isGrounded;

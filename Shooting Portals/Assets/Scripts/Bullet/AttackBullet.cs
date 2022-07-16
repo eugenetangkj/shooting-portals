@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This class represents an Attack Bullet object, which is instantiated whenever Pulse shoots, or presses C. */
 public class AttackBullet : MonoBehaviour
 {
+    #region Attack Bullet Data
     [SerializeField] float bulletSpeed = 20f;
     private Rigidbody2D rb;
     private Animator anim;
     private float bulletLifeSpan = 0.4f;
     private float bulletSpawnTime;
+
+    #endregion
     
-    void Start()
+    #region Main Methods
+    private void Start()
     {
         bulletSpawnTime = Time.time;
         rb = GetComponent<Rigidbody2D>();
@@ -18,24 +23,33 @@ public class AttackBullet : MonoBehaviour
         rb.velocity = transform.right * bulletSpeed;
     }
 
-    void Update()
+    private void Update()
     {
         checkBulletExpiry();
     }
 
-    void OnTriggerEnter2D(Collider2D objectHit)
+    private void OnTriggerEnter2D(Collider2D objectHit)
     {
         anim.SetBool("hit", true);
         rb.velocity = Vector2.zero;
         Invoke("DestroyBullet", 0.4f); //Destroys the bullet on contact
     }
 
-    void DestroyBullet()
+    #endregion
+
+    #region Attack Bullet Methods
+
+    //Destroys the attack bullet instance
+    private void DestroyBullet()
     {
         Destroy(gameObject);
     }
 
-    void checkBulletExpiry()
+
+
+
+    //Checks if an attack bullet is alive for longer than it should have been. If so, it will call DestroyBullet() which will destroy the attack bullet instance
+    private void checkBulletExpiry()
     {
         if (Time.time > bulletSpawnTime + bulletLifeSpan)
         {
@@ -44,5 +58,7 @@ public class AttackBullet : MonoBehaviour
             Invoke("DestroyBullet", 0.4f); //Destroys the bullet on contact
         }
     }
+
+    #endregion
     
 }

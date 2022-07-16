@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a detector that detects if the player is in push state. If the player is in push state, its collider will get activated, preventing
+//the player from being able to move a movable block off a ledge.
 public class MovableDetector : MonoBehaviour
 {
 

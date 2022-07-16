@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
+//This class plays the associated timeline 4 seconds after it is instantiated.
 public class PlayTransition : MonoBehaviour
 {
     [SerializeField] PlayableDirector director;

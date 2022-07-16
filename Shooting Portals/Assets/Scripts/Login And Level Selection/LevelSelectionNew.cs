@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//This class handles the logic for the Level Selection scene
 public class LevelSelectionNew : MonoBehaviour
 {
     #region Level Information Variables
@@ -147,8 +148,9 @@ public class LevelSelectionNew : MonoBehaviour
     }
     #endregion
 
-
     #region Enter and Back Functions
+    
+    //Functionality for Enter Button
     public void enterButton()
     {
         if (PlayerfabLoad.playerLevelSelected == "Intro" || PlayerfabLoad.playerLevelSelected == "Outro")
@@ -173,6 +175,7 @@ public class LevelSelectionNew : MonoBehaviour
         }
     }
 
+    //Functionality for Back Button
     public void backButton()
     {
         currentlySelected.SetActive(false);

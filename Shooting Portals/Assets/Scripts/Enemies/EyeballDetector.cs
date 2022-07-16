@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a detector for EnemyAI. If player enters its collider, it will activate its associated EnemyAI to move towards the player.
 public class EyeballDetector : MonoBehaviour
 {
     [SerializeField] EnemyAI eyeball;

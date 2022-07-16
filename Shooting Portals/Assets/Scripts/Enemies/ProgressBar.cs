@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This class represents a progress bar that tracks the distance between a GameObject's current x position
+//and the destination's x position.
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
@@ -12,7 +14,6 @@ public class ProgressBar : MonoBehaviour
     private float valuePerCoordinate; //How much to increase the progress bar by when character moves 1 unit
 
 
-    // Start is called before the first frame update
     void Start()
     {
         slider.maxValue = 100f;
@@ -21,7 +22,6 @@ public class ProgressBar : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         float progress = (character.transform.position.x - originX) * valuePerCoordinate;

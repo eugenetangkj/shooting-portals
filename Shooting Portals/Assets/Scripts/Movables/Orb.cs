@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a collectible that the player can touch in order to make it disappear.
 public class Orb : MonoBehaviour
 {
     public bool hasTouched {get; private set;}
@@ -25,6 +26,7 @@ public class Orb : MonoBehaviour
         }
     }
 
+    //Sets this collectible to be inactive in the scene.
     private void removeOrb()
     {
         this.gameObject.SetActive(false);

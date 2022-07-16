@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a static enemy with a vital point.
 public class EnemyWithBlock : MonoBehaviour
 {
+    #region Enemy Data
     [SerializeField] private GameObject enemyToDestroy;
     [SerializeField] private DeathLogic deathLogic;
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private GameObject target;
+    #endregion
     
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,6 +26,7 @@ public class EnemyWithBlock : MonoBehaviour
         }
     }
 
+    //Destroys the enemy
     private void DestroyEnemy()
     {
         Destroy(enemyToDestroy);

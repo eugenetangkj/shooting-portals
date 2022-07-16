@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents an instance that would disappear if all the GameObjects in activeObjects are active in scene
 public class CheckActive : MonoBehaviour
 {
     [SerializeField] private GameObject[] activeObjects;

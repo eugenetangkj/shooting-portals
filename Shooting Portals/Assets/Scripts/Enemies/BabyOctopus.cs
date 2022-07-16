@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a Baby Octopus instance, which is spawned by the Boss Octopus in Level 10
 public class BabyOctopus : MonoBehaviour
 {
+    #region Baby Octopus Data
     private Player player;
 
     [SerializeField] private GameObject enemyToDestroy;
@@ -11,7 +13,6 @@ public class BabyOctopus : MonoBehaviour
     [SerializeField] private AudioSource hitSound;
 
     private bool canMove = false;
-
 
 
     public bool shouldReturn;
@@ -25,7 +26,9 @@ public class BabyOctopus : MonoBehaviour
     private Vector3 enemyOriginalPos;
     [SerializeField] private float speed = 0.5f;
 
-    // Update is called once per frame
+    #endregion
+
+    #region Main Methods
     
     private void Start()
     {
@@ -90,6 +93,10 @@ public class BabyOctopus : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Baby Octopus Methods
+
     private void DestroyEnemy()
     {
         Destroy(enemyToDestroy);
@@ -104,5 +111,7 @@ public class BabyOctopus : MonoBehaviour
     {
         player = playerToAssign;
     }
+
+    #endregion
 }
 

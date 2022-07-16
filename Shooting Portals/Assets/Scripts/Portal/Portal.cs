@@ -7,29 +7,30 @@ using UnityEngine.UI;
 //This class represents a portal from the portal gun
 public class Portal : MonoBehaviour
 {
-    static Portal[] portalArray = new Portal[2];
+    #region Portal Data
+    static Portal[] portalArray = new Portal[2]; //Contains the portals that the player shoots
 
     private static Portal holder;
 
-    private static Portal toDestroy;
+    private static Portal toDestroy; //Portal to destroy if the player shoots a third portal
 
-    public static bool inContactWithPlayer;
+    public static bool inContactWithPlayer; //Whether the player is in contact with a portal
 
-    private static Portal portalInContact;
+    private static Portal portalInContact; //Which portal is the player currently in contact with
 
-    public static Portal portalToTeleportTo;
+    public static Portal portalToTeleportTo; //Which portal is the destination portal
 
-    public static float portalOneShootDirection;
+    public static float portalOneShootDirection; //1 is right, -1 is left
 
-    public static float portalTwoShootDirection;
+    public static float portalTwoShootDirection; //1 is right, -1 is left
 
-    public static int portalCount = 0;
+    public static int portalCount = 0; //Number of existing portals
 
-    public static bool gotBlock = false;
+    public static bool gotBlock = false; //Whether there is a movable block near the destination portal
 
     [SerializeField] LayerMask movableLayer;
     [SerializeField] LayerMask playerLayer;
-
+    #endregion
 
     private void Awake()
     {
@@ -38,13 +39,13 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
-        if (Physics2D.OverlapCircle(this.transform.position, 1f, playerLayer) && portalArray[1] != null)
+        if (Physics2D.OverlapCircle(this.transform.position, 1f, playerLayer) && portalArray[1] != null) //Got two existing portals and player is in contact with a portal
         {
             inContactWithPlayer = true;
             portalInContact =  this;
             getPortalToTeleportTo(portalInContact);
 
-            gotBlock = Physics2D.OverlapCircle(portalToTeleportTo.transform.position, 1.85f, movableLayer);  
+            gotBlock = Physics2D.OverlapCircle(portalToTeleportTo.transform.position, 1.85f, movableLayer);  //Checks whether got movable block near destination portal
         } else {
             inContactWithPlayer = false;
         }
@@ -76,6 +77,7 @@ public class Portal : MonoBehaviour
     {
         inContactWithPlayer = true;
     }
+
 
     public static void createPortal(Portal portalToCreate)
     {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a sensor that would deactivate two fireballs when a movable block moves over it.
 public class SensorForFire : MonoBehaviour
 {
     [SerializeField] GameObject fireballOne;
@@ -18,7 +19,7 @@ public class SensorForFire : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Sensor")
+        if (collision.tag == "Sensor") //Move movable block over it
         {
             animOne.SetBool("reset", true);
             animTwo.SetBool("reset", true);
@@ -29,7 +30,7 @@ public class SensorForFire : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Sensor")
+        if (collision.tag == "Sensor") //Move movable block away from it
         {
             animOne.SetBool("reset", false);
             animTwo.SetBool("reset", false);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class handles the logic for making the player move automatically with the I-shaped platform in Level 8.
 public class StickyPlatformIShape : MonoBehaviour
 {
     [SerializeField] private GameObject platform;

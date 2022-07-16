@@ -6,6 +6,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 
+//This class handles the scene transitions for levels associated with the Monster Loading Screen.
 public class SceneLoadingMonster : SceneLoading
 {
     [SerializeField] private Image progressBar;

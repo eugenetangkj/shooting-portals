@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents the wall slide state of the player.
 public class PlayerWallSlideState : PlayerTouchingWallState
 {
     
@@ -39,7 +40,7 @@ public class PlayerWallSlideState : PlayerTouchingWallState
 
             if (yInput != -1 && grabInput)
             {
-                stateMachine.ChangeState(player.WallGrabState);
+                stateMachine.ChangeState(player.WallGrabState); //Player is grabbing the wall but not pressing the down arrow key
             }
         }
     }

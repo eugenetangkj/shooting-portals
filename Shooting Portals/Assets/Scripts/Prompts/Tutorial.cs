@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class represents a tutorial instance
 public abstract class Tutorial : MonoBehaviour
 {
     protected Animator anim;

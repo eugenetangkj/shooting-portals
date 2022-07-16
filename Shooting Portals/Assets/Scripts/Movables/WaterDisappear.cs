@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class handles the logic of making a GameObject disappear if a movable block enters its collider
 public class WaterDisappear : MonoBehaviour
 {
     [SerializeField] GameObject water;
@@ -10,7 +11,7 @@ public class WaterDisappear : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Sensor")
+        if (collision.tag == "Sensor") //Movable block enters
         {
             destroyWater();
         }
@@ -19,7 +20,7 @@ public class WaterDisappear : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Sensor")
+        if (collision.tag == "Sensor") //Movable block leaves
         {
             createWater();
             // foreach (Transform child in water.transform)
@@ -33,13 +34,11 @@ public class WaterDisappear : MonoBehaviour
 
     private void destroyWater()
     {
-        Debug.Log("reachedOne");
         water.SetActive(false);
     }
 
     private void createWater()
     {
-        Debug.Log("reachedTwo");
         water.SetActive(true);
     }
 
