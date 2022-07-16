@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     [SerializeField] LevelData levelData;
     [SerializeField] GetControls controls;
 
+    public static Player player;
 
     public Rigidbody2D RB { get; private set; }
     #endregion
@@ -128,6 +129,7 @@ public class Player : MonoBehaviour
         playerCheckPoint = PlayerfabLoad.getPlayerCheckPoint();
         goToCheckPoint();
         controls.GetKeys();
+        Player.player = this;
     }
 
     private void Start()
@@ -310,16 +312,16 @@ public class Player : MonoBehaviour
     {
 
         Invoke("createPortalShot", 0.2f);
-        if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
-        {
-            ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1; //1 if player is facing right
-        } else if (ShootDirection[1] == 0)
-        {
-            ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
-        } else {
-            ShootDirection[0] = ShootDirection[1];
-            ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
-        }
+        // if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
+        // {
+        //     ShootDirection[0] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1; //1 if player is facing right
+        // } else if (ShootDirection[1] == 0)
+        // {
+        //     ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+        // } else {
+        //     ShootDirection[0] = ShootDirection[1];
+        //     ShootDirection[1] = (this.transform.rotation.y >= 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+        // }
     }
 
     private void createAttackShot()
@@ -354,16 +356,16 @@ public class Player : MonoBehaviour
     public void PortalShootJumpAttack()
     {
         Invoke("createPortalJumpShot", 0.1f);
-        if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
-        {
-            ShootDirection[0] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
-        } else if (ShootDirection[1] == 0)
-        {
-            ShootDirection[1] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
-        } else {
-            ShootDirection[0] = ShootDirection[1];
-            ShootDirection[1] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
-        }
+        // if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
+        // {
+        //     ShootDirection[0] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+        // } else if (ShootDirection[1] == 0)
+        // {
+        //     ShootDirection[1] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+        // } else {
+        //     ShootDirection[0] = ShootDirection[1];
+        //     ShootDirection[1] = (this.transform.rotation.y > 0 && this.transform.rotation.y < 0.1f) ? 1 : -1;
+        // }
     }
 
     private void createAttackJumpShot()
@@ -414,6 +416,31 @@ public class Player : MonoBehaviour
     public void togglePlayerInPushState()
     {
         isInPushState = (isInPushState == true) ? false : true;
+    }
+
+
+
+    public static void updateShootDirection()
+    {
+        if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
+        {
+            Debug.Log("Reached1");
+            ShootDirection[0] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
+            Debug.Log(ShootDirection[0]);
+            Debug.Log(ShootDirection[1]);
+        } else if (ShootDirection[1] == 0)
+        {
+            Debug.Log("Reached2");
+            ShootDirection[1] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
+            Debug.Log(ShootDirection[0]);
+            Debug.Log(ShootDirection[1]);
+        } else {
+            Debug.Log("Reached3");
+            ShootDirection[0] = ShootDirection[1];
+            ShootDirection[1] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
+            Debug.Log(ShootDirection[0]);
+            Debug.Log(ShootDirection[1]);
+        }
     }
     
     #endregion
