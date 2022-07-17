@@ -17,6 +17,8 @@ public class PortalBullet : MonoBehaviour
     private Vector2 portalPos;
     private float portalYoffset = 0.6f;
 
+    
+
     #endregion
 
     #region Main Methods
@@ -48,7 +50,7 @@ public class PortalBullet : MonoBehaviour
             {
                 if (count == 0)
                 {
-                    Player.updateShootDirection();
+                    Player.updateShootDirection(Player.playerShootDirection);
                     portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
                     Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
                     Portal.createPortal(portalToCreate);
@@ -63,7 +65,7 @@ public class PortalBullet : MonoBehaviour
             {
                 if (count == 0)
                 {
-                    Player.updateShootDirection();
+                    Player.updateShootDirection(Player.playerShootDirection);
                     portalPos.Set(transform.position.x, transform.position.y + portalYoffset);
                     Portal portalToCreate = Instantiate(portalPrefab, portalPos, transform.rotation).GetComponent<Portal>();
                     Portal.createPortal(portalToCreate);

@@ -100,6 +100,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] public bool inStartScreen;
 
+
+    public static float playerShootDirection;
+
+
+
+
+
     #endregion
 
     #region Unity Callback Functions
@@ -418,19 +425,22 @@ public class Player : MonoBehaviour
 
 
 
-    public static void updateShootDirection()
+    public static void updateShootDirection(float playerDirection)
     {
         if (ShootDirection[0] == 0 && ShootDirection[1] == 0)
         {
-            ShootDirection[0] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
+            ShootDirection[0] = (playerDirection >= 0 && playerDirection < 0.1f) ? 1 : -1;
         } else if (ShootDirection[1] == 0)
         {
-            ShootDirection[1] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
+            ShootDirection[1] = (playerDirection >= 0 && playerDirection < 0.1f) ? 1 : -1;
         } else {
             ShootDirection[0] = ShootDirection[1];
-            ShootDirection[1] = (player.transform.rotation.y >= 0 && player.transform.rotation.y < 0.1f) ? 1 : -1;
+            ShootDirection[1] = (playerDirection >= 0 && playerDirection < 0.1f) ? 1 : -1;
         }
+        Debug.Log(ShootDirection[0]);
+        Debug.Log(ShootDirection[1]);
     }
+
     
     #endregion
 }
