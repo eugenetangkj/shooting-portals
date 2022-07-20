@@ -12,6 +12,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject restartUI;
     public GameObject quitUI;
     public float levelToSelect;
+    
+    [SerializeField] private GameObject[] tutorialPrompts;
 
     
 
@@ -48,6 +50,14 @@ public class PauseMenu : MonoBehaviour
     //Pauses the game
     private void Pause()
     {
+        if (tutorialPrompts[0] != null)
+        {
+        foreach (GameObject tutorial in tutorialPrompts)
+        {
+            tutorial.GetComponent<Animator>().SetBool("appear", false);
+            tutorial.SetActive(false);
+        }
+        }
         pauseMenuUI.SetActive(true); //Enables the pause menu
         Time.timeScale = 0f; //Freezes the game
         isGamePaused = true;

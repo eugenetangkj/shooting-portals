@@ -3,17 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //This class activates the Tutorial Prompt if player enters the vicinity
-public class TutorialSpaceBar : Tutorial
+public class TutorialSpaceBar : MonoBehaviour
 {
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField] private GameObject tutorialObject;
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = tutorialObject.GetComponent<Animator>();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            if (! tutorialObject.activeInHierarchy)
+            {
+                tutorialObject.SetActive(true);
+                anim.SetBool("appear", true);
+            }
+            else {
             anim.SetBool("appear", true);
+            }
         }
     }
 
-    protected override void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
