@@ -6,25 +6,21 @@ using UnityEngine.SceneManagement;
 //This class is responsible for transition between the Start Screen and Level Selection
 public class PortalStart : MonoBehaviour
 {
-    [SerializeField] private Player player;
-    [SerializeField] GameObject background;
-    [SerializeField] GameObject canvas;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject background;
+    [SerializeField] private GameObject canvas;
     
-    //Transitions into Level Selection once player comes into contact with the portal
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void goNextLevel()
     {
-        if (collision.tag == "Player")
-        {
-            player.haveCompletedLevel = true;
-            player.GetComponent<Animator>().SetTrigger("cheerWithFade"); //Sets the corresponding animation
-            background.GetComponent<Animator>().SetTrigger("appear");
-            canvas.GetComponent<Animator>().SetTrigger("appear");
-            Invoke("nextLevel", 3f);
-        }
+        player.GetComponent<Animator>().SetTrigger("disappear");
+        background.GetComponent<Animator>().SetTrigger("appear");
+        canvas.GetComponent<Animator>().SetTrigger("appear");
+        Invoke("nextLevel", 2f);
     }
 
     private void nextLevel()
     {
         SceneManager.LoadScene("Loading Screen Portal");
     }
+
 }
