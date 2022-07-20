@@ -115,6 +115,8 @@ public class Player : MonoBehaviour
     //for the player
     private void Awake()
     {
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        Invoke("unfreezePositions", 1f);
         StateMachine = new PlayerStateMachine();
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
