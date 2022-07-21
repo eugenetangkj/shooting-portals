@@ -15,6 +15,22 @@ using UnityEngine;
     Total: 50
 
     Each hit is worth 2 health.
+
+
+    Amended health:
+    Room 1: 3
+    Room 2: 3
+    Room 3: 3
+    Room 4: 3
+    Room 5: 3
+    Room 6: 3
+    Room 7: 3
+    Room 8: 4
+    Total: 25
+
+    Each hit is worth 4 health.
+
+    
 */
 public class BossOctopus : MonoBehaviour
 {
@@ -37,7 +53,7 @@ public class BossOctopus : MonoBehaviour
             {166.0745f, -193.8223f} //Spawn Position 8
         };
     
-    private int[] healthValues = new int[] {100, 90, 80, 68, 58, 44, 28, 14};
+    private int[] healthValues = new int[] {100, 88, 76, 64, 52, 40, 28, 16};
 
 
     private int numberOfHits = 0;
@@ -91,54 +107,55 @@ public class BossOctopus : MonoBehaviour
         anim = this.GetComponent<Animator>();
         currentlyHealing = false;
         healthBar.SetMaxHealth(maxHealth);
+        bossCheckpoint = 0;
     }
 
     private void Update()
     {
-        if (playerCheckpoint == 0 && numberOfHits == 5 && isAlive) //Room 1
+        if (numberOfHits == 3 && isAlive && bossCheckpoint == 0) //Room 1
         {
             makeTargetsDisappear();
             makeOctopusDisappear();
             movingPlatforms[0].SetActive(true);
             playerCheckpoint += playerCheckpoint + 1;
         }
-        else if (playerCheckpoint == 1 && numberOfHits == 5 && isAlive) //Room 2
+        else if (numberOfHits == 3 && isAlive && bossCheckpoint == 1) //Room 2
         {
             makeTargetsDisappear();
             makeOctopusDisappear();
             movingPlatforms[1].SetActive(true); 
         }
-        else if (playerCheckpoint == 2 && numberOfHits == 6 && isAlive) //Room 3
+        else if (numberOfHits == 3 && isAlive && bossCheckpoint == 2) //Room 3
         {
             makeTargetsDisappear();
             makeOctopusDisappear();
             movingPlatforms[2].SetActive(true); 
         }
-        else if (playerCheckpoint == 3 && numberOfHits == 5 && isAlive) //Room 4
+        else if (numberOfHits == 3 && isAlive && bossCheckpoint == 3) //Room 4
         {
             makeTargetsDisappear();
             makeOctopusDisappear();
             movingPlatforms[3].SetActive(true); 
         }
-        else if (playerCheckpoint == 4 && numberOfHits == 7 && isAlive) //Room 5
+        else if (numberOfHits == 3 && isAlive && bossCheckpoint == 4) //Room 5
         {
             makeTargetsDisappear();
             makeOctopusDisappear();
             movingPlatforms[4].SetActive(true); 
         }
-        else if (playerCheckpoint == 5 && numberOfHits == 8 && isAlive) //Room 6
+        else if (numberOfHits == 3 && isAlive && bossCheckpoint == 5) //Room 6
         {
             makeTargetsDisappear();
             makeOctopusDisappear();
             movingPlatforms[5].SetActive(true); 
         }
-        else if (playerCheckpoint == 6 && numberOfHits == 7 && isAlive) // Room 7
+        else if (numberOfHits == 3 && isAlive && bossCheckpoint == 6) // Room 7
         {
             makeTargetsDisappear();
             makeOctopusDisappear();
             movingPlatforms[6].SetActive(true); 
         }
-        else if (playerCheckpoint == 7 && numberOfHits == 7 && isAlive) //Room 8
+        else if (numberOfHits == 4 && isAlive && bossCheckpoint == 7) //Room 8
         {
             makeTargetsDisappear();
             makeOctopusDisappear();
@@ -149,10 +166,8 @@ public class BossOctopus : MonoBehaviour
     private void OnEnable()
     {
         isAlive = true;
+        currentHealth = healthValues[bossCheckpoint];
         numberOfHits = 0;
-        playerCheckpoint = PlayerfabLoad.getPlayerCheckPoint();
-        bossCheckpoint = playerCheckpoint;
-        currentHealth = healthValues[playerCheckpoint];
         healthBar.SetHealth(currentHealth);
         anim.SetBool("disappear", false);
         anim.SetBool("hit", false);
@@ -208,7 +223,7 @@ public class BossOctopus : MonoBehaviour
     public void doDamage()
     {
         bossHit.Play();
-        currentHealth = currentHealth - 2f;
+        currentHealth = currentHealth - 4f;
         healthBar.SetHealth(currentHealth);
 
         Vector2 slimeBlastPos = new Vector2(this.transform.position.x - 1f, targets[targetToSpawnSlimeBlast].transform.position.y + 2f);
