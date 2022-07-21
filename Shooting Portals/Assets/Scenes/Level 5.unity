@@ -26153,6 +26153,10 @@ PrefabInstance:
       propertyPath: levelToSelect
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2425866891405190923, guid: 75bb2acce4af79e4386eee0088893010, type: 3}
+      propertyPath: tutorialPrompts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2425866891405190924, guid: 75bb2acce4af79e4386eee0088893010, type: 3}
       propertyPath: m_Name
       value: Pause Menu Canvas

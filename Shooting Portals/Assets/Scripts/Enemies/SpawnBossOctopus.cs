@@ -15,8 +15,7 @@ public class SpawnBossOctopus : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            int playerCheckpoint = PlayerfabLoad.getPlayerCheckPoint();
-            if ((roomDetected - 1 == playerCheckpoint) && (bossOctopus.gameObject.activeInHierarchy == false) && (bossOctopus.bossCheckpoint < roomDetected))
+            if ((bossOctopus.gameObject.activeInHierarchy == false) && (bossOctopus.bossCheckpoint < roomDetected))
             {
                 bossOctopus.spawnBossOctopus(roomDetected);
                 bossOctopus.gameObject.SetActive(true);

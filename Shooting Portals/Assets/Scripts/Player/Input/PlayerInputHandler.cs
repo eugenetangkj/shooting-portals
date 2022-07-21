@@ -96,7 +96,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnAttackShootInput(InputAction.CallbackContext context)
     {
         if (context.started && CanShoot && CanPortalShoot &&
-            ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press c button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+            ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press c button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             AttackShootInput = true;
             CanShoot = false;
@@ -109,7 +109,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnPortalShootInput(InputAction.CallbackContext context)
     {
         if (context.started && CanShoot && CanPortalShoot
-            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press v button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press v button, (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             Player.playerShootDirection = player.transform.rotation.y;
             PortalShootInput = true;
@@ -123,7 +123,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnTeleportInput(InputAction.CallbackContext context)
     {
         if (context.started && CanTeleport && (Portal.portalCount == 2)
-            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+            && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press up button, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             if (player.isInPushState && Portal.gotBlock)
             {
@@ -141,7 +141,7 @@ public class PlayerInputHandler : MonoBehaviour
     //Handles destroy portals input when user presses b
     public void OnDestroyAllPortalsInput(InputAction.CallbackContext context)
     {
-        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel && (PlayerfabLoad.getPlayerLevelAfter() >= 2)) //press b, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
+        if (context.started && ! PauseMenu.isGamePaused && ! player.haveCompletedLevel) //press b, && (PlayerfabLoad.getPlayerLevelAfter() >= 2)
         {
             player.destroyPortalSound.Play();
             Portal.destroyAllPortals();
