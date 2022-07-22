@@ -74,6 +74,9 @@ public class PauseMenu : MonoBehaviour
     public void YesForRestart()
     {
         PlayerfabLoad.updatePlayerCheckpoint("0"); //Resets checkpoint to 0
+        Portal.portalCount = 0; //Resets portal count
+        Portal.portalArray[0] = null;
+        Portal.portalArray[1] = null;
         Time.timeScale = 1f; //Resumes time
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Restarts current level scene
         isGamePaused = false;
@@ -112,6 +115,9 @@ public class PauseMenu : MonoBehaviour
     {
         PlayerfabLoad.updatePlayerCheckpoint("0"); //Resets checkpoint to 0
         PlayerfabLoad.playerLevelSelected = "Level Selection";
+        Portal.portalCount = 0; //Resets portal count
+        Portal.portalArray[0] = null;
+        Portal.portalArray[1] = null;
         Time.timeScale = 1f; //Resumes time
         SceneManager.LoadScene("Level Selection");
         isGamePaused = false;

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Portal : MonoBehaviour
 {
     #region Portal Data
-    static Portal[] portalArray = new Portal[2]; //Contains the portals that the player shoots
+    public static Portal[] portalArray = new Portal[2]; //Contains the portals that the player shoots
 
     private static Portal holder;
 

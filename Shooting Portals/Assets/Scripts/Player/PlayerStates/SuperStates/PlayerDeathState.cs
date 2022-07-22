@@ -22,6 +22,8 @@ public class PlayerDeathState : PlayerState
         player.setVelocityZero(); //Set velocity of player to be 0
         base.Enter();
         Portal.portalCount = 0; //Resets portal count
+        Portal.portalArray[0] = null;
+        Portal.portalArray[1] = null;
         player.Invoke("restartLevel", 2.5f); //Restarts level
     }
 
