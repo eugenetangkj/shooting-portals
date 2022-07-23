@@ -1,5 +1,5 @@
 # Shooting Portals
-Shooting Portals is a 2D puzzle-based platformer for PC. It is developed using Unity and Playfab. There are a total of 10 levels. You can play the game [here](https://play.unity.com/mg/other/webgl-builds-200053).
+Shooting Portals is a 2D puzzle-based platformer for PC. It is developed using Unity and Playfab. There are a total of 10 levels. You can play the game [here](https://play.unity.com/mg/other/webgl-builds-200053) and a walkthrough can be found [here](https://drive.google.com/drive/folders/15xZOpnZ_foW7wAA9tumequzBluv4j2aj?usp=sharing)
 
 The game revolves around the main character Pulse, who is a researcher and inventor of portal technology. He invented the Portal Gate, which allows one to travel to different galaxies. However, his dog, Orbit, accidentally ran into the Portal Gate. Pulse thus sets off on his adventure to rescue Orbit.
 
